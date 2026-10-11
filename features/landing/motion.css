@@ -1,0 +1,134 @@
+/* Landing motion. One easing everywhere (the risk eye's), slow and calm: Argus watches, he doesn't bounce.
+ * Everything here is opt-in via prefers-reduced-motion: no-preference, so reduced-motion users get a static page. */
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    --ease-argus: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  /* Scroll reveals — MotionRoot sets data-in when the element enters the viewport. */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.9s var(--ease-argus) var(--d, 0ms),
+      transform 0.9s var(--ease-argus) var(--d, 0ms);
+  }
+  /* A group only acts as the trigger for children; it doesn't move itself. */
+  [data-reveal="group"] {
+    opacity: 1;
+    transform: none;
+  }
+  /* Illustrations wipe open left→right, like a scroll being unrolled, while the image settles from a slight zoom.
+   * Triggered by the nearest [data-reveal] ancestor: a fully clipped element never reports as visible. */
+  [data-wipe] {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1.3s cubic-bezier(0.7, 0, 0.2, 1) var(--d, 0ms);
+  }
+  [data-wipe] img {
+    transform: scale(1.12);
+    transition: transform 1.8s var(--ease-argus) var(--d, 0ms);
+  }
+  [data-in] [data-wipe] {
+    clip-path: inset(0 0 0 0);
+  }
+  [data-in] [data-wipe] img {
+    transform: scale(1);
+  }
+  [data-reveal][data-in] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Hero: headline lines rise out of a mask, the illustration settles in. */
+  .hero-line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.06em;
+  }
+  .hero-line > span {
+    display: inline-block;
+    animation: argus-rise 1.1s var(--ease-argus) both;
+    animation-delay: var(--d, 0ms);
+  }
+  .hero-fade {
+    animation: argus-fade 1s var(--ease-argus) both;
+    animation-delay: var(--d, 0ms);
+  }
+  .hero-art {
+    animation: argus-settle 14s var(--ease-argus) both;
+  }
+
+  /* The frieze drifts very slowly, like the night sky turning. */
+  .sky-drift {
+    animation: argus-drift 60s ease-in-out infinite alternate;
+  }
+
+  /* Hover: images lean in a touch; cards raise their border. */
+  .lean img {
+    transition: transform 1.2s var(--ease-argus);
+  }
+  .lean:hover img {
+    transform: scale(1.035);
+  }
+  .lift {
+    transition:
+      border-color 0.4s ease,
+      transform 0.5s var(--ease-argus);
+  }
+  .lift:hover {
+    border-color: var(--color-ink-700);
+    transform: translateY(-3px);
+  }
+
+  /* Footer mark: dots breathe in a slow wave. */
+  .mark-breathe {
+    animation: argus-breathe 5s ease-in-out infinite;
+  }
+}
+
+@keyframes argus-rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes argus-fade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes argus-settle {
+  from {
+    transform: scale(1.07);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes argus-drift {
+  from {
+    transform: scale(1.08) translateX(-1.5%);
+  }
+  to {
+    transform: scale(1.08) translateX(1.5%);
+  }
+}
+@keyframes argus-breathe {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(8deg) scale(1.03);
+  }
+}

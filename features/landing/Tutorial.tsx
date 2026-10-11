@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { RiskEye } from "@/components/brand/RiskEye";
 import { Health, Label } from "@/components/ui";
 import { demoPositions } from "@/lib/positions/demo";
+import { tween, useInViewOnce } from "./MotionRoot";
 import { collateralToReach, hfAfterMove, hfText, repayToReach, riskLabel, riskOf } from "@/lib/positions/risk";
 
 /** Three-step landing tutorial. Each step pairs an illustration with a working piece of the real app. */
@@ -16,6 +17,7 @@ function StepFrame({
   alt,
   title,
   body,
+  delay = "0ms",
   children,
 }: {
   n: string;
@@ -23,11 +25,12 @@ function StepFrame({
   alt: string;
   title: string;
   body: string;
+  delay?: string;
   children: React.ReactNode;
 }) {
   return (
-    <article className="flex flex-col border border-ink-800 bg-ink-900 min-w-0">
-      <figure className="m-0 relative aspect-square bg-terra-500 overflow-hidden">
+    <article data-reveal style={{ "--d": delay } as React.CSSProperties} className="lift flex flex-col border border-ink-800 bg-ink-900 min-w-0">
+      <figure className="lean m-0 relative aspect-square bg-terra-500 overflow-hidden">
         <Image src={img} alt={alt} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
         <span className="absolute top-3 left-3 bg-ink-950 text-sand-200 text-[12px] font-medium px-2 py-1">{n}</span>
       </figure>
@@ -43,9 +46,18 @@ function StepFrame({
 /** Step 1: drag health down and watch the eye open. */
 function ReadTheEye() {
   const [hf, setHf] = useState(2.2);
+  const ref = useRef<HTMLDivElement>(null);
+  const stop = useRef<(() => void) | void>(undefined);
+  const touched = useRef(false);
+  // First time it's seen, the eye demonstrates itself: health falls and the lid opens. Any touch hands control over.
+  useInViewOnce(ref, () => {
+    setTimeout(() => {
+      if (!touched.current) stop.current = tween(2.2, 1.05, 2600, setHf);
+    }, 600);
+  });
   const risk = riskOf(hf);
   return (
-    <div className="flex flex-col gap-3">
+    <div ref={ref} className="flex flex-col gap-3">
       <div className="flex items-center justify-between gap-3">
         <span className="flex items-center gap-3">
           <RiskEye risk={risk} size={56} glow />
@@ -60,6 +72,10 @@ function ReadTheEye() {
         step={0.01}
         value={hf}
         onChange={(e) => setHf(Number(e.target.value))}
+        onPointerDown={() => {
+          touched.current = true;
+          stop.current?.();
+        }}
         aria-label="Health factor"
         className="w-full accent-[#efc796]"
       />
@@ -132,7 +148,7 @@ function AskPreview() {
 export function Tutorial() {
   return (
     <section id="tutorial" className="mx-auto max-w-[1360px] w-full px-4 md:px-6 py-16 md:py-20 flex flex-col gap-8">
-      <div className="flex flex-col gap-3 max-w-[760px]">
+      <div data-reveal className="flex flex-col gap-3 max-w-[760px]">
         <Label className="!text-terra-400">A short tutorial</Label>
         <h2 className="font-display m-0 text-[28px] md:text-[40px] leading-[1.1] text-sand-100">Three things Argus teaches you.</h2>
         <p className="m-0 text-[15px] leading-relaxed text-sand-300">Each one works right here, on a demo position. Try them before you connect anything.</p>
@@ -149,6 +165,7 @@ export function Tutorial() {
         </StepFrame>
         <StepFrame
           n="02"
+          delay="140ms"
           img="/brand/tut-dial.jpg"
           alt="Argus turning a bronze wheel while the water level in a tall vessel falls toward a marked notch"
           title="Rehearse the crash"
@@ -158,6 +175,7 @@ export function Tutorial() {
         </StepFrame>
         <StepFrame
           n="03"
+          delay="280ms"
           img="/brand/tut-ask.jpg"
           alt="Argus at his laptop, the screen showing a rising line and a gauge"
           title="Ask in plain words"
