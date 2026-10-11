@@ -4,7 +4,7 @@ import type { AskAction, AskEvent, ChatTurn } from "@/features/ask/types";
 import { hfAfterMove } from "@/lib/positions/risk";
 import type { PortfolioSnapshot } from "@/lib/positions/types";
 
-const MODEL = process.env.ARGUS_MODEL ?? "claude-sonnet-5-5";
+const MODEL = process.env.ARGUS_MODEL || "claude-sonnet-5-5";
 const MAX_TOOL_ROUNDS = 3;
 
 const TOOLS: Anthropic.Tool[] = [

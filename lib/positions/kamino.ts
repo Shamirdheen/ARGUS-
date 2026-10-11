@@ -5,7 +5,7 @@ import type { Position } from "./types";
  * Untested against the live API from the build sandbox (network blocked there):
  * every field is read defensively, and any failure returns null so the caller falls back to demo.
  */
-const API = process.env.KAMINO_API_URL ?? "https://api.kamino.finance";
+const API = process.env.KAMINO_API_URL || "https://api.kamino.finance";
 const MAIN_MARKET = "7u3HeHxYDLhnCoErrtycNokbQYbWGzLs6JSDqGAv5PfF";
 
 type Stats = Record<string, string | number | undefined>;

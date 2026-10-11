@@ -4,7 +4,7 @@ import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import type { ReactNode } from "react";
 
-const RPC = process.env.NEXT_PUBLIC_SOLANA_RPC_URL ?? "https://api.mainnet-beta.solana.com";
+const RPC = process.env.NEXT_PUBLIC_SOLANA_RPC_URL || "https://api.mainnet-beta.solana.com";
 
 /**
  * Phantom, Solflare, Backpack etc. register themselves through the Wallet Standard,
