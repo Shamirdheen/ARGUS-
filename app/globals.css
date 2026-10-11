@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+/* Argus colour system — every value sampled from the hero illustration.
+ *   Terracotta = "the vase"          → landing, brand, danger
+ *   Ink        = "inside the figure" → the product (dark only)
+ *   Sand       = "the incised line"  → text and borders
+ */
+@theme {
+  --color-terra-700: #853f19;
+  --color-terra-600: #a04a1b;
+  --color-terra-500: #c0551e;
+  --color-terra-400: #d06f3c;
+  --color-terra-300: #e0946a;
+
+  --color-ink-950: #16110c;
+  --color-ink-900: #1e1711;
+  --color-ink-850: #271e16;
+  --color-ink-800: #33271d;
+  --color-ink-700: #482a16;
+
+  --color-sand-100: #f6ddb8;
+  --color-sand-200: #efc796;
+  --color-sand-300: #deb281;
+  --color-sand-500: #a8865f;
+  --color-sand-600: #7e654a;
+
+  /* Risk — Mono-2. Severity = lightness, weight and the risk eye. Never hue. */
+  --color-risk-safe: #a8865f;
+  --color-risk-watch: #efc796;
+  --color-risk-warning: #e0946a;
+  --color-risk-critical: #d06f3c;
+
+  --font-display: "Michroma", "Arial Black", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+:root {
+  color-scheme: dark;
+  --eye-0: #7e654a;
+  --eye-1: #853f19;
+  --eye-2: #c0551e;
+  --eye-3: #e0946a;
+}
+
+html,
+body {
+  background: var(--color-ink-950);
+  color: var(--color-sand-200);
+}
+body {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+::selection {
+  background: var(--color-sand-200);
+  color: var(--color-ink-950);
+}
+:focus-visible {
+  outline: 2px solid var(--color-sand-200);
+  outline-offset: 2px;
+}
+
+/* Risk eye motion — lid and iris ease over 600ms; critical glow pulses 1.6s. */
+.risk-eye-lid,
+.risk-eye-iris {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+    fill 0.6s ease,
+    stroke 0.6s ease;
+}
+@keyframes argus-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+.risk-eye-glow {
+  animation: argus-pulse 1.6s ease-in-out infinite;
+}
+@keyframes argus-open {
+  0%,
+  100% {
+    transform: scaleY(0.08);
+  }
+  45%,
+  70% {
+    transform: scaleY(0.62);
+  }
+}
+.argus-opening {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: argus-open 2.4s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .risk-eye-lid,
+  .risk-eye-iris {
+    transition: none;
+  }
+  .risk-eye-glow,
+  .argus-opening {
+    animation: none;
+  }
+}
+
+/* Wallet adapter modal, re-skinned to the brand. */
+.wallet-adapter-modal-wrapper {
+  background: var(--color-ink-900) !important;
+  border: 1px solid var(--color-ink-700);
+  border-radius: 0 !important;
+  font-family: var(--font-mono) !important;
+}
+.wallet-adapter-modal-title {
+  font-family: var(--font-display) !important;
+  font-size: 18px !important;
+  color: var(--color-sand-100) !important;
+}
+.wallet-adapter-button {
+  font-family: var(--font-mono) !important;
+  border-radius: 0 !important;
+}
+.wallet-adapter-modal-list .wallet-adapter-button:not([disabled]):hover {
+  background: var(--color-ink-850) !important;
+}
+.wallet-adapter-modal-button-close {
+  background: var(--color-ink-850) !important;
+}
