@@ -20,17 +20,26 @@ const STEPS = [
 
 const MYTH = [
   {
+    n: "I",
     a: "Argus",
+    img: "/brand/watch.jpg",
+    alt: "Argus, seen from behind with eyes open across his back, keeping watch over a valley of amphorae under orbital rings",
     b: "The hundred-eyed giant set to watch what others could not afford to lose. Some of his eyes were always open.",
     c: "Argus watches every position, every block, all night.",
   },
   {
+    n: "II",
     a: "Hermes",
+    img: "/brand/hermes.jpg",
+    alt: "Hermes playing a reed pipe on a rock while the hundred-eyed giant's eyes droop shut",
     b: "The god of merchants and thieves lulled every one of those eyes to sleep with a slow song, then struck.",
     c: "Calm markets are the song. Liquidation bots are waiting for you to look away.",
   },
   {
+    n: "III",
     a: "Premeditatio malorum",
+    img: "/brand/stoic.jpg",
+    alt: "Argus at a table beside an armillary sphere, rehearsing a wave against a row of amphorae; the first one is already cracking",
     b: "The Stoics rehearsed misfortune before it arrived, so it never arrived as a surprise.",
     c: "Run the crash before it happens. See which position breaks first, and by how much.",
   },
@@ -127,6 +136,20 @@ export default function Landing() {
         </div>
       </section>
 
+      <section aria-label="Night watch" className="relative my-10 md:my-16 bg-terra-500 overflow-hidden">
+        <div className="relative aspect-[2/1] max-h-[640px] w-full">
+          <Image src="/brand/frieze.jpg" alt="A night sky of open eyes joined by constellation lines that rise and fall like a price chart" fill sizes="100vw" className="object-cover" />
+        </div>
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-950/90 via-ink-950/40 to-transparent">
+          <div className="mx-auto max-w-[1360px] px-4 md:px-6 pt-24 pb-6 md:pb-10 flex flex-wrap items-end justify-between gap-4">
+            <p className="font-display m-0 text-[22px] md:text-[36px] leading-[1.1] text-sand-100 max-w-[720px] text-balance">
+              Every block. Every position. All night.
+            </p>
+            <span className="text-[12px] text-sand-300">One eye per position. It opens as health falls.</span>
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-[1360px] w-full px-4 md:px-6 py-10">
         <div className="flex flex-wrap gap-7 items-center p-6 md:p-9 border border-ink-800 bg-ink-900">
           <div className="flex flex-col gap-1.5">
@@ -194,12 +217,18 @@ export default function Landing() {
             Liquidations don&apos;t happen to people who are watching. They happen at 3 a.m., during a quiet market, to the one position nobody checked.
           </p>
         </div>
-        <div className="grid gap-4 md:grid-cols-3">
-          {MYTH.map((m) => (
-            <article key={m.a} className="flex flex-col gap-3.5 p-7 border border-ink-800 bg-ink-900">
-              <h3 className="font-display m-0 text-[22px] leading-[1.2] text-sand-100">{m.a}</h3>
-              <p className="m-0 text-sm leading-relaxed text-sand-300">{m.b}</p>
-              <p className="m-0 text-sm font-medium leading-relaxed text-sand-100 border-t border-ink-800 pt-3.5">{m.c}</p>
+        <div className="flex flex-col gap-16 md:gap-24 pt-4">
+          {MYTH.map((m, i) => (
+            <article key={m.a} className={`grid gap-8 md:gap-14 items-center md:grid-cols-[1.35fr_1fr] ${i % 2 ? "md:[&>figure]:order-2 md:grid-cols-[1fr_1.35fr]" : ""}`}>
+              <figure className="m-0 relative aspect-[16/9] overflow-hidden border border-ink-800 bg-terra-500">
+                <Image src={m.img} alt={m.alt} fill sizes="(min-width: 768px) 58vw, 100vw" className="object-cover" />
+              </figure>
+              <div className="flex flex-col gap-4 min-w-0">
+                <span className="font-display text-[15px] tracking-[0.2em] text-terra-400">{m.n}</span>
+                <h3 className="font-display m-0 text-[26px] md:text-[32px] leading-[1.15] text-sand-100">{m.a}</h3>
+                <p className="m-0 text-[15px] leading-relaxed text-sand-300">{m.b}</p>
+                <p className="m-0 text-[15px] font-medium leading-relaxed text-sand-100 border-t border-ink-700 pt-4">{m.c}</p>
+              </div>
             </article>
           ))}
         </div>
