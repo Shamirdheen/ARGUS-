@@ -3,6 +3,7 @@ import Link from "next/link";
 import { RiskEye } from "@/components/brand/RiskEye";
 import { Health, Label, Status } from "@/components/ui";
 import { ScanForm } from "@/features/landing/ScanForm";
+import { Tutorial } from "@/features/landing/Tutorial";
 import { demoPositions } from "@/lib/positions/demo";
 import { byRisk, riskOf } from "@/lib/positions/risk";
 
@@ -149,6 +150,8 @@ export default function Landing() {
           </div>
         </div>
       </section>
+
+      <Tutorial />
 
       <section className="mx-auto max-w-[1360px] w-full px-4 md:px-6 py-10">
         <div className="flex flex-wrap gap-7 items-center p-6 md:p-9 border border-ink-800 bg-ink-900">
