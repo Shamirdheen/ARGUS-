@@ -7,7 +7,7 @@ Everything designed for Argus v2, exported from the Claude Design canvas on 12 O
 | --- | --- |
 | `screens/` | Product screens and the landing mock-up, as PNG |
 | `system/` | Brand, type, components, risk colours, living favicon spec, voice and copy |
-| `explorations/` | The 4 starting style directions (raw brutalism, neobrutalism, flat-glass, maximalism) and logo rounds 1–3. History only |
+| `explorations/` | Logo rounds 1–3 (history only; the final logo is in `brand/logo/`) |
 | `research/` | Inspiration research: the sites you picked from the Inspo catalogue (4 batches, with palettes, fonts and signature moves) and the catalogue studies (full, maximalism, brutalism) |
 | `tools/` | Generators: `final_logo.py` (Hundred logo, Vogel spiral) and `boards/*.py` (how the canvas boards were built). Reference only; paths point at the old workspace |
 | `brand/argus-logo-hundred.zip` | The logo kit as one download |
@@ -33,7 +33,7 @@ Everything designed for Argus v2, exported from the Claude Design canvas on 12 O
 
 `system/Risk-eye.png` is a snapshot of the interactive risk-eye board (at 1.58x, Watch). The live version is the app component `components/brand/RiskEye.tsx`.
 
-**How we got here:** four style directions (`explorations/style-*`) → the hero illustration set the palette → brand locked (Hundred logo, Mono-2 risk, Michroma + Plex Mono) → screens. The direction is black-figure vase painting; the four style boards are not the direction.
+**The direction is black-figure vase painting** (terracotta, ink, sand). Earlier style directions (brutalism, neobrutalism, flat-glass, maximalism) were scrapped and are intentionally not kept here.
 
 ## Mock-up data is not product truth
 
