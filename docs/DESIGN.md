@@ -94,6 +94,10 @@ No other hues. No blue, green, yellow or red anywhere, charts included.
 | `.caret` | Argus is still typing | The streaming answer |
 | `.heartbeat` | Argus is watching (30 s refresh) | Badge in the header |
 | `.lift`, `.nav-link` | Hover affordance; nav underline grows from the centre | Shock cards; header nav |
+| Wallet window rise | The wallet list rises in, items staggered | Connect wallet (library modal, restyled in `app-motion.css`) |
+| `app/app/loading.tsx` | "Argus is opening his eyes…" while a route loads | Between app pages |
+| 404 eye (`app/not-found.css`) | The eye opens, searches left and right, and blinks: "A hundred eyes, and none of them can see this page." | Any unknown URL |
+| `/kit` | Sections settle in; the four eyes wake one after another; a Motion section demos `.lift`, `.heartbeat` and `.caret` | Component catalogue |
 
   Reduced motion: everything shows in its final state immediately, and panels close instantly.
 

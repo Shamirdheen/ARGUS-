@@ -70,7 +70,12 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
         <nav className="sm:hidden flex border-t border-ink-800" aria-label="Main mobile">
           {NAV.map((n) => (
-            <Link key={n.href} href={n.href} className={cx("flex-1 text-center py-2.5 text-[13px]", path === n.href ? "text-sand-100" : "text-sand-500")}>
+            <Link
+              key={n.href}
+              href={n.href}
+              aria-current={path === n.href ? "page" : undefined}
+              className={cx("nav-link flex-1 text-center py-2.5 text-[13px]", path === n.href ? "text-sand-100" : "text-sand-500")}
+            >
               {n.label}
             </Link>
           ))}

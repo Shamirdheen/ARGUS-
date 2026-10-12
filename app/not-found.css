@@ -1,0 +1,59 @@
+/* 404 eye: opens (0.9s), then searches left/right with a blink every few seconds. */
+.nf-lid,
+.nf-iris {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nf-lid {
+    animation:
+      nf-open 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both,
+      nf-blink 5.5s ease-in-out 2.2s infinite;
+  }
+  .nf-iris {
+    animation: nf-search 5.5s ease-in-out 1s infinite;
+  }
+  .nf-copy {
+    animation: nf-rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s both;
+  }
+}
+
+@keyframes nf-open {
+  from {
+    transform: scaleY(0.05);
+  }
+}
+@keyframes nf-blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.06);
+  }
+}
+@keyframes nf-search {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  32% {
+    transform: translateX(-62%);
+  }
+  52%,
+  64% {
+    transform: translateX(62%);
+  }
+  80% {
+    transform: translateX(0);
+  }
+}
+@keyframes nf-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}

@@ -26,6 +26,7 @@ npm run dev
 | `/` | Landing. Paste a wallet or launch the app. |
 | `/app` | Overview: closest-to-liquidation, totals, SOL shock cards, positions. |
 | `/kit` | Live component catalogue (not linked, not indexed). |
+| any unknown URL | Branded 404: the eye searches for the page. |
 | `/app/positions` | Full table, position drawer with price rehearsal and fix amounts. |
 | `/api/positions?wallet=` | Normalised `Position[]`. Live Kamino when reachable, otherwise the labelled demo book. |
 | `/api/chat` | Ask Argus on Claude. Streams NDJSON (`text`, `action`, `error`, `done`). Tools: `simulate_price_move`, `suggest_action`. |
