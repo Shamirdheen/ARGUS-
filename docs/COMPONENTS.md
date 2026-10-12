@@ -28,7 +28,7 @@ The live catalogue is the **`/kit`** page (`app/kit/page.tsx`): it renders the r
 | Component | File | What it does |
 | --- | --- | --- |
 | `AppShell` | `features/shell/AppShell.tsx` | App header (logo, nav, Demo badge, Ask Argus ⌘K, wallet), demo note bar, mounts the drawer + Ask panel |
-| `PortfolioProvider` / `usePortfolio` | `features/portfolio/PortfolioProvider.tsx` | Wallet (or `?wallet=`) → `/api/positions` every 30 s; selection; Ask panel open/seed; ⌘K and Esc |
+| `PortfolioProvider` / `usePortfolio` | `features/portfolio/PortfolioProvider.tsx` | Wallet (or `?wallet=`) → `/api/positions` every 30 s; selection; Ask panel open/seed; ⌘K (Esc is handled by each panel so it can animate out) |
 | `Overview` | `features/portfolio/Overview.tsx` | Closest-to-liquidation card, totals, "If SOL falls" shock cards, compact table |
 | `PositionTable` | `features/positions/PositionTable.tsx` | Sorted by risk; critical row inverts; click opens the drawer. `compact` hides money columns |
 | `PositionDrawer` | `features/positions/PositionDrawer.tsx` | Full figures, price-rehearsal slider, add/repay amounts back to 1.50x, "Ask Argus about this" |
