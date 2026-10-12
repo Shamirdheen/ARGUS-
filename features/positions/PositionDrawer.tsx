@@ -1,11 +1,12 @@
 "use client";
 
 import { X } from "@phosphor-icons/react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { RiskEye } from "@/components/brand/RiskEye";
 import { Button, Health, Label, Status } from "@/components/ui";
 import { collateralToReach, hfAfterMove, hfText, pct, repayToReach, riskOf, usd } from "@/lib/positions/risk";
 import { usePortfolio } from "@/features/portfolio/PortfolioProvider";
+import { useExit } from "@/features/shell/useExit";
 
 /** Position detail: numbers, a price rehearsal slider, and the two ways out. */
 export function PositionDrawer() {
@@ -15,12 +16,14 @@ export function PositionDrawer() {
   const [rehearsal, setRehearsal] = useState({ id: selectedId, move: 0 });
   const move = rehearsal.id === selectedId ? rehearsal.move : 0;
   const setMove = (v: number) => setRehearsal({ id: selectedId, move: v });
+  const { leaving, close } = useExit(useCallback(() => select(null), [select]));
+
   useEffect(() => {
     if (!p) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && select(null);
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [p, select]);
+  }, [p, close]);
 
   if (!p) return null;
   const risk = riskOf(p.healthFactor);
@@ -38,8 +41,13 @@ export function PositionDrawer() {
 
   return (
     <div className="fixed inset-0 z-40" role="dialog" aria-modal="true" aria-label={`${p.name} details`}>
-      <button type="button" aria-label="Close" className="absolute inset-0 bg-ink-950/70 cursor-default" onClick={() => select(null)} />
-      <aside className="absolute top-0 right-0 bottom-0 w-full max-w-[520px] bg-ink-900 border-l border-ink-700 flex flex-col">
+      <button
+        type="button"
+        aria-label="Close"
+        className={`${leaving ? "backdrop-out" : "backdrop-in"} absolute inset-0 bg-ink-950/70 cursor-default`}
+        onClick={close}
+      />
+      <aside className={`${leaving ? "panel-out" : "panel-in"} absolute top-0 right-0 bottom-0 w-full max-w-[520px] bg-ink-900 border-l border-ink-700 flex flex-col`}>
         <div className="flex items-start justify-between gap-4 px-5 py-4 border-b border-ink-800">
           <div className="flex flex-col gap-1 min-w-0">
             <Label>
@@ -47,14 +55,16 @@ export function PositionDrawer() {
             </Label>
             <span className="font-display text-[20px] text-sand-100 truncate">{p.name}</span>
           </div>
-          <button type="button" onClick={() => select(null)} aria-label="Close" className="min-w-10 min-h-10 grid place-items-center border border-ink-700 text-sand-200 cursor-pointer hover:bg-ink-850">
+          <button type="button" onClick={close} aria-label="Close" className="min-w-10 min-h-10 grid place-items-center border border-ink-700 text-sand-200 cursor-pointer hover:bg-ink-850">
             <X size={18} weight="light" />
           </button>
         </div>
 
         <div className="flex-1 overflow-y-auto px-5 py-5 flex flex-col gap-6">
           <div className="flex items-center gap-5">
-            <RiskEye risk={risk} size={84} glow />
+            <span className="eye-wake" style={{ "--d": "260ms" } as React.CSSProperties}>
+              <RiskEye risk={risk} size={84} glow />
+            </span>
             <div className="flex flex-col gap-1.5">
               <Label>Health factor</Label>
               <Health value={p.healthFactor} className="font-display !font-normal text-[34px]" />
@@ -98,11 +108,11 @@ export function PositionDrawer() {
                 <Health value={simHf} />
               </span>
             </div>
-            {simHf < 1 && <p className="m-0 text-[13px] text-risk-critical">Liquidated at this price.</p>}
+            {simHf < 1 && <p className="msg-in m-0 text-[13px] text-risk-critical">Liquidated at this price.</p>}
           </div>
 
           {p.healthFactor < 1.5 && (
-            <div className="flex flex-col gap-3">
+            <div className="enter flex flex-col gap-3" style={{ "--d": "320ms" } as React.CSSProperties}>
               <Label>Two ways back to 1.50x</Label>
               <div className="grid grid-cols-2 gap-3">
                 <div className="border border-ink-700 p-3.5 flex flex-col gap-1">
@@ -131,7 +141,7 @@ export function PositionDrawer() {
           >
             Ask Argus about this
           </Button>
-          <Button kind="secondary" onClick={() => select(null)}>
+          <Button kind="secondary" onClick={close}>
             Close
           </Button>
         </div>

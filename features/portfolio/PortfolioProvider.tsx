@@ -49,14 +49,13 @@ export function PortfolioProvider({ children }: { children: ReactNode }) {
     return () => clearInterval(id);
   }, []);
 
-  // ⌘K / Ctrl+K opens Ask Argus anywhere in the app.
+  // ⌘K / Ctrl+K opens Ask Argus anywhere in the app. (Esc is handled by the panel, so it can animate out.)
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
         setAskOpen(true);
       }
-      if (e.key === "Escape") setAskOpen(false);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);

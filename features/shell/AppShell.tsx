@@ -9,6 +9,7 @@ import { usePortfolio } from "@/features/portfolio/PortfolioProvider";
 import { WalletButton } from "@/features/wallet/WalletButton";
 import { AskPanel } from "@/features/ask/AskPanel";
 import { PositionDrawer } from "@/features/positions/PositionDrawer";
+import "./app-motion.css";
 
 const NAV = [
   { href: "/app", label: "Overview" },
@@ -36,8 +37,8 @@ export function AppShell({ children }: { children: ReactNode }) {
                   href={n.href}
                   aria-current={active ? "page" : undefined}
                   className={cx(
-                    "px-3 py-2 text-[13px] transition-colors",
-                    active ? "text-sand-100 shadow-[inset_0_-2px_0_var(--color-sand-200)]" : "text-sand-500 hover:text-sand-200",
+                    "nav-link px-3 py-2 text-[13px] transition-colors",
+                    active ? "text-sand-100" : "text-sand-500 hover:text-sand-200",
                   )}
                 >
                   {n.label}
@@ -46,8 +47,14 @@ export function AppShell({ children }: { children: ReactNode }) {
             })}
           </nav>
           <div className="ml-auto flex items-center gap-2">
-            {snapshot?.source === "demo" && (
-              <span className="hidden md:inline text-[11px] uppercase tracking-[0.1em] text-sand-500 border border-ink-700 px-2 py-1">Demo data</span>
+            {snapshot && (
+              <span
+                className="hidden md:inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.1em] text-sand-500 border border-ink-700 px-2 py-1"
+                title="Argus refreshes every 30 seconds while this tab is open"
+              >
+                <span aria-hidden className="heartbeat size-1.5 rounded-full bg-sand-200" />
+                {snapshot.source === "demo" ? "Demo data" : "Watching"}
+              </span>
             )}
             <button
               type="button"

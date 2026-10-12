@@ -21,6 +21,7 @@ The live catalogue is the **`/kit`** page (`app/kit/page.tsx`): it renders the r
 | `Status` | `risk`, `onFill` | Eye + word (Watch, Warning, "Act now" chip; Safe is screen-reader only) |
 | `Stat` | `label`, `value`, `sub` | Number tile |
 | `cx(...)` | class names | Joins class names, ignores falsy |
+| `Ticker` (`components/ui/Ticker.tsx`) | `value`, `className`, children | Wrap a number; it glows once when `value` changes (not on first render). Use for live figures only |
 
 ## Feature components
 
@@ -38,6 +39,8 @@ The live catalogue is the **`/kit`** page (`app/kit/page.tsx`): it renders the r
 | `Tutorial` | `features/landing/Tutorial.tsx` | Three illustrated steps with live demos |
 | `BeforeAfter` | `features/landing/BeforeAfter.tsx` | 1.18x → 1.31x count-up |
 | `MotionRoot`, `useInViewOnce`, `tween`, `prefersReducedMotion` | `features/landing/MotionRoot.tsx` | Landing motion engine (see `docs/LANDING.md`) |
+| `useExit` | `features/shell/useExit.ts` | `const { leaving, close } = useExit(onDone)`: plays a panel's exit animation, then closes (instantly with reduced motion) |
+| `app-motion.css` | `features/shell/app-motion.css` | Product motion classes (see `docs/DESIGN.md` §7) |
 
 ## Adding a component
 1. Check `/kit` and this file first; extend what exists before adding something new.

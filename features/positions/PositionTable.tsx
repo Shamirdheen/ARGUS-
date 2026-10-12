@@ -5,6 +5,7 @@ import { cx, Health, Status } from "@/components/ui";
 import { byRisk, pct, riskOf, usd } from "@/lib/positions/risk";
 import type { Position } from "@/lib/positions/types";
 import { usePortfolio } from "@/features/portfolio/PortfolioProvider";
+import { Ticker } from "@/components/ui/Ticker";
 
 export function PositionTable({ positions, compact = false }: { positions: Position[]; compact?: boolean }) {
   const { select } = usePortfolio();
@@ -26,15 +27,16 @@ export function PositionTable({ positions, compact = false }: { positions: Posit
           </tr>
         </thead>
         <tbody>
-          {rows.map((p) => {
+          {rows.map((p, i) => {
             const r = riskOf(p.healthFactor);
             const crit = r === "critical";
             return (
               <tr
                 key={p.id}
+                style={{ "--d": `${120 + i * 60}ms` } as React.CSSProperties}
                 onClick={() => select(p.id)}
                 className={cx(
-                  "border-t cursor-pointer transition-colors",
+                  "enter border-t cursor-pointer transition-colors",
                   crit ? "bg-risk-critical text-ink-950 border-risk-critical hover:bg-terra-300" : "border-ink-800 hover:bg-ink-850",
                   r === "safe" && "text-sand-500",
                 )}
@@ -57,7 +59,9 @@ export function PositionTable({ positions, compact = false }: { positions: Posit
                 {!compact && <td className="px-4 py-3.5 text-right tabular-nums">{usd(p.borrowUsd)}</td>}
                 <td className="px-4 py-3.5 text-right tabular-nums">−{pct(p.distanceToLiquidationPct)}</td>
                 <td className="px-4 py-3.5 text-right">
-                  <Health value={p.healthFactor} onFill={crit} />
+                  <Ticker value={p.healthFactor.toFixed(2)} className="px-1 -mx-1">
+                    <Health value={p.healthFactor} onFill={crit} />
+                  </Ticker>
                 </td>
                 <td className="px-4 py-3.5">
                   <div className="flex justify-end">

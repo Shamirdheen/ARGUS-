@@ -1,10 +1,11 @@
 "use client";
 
 import { ArrowUp, X } from "@phosphor-icons/react";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { OpeningEye } from "@/components/brand/RiskEye";
 import { Button } from "@/components/ui";
 import { usePortfolio } from "@/features/portfolio/PortfolioProvider";
+import { useExit } from "@/features/shell/useExit";
 import { usd } from "@/lib/positions/risk";
 import type { AskAction, AskEvent, ChatTurn } from "./types";
 
@@ -21,15 +22,13 @@ const STARTERS = [
   "Explain health factor",
 ];
 
-function Markdownish({ text }: { text: string }) {
+function Markdownish({ text, caret = false }: { text: string; caret?: boolean }) {
   // Bold (**x**) and line breaks only — enough for Argus's short answers, no HTML injection.
+  const paras = text.trim().split(/\n{2,}/);
   return (
     <>
-      {text
-        .trim()
-        .split(/\n{2,}/)
-        .map((para, i) => (
-          <p key={i} className="m-0 whitespace-pre-wrap">
+      {paras.map((para, i) => (
+          <p key={i} className={`m-0 whitespace-pre-wrap ${caret && i === paras.length - 1 ? "caret" : ""}`}>
             {para.split(/(\*\*[^*]+\*\*)/g).map((seg, j) =>
               seg.startsWith("**") && seg.endsWith("**") ? (
                 <b key={j} className="font-medium text-sand-100">
@@ -57,6 +56,14 @@ export function AskPanel() {
   useEffect(() => {
     if (askOpen) setTimeout(() => inputRef.current?.focus(), 50);
   }, [askOpen]);
+
+  const { leaving, close } = useExit(useCallback(() => setAskOpen(false), [setAskOpen]));
+  useEffect(() => {
+    if (!askOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [askOpen, close]);
 
   useEffect(() => {
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight });
@@ -138,7 +145,7 @@ export function AskPanel() {
             ? `Rehearse ${a.move_pct ?? ""}%`
             : `Open ${p?.name ?? "position"}`;
     return (
-      <div key={key} className="flex flex-col gap-1.5 p-3 border border-dashed border-sand-600">
+      <div key={key} className="msg-in flex flex-col gap-1.5 p-3 border border-dashed border-sand-600">
         <div className="flex items-center justify-between gap-3">
           <span className="text-[13px] text-sand-100 font-medium">{label}</span>
           {p && (
@@ -160,11 +167,17 @@ export function AskPanel() {
   }
 
   if (!askOpen) return null;
+  const streamingIndex = busy ? messages.length - 1 : -1;
 
   return (
     <div className="fixed inset-0 z-50" role="dialog" aria-modal="true" aria-label="Ask Argus">
-      <button type="button" aria-label="Close Ask Argus" className="absolute inset-0 bg-ink-950/70 cursor-default" onClick={() => setAskOpen(false)} />
-      <aside className="absolute top-0 right-0 bottom-0 w-full max-w-[520px] bg-ink-900 border-l border-ink-700 flex flex-col">
+      <button
+        type="button"
+        aria-label="Close Ask Argus"
+        className={`${leaving ? "backdrop-out" : "backdrop-in"} absolute inset-0 bg-ink-950/70 cursor-default`}
+        onClick={close}
+      />
+      <aside className={`${leaving ? "panel-out" : "panel-in"} absolute top-0 right-0 bottom-0 w-full max-w-[520px] bg-ink-900 border-l border-ink-700 flex flex-col`}>
         <div className="flex items-center justify-between gap-3 px-5 py-4 border-b border-ink-800">
           <div className="flex flex-col gap-1">
             <span className="font-display text-[18px] text-sand-100">Ask Argus</span>
@@ -172,7 +185,7 @@ export function AskPanel() {
               Reads your {snapshot?.positions.length ?? 0} positions · read-only · not financial advice
             </span>
           </div>
-          <button type="button" onClick={() => setAskOpen(false)} aria-label="Close" className="min-w-10 min-h-10 grid place-items-center border border-ink-700 text-sand-200 cursor-pointer hover:bg-ink-850">
+          <button type="button" onClick={close} aria-label="Close" className="min-w-10 min-h-10 grid place-items-center border border-ink-700 text-sand-200 cursor-pointer hover:bg-ink-850">
             <X size={18} weight="light" />
           </button>
         </div>
@@ -187,15 +200,15 @@ export function AskPanel() {
           )}
           {messages.map((m, i) =>
             m.role === "user" ? (
-              <div key={i} className="self-end max-w-[85%] bg-ink-850 border border-ink-700 px-3.5 py-3 text-sm leading-relaxed text-sand-100">
+              <div key={i} className="msg-in self-end max-w-[85%] bg-ink-850 border border-ink-700 px-3.5 py-3 text-sm leading-relaxed text-sand-100">
                 {m.content}
               </div>
             ) : (
-              <div key={i} className="flex gap-3 items-start">
+              <div key={i} className="msg-in flex gap-3 items-start">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/brand/argus-mark-S-dark.svg" alt="" width={26} height={26} className="mt-0.5 shrink-0" />
                 <div className={`flex-1 min-w-0 flex flex-col gap-3 text-sm leading-relaxed ${m.error ? "text-risk-warning" : "text-sand-300"}`}>
-                  {m.content ? <Markdownish text={m.content} /> : busy && i === messages.length - 1 ? <OpeningEye label="Argus is looking…" /> : null}
+                  {m.content ? <Markdownish text={m.content} caret={i === streamingIndex} /> : busy && i === messages.length - 1 ? <OpeningEye label="Argus is looking…" /> : null}
                   {m.actions?.map(actionButton)}
                 </div>
               </div>

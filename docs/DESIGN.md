@@ -82,7 +82,20 @@ No other hues. No blue, green, yellow or red anywhere, charts included.
 - One easing everywhere: `cubic-bezier(.2,.8,.2,1)`. Slow and calm: Argus watches, he doesn't bounce.
 - Landing motion lives in `features/landing/motion.css` and `MotionRoot.tsx`. Add `data-reveal` (fade up), `data-reveal="group"` + `data-wipe` (illustration wipe), and `style={{"--d":"120ms"}}` for stagger. No new animation library.
 - **Every animation must switch off under `prefers-reduced-motion`.**
-- In the product, only motion with a meaning: eye transitions, the critical pulse, and the drawer and panel opening. No decorative motion near money.
+- In the product, only motion with a meaning. No decorative motion near money. Product motion lives in `features/shell/app-motion.css` (imported by `AppShell`):
+
+| Class / helper | Meaning | Where |
+| --- | --- | --- |
+| `.enter` + `--d` | Page sections settle in once (0.55 s, 12 px), staggered | Overview, Positions, table rows, drawer sections |
+| `.eye-wake` (wrapper) | Argus opens his eyes: the lid eases from shut to its real state | Hero eye on Overview, drawer eye |
+| `<Ticker value>` (`components/ui/Ticker.tsx`) | A number that **just changed** glows once. Never on first load | Health factors, collateral, debt, net |
+| `.panel-in` / `.panel-out`, `.backdrop-in` / `-out` + `useExit` (`features/shell/useExit.ts`) | Side panels slide in from the right and back out on close or Esc | Position drawer, Ask Argus |
+| `.msg-in` | A new message or card rises in | Ask Argus messages, action cards, "Liquidated at this price." |
+| `.caret` | Argus is still typing | The streaming answer |
+| `.heartbeat` | Argus is watching (30 s refresh) | Badge in the header |
+| `.lift`, `.nav-link` | Hover affordance; nav underline grows from the centre | Shock cards; header nav |
+
+  Reduced motion: everything shows in its final state immediately, and panels close instantly.
 
 ## 8. Accessibility (non-negotiable)
 
