@@ -84,16 +84,136 @@
     screens.forEach((x) => (x.hidden = x !== s));
     current = s.dataset.s;
     jump.value = current;
-    s.classList.remove("pt-in");
-    void s.offsetWidth;
-    s.classList.add("pt-in");
     window.scrollTo(0, 0);
+    animate(s);
     if (location.hash.slice(1) !== current) location.replace("#" + current);
     markHotspots(s);
   }
 
+
+  /* ---------- motion ---------- */
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const MOTION = ["pt-rise", "pt-reveal", "pt-seen", "pt-settle", "pt-wake", "pt-glow", "pt-crit", "pt-slide", "pt-drop", "pt-grow", "pt-draw", "pt-ring", "pt-pop", "pt-twinkle"];
+  let io;
+
+  // Leave the current screen with a short fade, then show the next one.
+  function go(id, push = true) {
+    const out = screens.find((x) => x.dataset.s === current);
+    if (reduced || !out) return show(id, push);
+    out.classList.add("pt-out");
+    setTimeout(() => {
+      out.classList.remove("pt-out");
+      show(id, push);
+    }, 150);
+  }
+
+  const delay = (el, ms) => el.style.setProperty("--d", ms + "ms");
+  const add = (el, cls, ms) => {
+    if (ms !== undefined) delay(el, ms);
+    el.classList.add(cls);
+  };
+
+  // Blocks to stagger: each child of <main>; if a child is a row/grid of cards, its children instead.
+  function blocks(root) {
+    const out = [];
+    for (const child of root.children) {
+      const cs = getComputedStyle(child);
+      const isRow = child.children.length > 1 && child.children.length <= 8 && (cs.display === "grid" || (cs.display === "flex" && cs.flexDirection === "row"));
+      if (isRow) out.push(...child.children);
+      else out.push(child);
+    }
+    return out.slice(0, 36);
+  }
+
+  function animate(s) {
+    io?.disconnect();
+    // Reset anything from the previous visit so revisits animate again.
+    s.querySelectorAll("." + MOTION.join(",.")).forEach((el) => el.classList.remove(...MOTION));
+    if (reduced) return;
+    void s.offsetWidth;
+
+    const main = s.querySelector("main");
+    const header = s.querySelector("header");
+    if (header) add(header, "pt-rise", 0);
+
+    if (main) {
+      blocks(main).forEach((el, i) => add(el, "pt-rise", 60 + i * 55));
+    } else if (s.dataset.s === "landing") {
+      landing(s);
+    } else {
+      // Wallet: the three dialogs side by side.
+      s.querySelectorAll('[role="dialog"]').forEach((el, i) => add(el, "pt-rise", 80 + i * 140));
+    }
+
+    // Panels slide in from the edge they live on; the ⌘K bar drops in.
+    s.querySelectorAll("aside").forEach((el) => add(el, "pt-slide"));
+    if (s.dataset.s === "askbar") s.querySelectorAll('[role="dialog"]').forEach((el) => add(el, "pt-drop"));
+
+    // Argus opens his eyes: every risk-eye lid starts shut and eases to its real state.
+    s.querySelectorAll('g[style*="scaleY"]').forEach((g, i) => add(g, "pt-wake", 300 + Math.min(i, 10) * 70));
+    s.querySelectorAll('ellipse[style*="blur"]').forEach((el) => el.classList.add("pt-glow"));
+
+    // Critical rows breathe (the only rows with the terracotta fill).
+    s.querySelectorAll('[style*="background:#D06F3C"]').forEach((el) => {
+      if (el.children.length >= 3) el.classList.add("pt-crit");
+    });
+
+    if (s.dataset.s === "terminal") terminal(s);
+    if (s.dataset.s === "radar") radar(s);
+  }
+
+  // Terminal: candles grow left→right, liquidation lines draw across.
+  function terminal(s) {
+    const chart = s.querySelector('svg[aria-label*="candles"]');
+    if (!chart) return;
+    chart.querySelectorAll("rect").forEach((r, i) => add(r, "pt-grow", 200 + i * 18));
+    chart.querySelectorAll("line").forEach((l) => {
+      const stroke = (l.getAttribute("stroke") || "").toUpperCase();
+      if (stroke === "#33271D" || l.getAttribute("stroke-dasharray")) return; // grid / dashed stay put
+      l.setAttribute("pathLength", "1");
+      add(l, "pt-draw", 900);
+    });
+  }
+
+  // Radar: rings expand from the centre, positions pop in, links draw, background stars twinkle.
+  function radar(s) {
+    const sky = s.querySelector('svg[aria-label*="constellation"]');
+    if (!sky) return;
+    let ring = 0, dot = 0;
+    sky.querySelectorAll("circle").forEach((c) => {
+      const r = parseFloat(c.getAttribute("r") || "0");
+      if (r <= 1.5) return add(c, "pt-twinkle", Math.round(Math.random() * 3000));
+      if (c.getAttribute("fill") === "none") return add(c, "pt-ring", 100 + ring++ * 90);
+      add(c, "pt-pop", 600 + dot++ * 70);
+    });
+    sky.querySelectorAll("line").forEach((l, i) => {
+      if (l.getAttribute("stroke-dasharray")) return;
+      l.setAttribute("pathLength", "1");
+      add(l, "pt-draw", 900 + i * 40);
+    });
+  }
+
+  // Landing: hero settles, everything below reveals on scroll.
+  function landing(s) {
+    const hero = s.querySelector("section");
+    hero?.querySelector("img")?.classList.add("pt-settle");
+    hero?.querySelectorAll("h1, h1 ~ div").forEach((el, i) => add(el, "pt-rise", 150 + i * 200));
+    const later = [...s.querySelectorAll("section, footer")].slice(1).flatMap((sec) => {
+      const kids = [...sec.firstElementChild?.children || []];
+      return kids.length > 1 && kids.length <= 8 ? kids : [sec];
+    });
+    io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && (e.target.classList.add("pt-seen"), io.unobserve(e.target))),
+      { rootMargin: "0px 0px -10% 0px" },
+    );
+    later.forEach((el, i) => {
+      add(el, "pt-reveal", (i % 4) * 90);
+      io.observe(el);
+    });
+  }
+
   function back() {
-    show(trail.pop() || "overview", false);
+    go(trail.pop() || "overview", false);
   }
 
   let toastTimer;
@@ -112,6 +232,9 @@
     const a = active.getAttribute("style"), b = el.getAttribute("style");
     active.setAttribute("style", b);
     el.setAttribute("style", a);
+    el.classList.remove("pt-seg");
+    void el.offsetWidth;
+    el.classList.add("pt-seg");
   }
 
   function markHotspots(s) {
@@ -124,7 +247,8 @@
   document.addEventListener("click", (e) => {
     if (e.target.closest(".pt-bar")) return;
     // Ask overlays: a click on the dimmed backdrop (outside the dialog / panel) closes them.
-    if ((current === "askbar" || current === "askpanel") && !e.target.closest('[role="dialog"],aside')) return back();
+    if (["askbar", "askpanel", "positions"].includes(current) && e.target.matches('[aria-hidden="true"]') && !e.target.closest('[role="dialog"],aside')) return back();
+    if ((current === "askbar" || current === "askpanel") && !e.target.closest('[role="dialog"],aside,a,button')) return back();
     const el = e.target.closest("a,button");
     if (!el) return;
     e.preventDefault();
@@ -134,26 +258,26 @@
     if (act === "seg") return segment(el);
     if (act.startsWith("toast:")) return toast(act.slice(6));
     if (act.startsWith("scroll:")) return document.querySelector(`[data-s="${current}"] ${act.slice(7)}`)?.scrollIntoView({ behavior: "smooth" });
-    show(act);
+    go(act);
   });
 
   // Forms in the boards (scan wallet, ask) shouldn't reload the page.
   document.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (current === "landing") show("wallet");
+    if (current === "landing") go("wallet");
     if (current === "askpanel") toast("Argus answers here, streaming, with the next step.");
   });
 
   document.addEventListener("keydown", (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
       e.preventDefault();
-      show("askbar");
+      go("askbar");
     }
     if (e.key === "Escape" && current !== "landing") back();
-    if (e.key === "Enter" && current === "askbar" && document.activeElement?.id === "ask") show("askpanel");
+    if (e.key === "Enter" && current === "askbar" && document.activeElement?.id === "ask") go("askpanel");
   });
 
-  jump.addEventListener("change", () => show(jump.value));
+  jump.addEventListener("change", () => go(jump.value));
   document.getElementById("pt-back").addEventListener("click", back);
   document.getElementById("pt-hot").addEventListener("click", (e) => {
     const on = document.body.classList.toggle("pt-show");

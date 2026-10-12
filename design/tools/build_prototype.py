@@ -87,11 +87,46 @@ body.pt-show [data-hot]{outline:2px dashed #C0551E;outline-offset:2px}
 .pt-bar select,.pt-bar button{font:inherit;color:#EFC796;background:#1E1711;border:1px solid #482A16;min-height:32px;padding:0 10px;cursor:pointer}
 .pt-bar button[aria-pressed=true]{background:#EFC796;color:#16110C}
 .pt-bar span{color:#A8865F}
-.pt-toast{position:fixed;left:50%;bottom:76px;transform:translateX(-50%);z-index:9999;background:#EFC796;color:#16110C;font:500 13px 'IBM Plex Mono',monospace;padding:10px 14px;max-width:calc(100% - 24px);opacity:0;transition:opacity .25s}
+.pt-toast{position:fixed;left:50%;bottom:76px;z-index:9999;background:#EFC796;color:#16110C;font:500 13px 'IBM Plex Mono',monospace;padding:10px 14px;max-width:calc(100% - 24px);opacity:0;transition:opacity .25s,transform .3s cubic-bezier(.2,.8,.2,1)}
 .pt-toast.on{opacity:1}
-.pt-in{animation:pt-in .45s cubic-bezier(.2,.8,.2,1) both}
-@keyframes pt-in{from{opacity:0;transform:translateY(10px)}}
-@media (prefers-reduced-motion: reduce){.pt-in{animation:none}.pt-toast{transition:none}}
+/* ---- motion (same language as the app: one easing, calm, meaningful) ---- */
+.pt-screen a,.pt-screen button{transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform .2s cubic-bezier(.2,.8,.2,1)}
+@media (prefers-reduced-motion: no-preference){
+  .pt-out{animation:pt-out .16s ease both}
+  .pt-rise{animation:pt-rise .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d,0ms)}
+  .pt-reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.8,.2,1) var(--d,0ms),transform .9s cubic-bezier(.2,.8,.2,1) var(--d,0ms)}
+  .pt-reveal.pt-seen{opacity:1;transform:none}
+  .pt-settle{animation:pt-settle 2.4s cubic-bezier(.2,.8,.2,1) both}
+  .pt-wake{transform-box:fill-box;transform-origin:center;animation:pt-wake 1s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d,250ms)}
+  .pt-glow{animation:pt-glow 1.6s ease-in-out infinite}
+  .pt-crit{animation:pt-crit 2.4s ease-in-out infinite}
+  .pt-slide{animation:pt-slide .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:.12s}
+  .pt-drop{animation:pt-drop .45s cubic-bezier(.2,.8,.2,1) both;animation-delay:.1s}
+  .pt-grow{transform-box:fill-box;transform-origin:50% 100%;animation:pt-grow .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d,0ms)}
+  .pt-draw{stroke-dasharray:1;stroke-dashoffset:1;animation:pt-draw 1.2s cubic-bezier(.6,0,.2,1) forwards;animation-delay:var(--d,600ms)}
+  .pt-ring{transform-box:view-box;transform-origin:center;animation:pt-ring 1.1s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--d,0ms)}
+  .pt-pop{transform-box:fill-box;transform-origin:center;animation:pt-pop .55s cubic-bezier(.2,1.4,.4,1) both;animation-delay:var(--d,0ms)}
+  .pt-twinkle{animation:pt-twinkle 3.2s ease-in-out infinite;animation-delay:var(--d,0ms)}
+  .pt-seg{animation:pt-seg .3s cubic-bezier(.2,.8,.2,1)}
+  .pt-screen [data-hot]:hover{transform:translateY(-1px)}
+  .pt-screen button:active{transform:scale(.97)}
+}
+@keyframes pt-out{to{opacity:0}}
+@keyframes pt-rise{from{opacity:0;transform:translateY(16px)}}
+@keyframes pt-settle{from{transform:scale(1.06);opacity:.5}}
+@keyframes pt-wake{from{transform:scaleY(.04)}}
+@keyframes pt-glow{0%,100%{opacity:.35}50%{opacity:.95}}
+@keyframes pt-crit{0%,100%{filter:none}50%{filter:brightness(1.12)}}
+@keyframes pt-slide{from{transform:translateX(100%)}}
+@keyframes pt-drop{from{opacity:0;transform:translateY(-14px) scale(.98)}}
+@keyframes pt-grow{from{transform:scaleY(0);opacity:0}}
+@keyframes pt-draw{to{stroke-dashoffset:0}}
+@keyframes pt-ring{from{transform:scale(.3);opacity:0}}
+@keyframes pt-pop{from{transform:scale(0);opacity:0}}
+@keyframes pt-twinkle{0%,100%{opacity:.25}50%{opacity:.9}}
+@keyframes pt-seg{from{transform:scale(.94)}}
+.pt-toast{transform:translate(-50%,8px)}.pt-toast.on{transform:translate(-50%,0)}
+@media (prefers-reduced-motion: reduce){.pt-toast{transition:none}}
 </style>
 </head>
 <body>
