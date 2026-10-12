@@ -7,6 +7,7 @@ import { Button } from "@/components/ui";
 import { usePortfolio } from "@/features/portfolio/PortfolioProvider";
 import { useExit } from "@/features/shell/useExit";
 import { usd } from "@/lib/positions/risk";
+import { PROTOCOL_APP_URL } from "@/lib/positions/types";
 import type { AskAction, AskEvent, ChatTurn } from "./types";
 
 interface Msg extends ChatTurn {
@@ -149,16 +150,23 @@ export function AskPanel() {
         <div className="flex items-center justify-between gap-3">
           <span className="text-[13px] text-sand-100 font-medium">{label}</span>
           {p && (
-            <Button
-              kind="secondary"
-              small
-              onClick={() => {
-                setAskOpen(false);
-                select(p.id);
-              }}
-            >
-              {a.kind === "add_collateral" || a.kind === "repay" ? `Open on ${p.protocol}` : "Open"}
-            </Button>
+            <div className="flex items-center gap-2 shrink-0">
+              <Button
+                kind="secondary"
+                small
+                onClick={() => {
+                  setAskOpen(false);
+                  select(p.id);
+                }}
+              >
+                {a.kind === "add_collateral" || a.kind === "repay" ? "Details" : "Open"}
+              </Button>
+              {(a.kind === "add_collateral" || a.kind === "repay") && (
+                <Button kind="primary" small onClick={() => window.open(PROTOCOL_APP_URL[p.protocol], "_blank", "noopener,noreferrer")}>
+                  Open on {p.protocol} ↗
+                </Button>
+              )}
+            </div>
           )}
         </div>
         <span className="text-[12px] text-sand-500">{a.reason}</span>

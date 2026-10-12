@@ -1,4 +1,10 @@
 export type Protocol = "Kamino" | "Jupiter Lend";
+
+/** Where the user goes to add collateral or repay. Argus never signs; the protocol's own app does. */
+export const PROTOCOL_APP_URL: Record<Protocol, string> = {
+  Kamino: "https://app.kamino.finance/",
+  "Jupiter Lend": "https://jup.ag/lend",
+};
 export type Risk = "safe" | "watch" | "warning" | "critical";
 export type DataSource = "live" | "demo";
 
