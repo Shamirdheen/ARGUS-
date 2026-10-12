@@ -83,20 +83,23 @@ export default function Landing() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/brand/argus-lockup-terracotta.svg" alt="Argus" width={105} height={30} className="h-[30px] w-auto" />
             </Link>
-            <nav aria-label="Main" className="hidden md:flex ml-auto">
-              {[
-                ["How it works", "#how"],
-                ["Why Argus", "#myth"],
-                ["FAQ", "#faq"],
-              ].map(([n, h]) => (
-                <a key={h} href={h} className="min-h-11 flex items-center px-2.5 text-[13px] font-medium text-ink-950 hover:underline">
-                  {n}
-                </a>
-              ))}
-            </nav>
-            <Link href="/app" className="ml-auto md:ml-2 min-h-11 flex items-center px-[18px] bg-ink-950 text-sand-200 text-sm font-medium hover:bg-ink-900">
-              Launch app
-            </Link>
+            {/* Links share the button's dark bar so they stay legible over the hero art at any width. */}
+            <div className="ml-auto flex items-center bg-ink-950">
+              <nav aria-label="Main" className="hidden md:flex pl-2 border-r border-sand-200/15">
+                {[
+                  ["How it works", "#how"],
+                  ["Why Argus", "#myth"],
+                  ["FAQ", "#faq"],
+                ].map(([n, h]) => (
+                  <a key={h} href={h} className="min-h-11 flex items-center px-2.5 text-[13px] font-medium text-sand-200/80 hover:text-sand-200 hover:underline">
+                    {n}
+                  </a>
+                ))}
+              </nav>
+              <Link href="/app" className="min-h-11 flex items-center px-[18px] bg-ink-950 text-sand-200 text-sm font-medium hover:bg-ink-900">
+                Launch app
+              </Link>
+            </div>
           </header>
           <div className="min-h-[560px] md:min-h-[640px] flex flex-col justify-center gap-7 pt-12 pb-36 max-w-[620px]">
             <h1 className="font-display m-0 text-[38px] md:text-[60px] leading-[1.04] tracking-[0.01em] text-ink-950 text-balance">
