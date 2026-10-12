@@ -1,0 +1,157 @@
+
+========== overmindlab-ai--about rows 1
+
+-- overmindlab-ai--about dark about ['futurist', 'dark-mode'] ['technical', 'serious'] ['ai', 'developer-tools'] manifesto
+NS: Cold terminal obsidian, pixelated white glyphs, sharp amber accents on charcoal
+AUTOPSY: FOLD: Top nav (left: Product, Models, Company, Research, Pricing, Docs; center: orange logo; right: Talk to the Team, Login). Center-aligned stack: Headline (Title Case, large scale, 3 lines, "Our Mission / Make training and / owning your models trivial"). CTA (pill-shaped, orange, "READ MORE"). Hero visual: Pixel-art field of white flowers occupying bottom 40% of viewport. Headline and CTA float in the dark void above the flower line.
+TYPE: Display: Pixelated serif (mondwest), heavy weight, wide; Body: Pixelated sans (neueBit). Extreme scale jump between headline and nav.
+COLOR: Background #000000; Text #cdccca; Accent #de6515 on "LOGIN" button and "READ MORE" CTA.
+SIGNATURE: High-contrast juxtaposition of a vast, empty black upper-viewport against a dense, detailed pixel-art floral horizon.
+PAL: ['#de6515', '#f49a5f', '#9f3c04', '#9c7c64', '#cdccca'] FONTS: ['mondwest', 'neueBit']
+RAMP: [('h1', 'mondwest', 96, 400, 1, '-0.75px'), ('h2', 'mondwest', 96, 400, 1, '-0.75px'), ('h3', 'mondwest', 32, 400, 1.05, '-0.75px'), ('body', 'neueBit', 16, 400, 1.5, '0'), ('button', 'neueBit', 16, 400, 1.5, '0')]
+RADII: [0] SPACING: [12, 16, 48, 60, 64, 80, 96, 128]
+VARS: {'--border': 'lab(100% 0 0/.1)', '--color-copper-500': '#ed670f', '--text-caption-md--line-height': '100%', '--text-heading-2xs--letter-spacing': '-.75px', '--primary-foreground': 'lab(7.78201% -.0000149012 0)', '--text-heading-lg': '3rem', '--font-geist-pixel-square': '"GeistPixelSquare",Geist Mono,ui-monospace,SFMono-Regular,Roboto Mono,Menlo,Monaco,Liberation Mono,DejaVu Sans Mono,Courier New,monospace', '--text-body-md': '1.75rem', '--font-body': '"neueBit","neueBit Fallback"', '--text-heading-sm--line-height': '105%', '--text-caption-subtitle--line-height': '130%', '--text-base--line-height': 'calc(1.5/1)', '--color-text-tertiary': '#9f9b92', '--font-mono': 'ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace'}
+
+========== owo-app rows 1
+
+-- owo-app light landing ['playful', 'minimalism'] ['playful', 'warm'] ['fintech'] bento-grid
+NS: Warm, playful hues dance on a soft canvas, bold sans-serifs pop with joyful energy.
+AUTOPSY: FOLD: Nav floats top-center on cream ground: logo "OWO" (pink diamond + wordmark) left, links "Features Security Getting started FAQs" center, "Try it out" black pill + pink settings icon + gray arrow cluster right. Headline is four stacked rounded rectangles forming bento grid: purple "Start" / orange "making" / yellow "money moves" / pink "on WhatsApp", each word in its own color block, centered, 2×2-ish flow with QR code black square replacing end of yellow bar. No body copy. No CTA below nav. Hero visual IS the typographic bento; QR sits right of yellow block. Composition: text-blocks dominate ~70% viewport, centered mass, generous cream margin all sides.
+
+TYPE: Display: bold sans, tight, high x-height (Greed), all lowercase except "Start" and "WhatsApp". Body: none visible. Scale jump: display ~80px, nav ~12px, micro "WORKS WITH YOUR FAVOURITE BANKS" ~10px caps.
+
+COLOR: Background #fbce86 warm cream. Text black on yellow/pink, white on purple/orange. Accents: #fb3404 orange block, #7c5494 purple, #a39418 gold in bank row. Pink (#e91e8c) for logo diamond and settings icon only.
+
+SIGNATURE: Headline as bento-grid of rounded color blocks, each word isolated in contrasting field, QR code fused into grid as fourth "tile" rather than separate element.
+PAL: ['#fb3404', '#fbce86', '#a39418', '#7c5494', '#ced0c7'] FONTS: ['Greed']
+RAMP: [('h1', 'Greed', 90, 600, 0.9, '0'), ('h2', 'Greed', 96, 600, 0.9, '0'), ('h3', 'KK-Topo', 24, 400, 1, '0'), ('body', 'Greed', 16, 400, 1.5, '0'), ('caption', 'Inter', 14, 600, 1.43, '0'), ('button', 'Greed', 16, 400, 1.5, '0')]
+RADII: [0, 4, 5, 8, 15, 16, 20, 24, 30, 40] SPACING: [32, 33, 48, 100, 140, 200]
+VARS: {'--color-purple-200': '#ffc4ee', '--color-peach-900': '#331a00', '--color-amber-400': 'oklch(82.8% .189 84.429)', '--text-2xl': '1.5rem', '--color-purple-500': '#a85aff', '--color-gray-800': 'oklch(27.8% .033 256.848)', '--color-base-500': '#737373', '--color-yellow-600': 'oklch(68.1% .162 75.834)', '--color-pink-500': '#ff00a0', '--color-orange-600': 'oklch(64.6% .222 41.116)', '--color-orange-700': '#bf2800', '--text-8xl--line-height': '1', '--color-amber-600': 'oklch(66.6% .179 58.318)', '--color-yellow-800': '#a69f19'}
+
+========== stately-ai rows 1
+
+-- stately-ai light landing ['minimalism', 'brutalism', 'swiss'] ['technical', 'cold', 'calm'] ['developer-tools'] specimen
+NS: Deep indigo tech space: crisp sans-serif, clean lines, a quietly powerful digital depth.
+AUTOPSY: FOLD: Nav left: logo + wordmark, links (Pricing, Blog, Docs), Log in text, Sign up blue pill. Centered headline, 2 lines, sentence case, large. Subhead below, smaller, gray. Two CTAs: magenta pill "Try the visual editor", white pill "Book a demo". Hero is dark UI screenshot of node editor, bottom ~55% of viewport, centered. Headline sits in upper third, visual anchors lower half. Balanced vertical split.
+
+TYPE: Sans-serif, clean, moderate weight headline. Body lighter weight, smaller. Scale jump ~3:1. No tracking quirks. UI chrome in screenshot uses mono for code labels.
+
+COLOR: Background #9fa9c0 gradient, light gray-blue. Text near-black. Accent #145ce8 in Sign up. Accent #f495c6 in magenta CTA. Screenshot contains #351f74, #6c54ac nodes.
+
+SIGNATURE: Magenta CTA pill against cold gray-blue gradient, with dark technical UI screenshot below creating stark warm/cool tension.
+PAL: ['#145ce8', '#351f74', '#f495c6', '#6c54ac', '#9fa9c0'] FONTS: []
+RAMP: []
+RADII: [] SPACING: []
+VARS: {}
+
+========== matveyan-com rows 1
+
+-- matveyan-com dark landing ['minimalism', 'monochrome', 'futurist', 'dark-mode'] ['technical', 'cold', 'serious'] ['portfolio'] bento-grid
+NS: Deep charcoal expanse, crisp geometric sans-serif, coolly precise data visualizations.
+AUTOPSY: FOLD: Nav top edge, left logo "MATVEY AN" + icon, right links CV, BEHANCE, DRIBBBLE, LINKEDIN, MAIL. Centered headline "UI × UX FOR CAPITAL, DATA AND CONTROL" - all caps, 3 lines, × as multiplication symbol. Below: body copy "I design fintech platforms, industrial dashboards and design systems for companies where decisions cost millions". CTA: dashed-border rectangle, "WRITE TO TELEGRAM". Hero: 9 floating 3D crypto/token coins (BTC, XRP, IOTA, ETH, etc.) scattered full-viewport depth, blurred, behind text. Headline sits in lower-center negative space; coins frame but don't overlap text. Balance: text cluster ~30% lower center, coins ~70% atmospheric surround.
+
+TYPE: Sans display (Inter), tight tracking, all caps headline, medium weight. Body sans lighter, smaller (~16px). Scale jump ~3:1. Signature: multiplication × in headline.
+
+COLOR: Background near-black #0a0a0a. Text white/off-white. Accent #b85546 on BTC coin tint, dashed CTA border, subtle warm undertone in coins. No solid accent buttons.
+
+SIGNATURE: Dashed 1px border CTA button - not filled, not rounded, square corners, broken line rhythm like terminal/UI element.
+PAL: ['#b85546', '#d4a8a4', '#4e241e', '#a06260', '#be8686'] FONTS: ['Inter 18pt']
+RAMP: [('h1', 'Inter 18pt', 30, 300, 1.2, '2px'), ('h2', 'Inter 18pt', 30, 300, 1.4, '0'), ('h3', 'Inter 18pt', 24, 300, 1.4, '1px'), ('body', 'Inter 18pt', 16, 300, 1.4, '0'), ('button', 'Cartograph Mono CF', 12, 300, 1.2, '0')]
+RADII: [0] SPACING: [20, 60, 150, 200]
+VARS: {'--f-button-width': '40px', '--f-button-svg-transition': 'opacity .15s ease', '--f-thumb-border': 'none', '--f-button-svg-filter': 'none', '--f-thumbs-padding-y': '8px', '--f-button-svg-disabled-opacity': '.5', '--f-spinner-color-2': 'rgba(17, 24, 28, .8)', '--f-thumbs-gap': '8px', '--f-thumbs-bg': 'transparent', '--f-thumbs-z-index': '1', '--f-spinner-height': '50px', '--f-button-svg-width': '20px', '--f-button-svg-height': '20px', '--f-thumb-border-radius': '4px'}
+
+========== tigerbeetle-com rows 1
+
+-- tigerbeetle-com dark landing ['playful', 'futurist', 'dark-mode'] ['technical', 'loud', 'playful'] ['developer-tools'] marquee-hero
+NS: Electric dark expanse, bold geometric sans-serifs dance with vibrant, unexpected hues.
+AUTOPSY: FOLD: Top nav bar with logo left, links center (Docs, Blog, Company, Stories), social counts, yellow "Solutions" pill right. Headline stacked four lines: "THE" small, "FINANCIAL / TRANSACTIONS / DATABASE" huge bold sans, "999x FASTER" right-aligned to last line in yellow. Subhead: "To power the next 30 years of Online Transaction Processing." Two CTAs: yellow filled "Try TigerBeetle" + dark outlined "Read the Docs". Hero: stylized robotic insect with rainbow wings, occupies right 55% of viewport, floating upward-left. Headline left 45%, vertically centered against black starfield. Bottom: logo marquee strip.
+
+TYPE: Display: wide bold sans, all caps, tight leading (line-height ~0.9), "THE" light weight. Body: medium sans, sentence case, ~1:6 scale jump. Yellow "999x" and "FASTER" as inline color break.
+
+COLOR: Background #000000, text #ffffff, accent #ed541e (CTAs, "999x"), secondary accent #93fbb3 (top banner). Accent lands on primary CTA fill, highlighted metric, top banner bar.
+
+SIGNATURE: Inline metric injection - "999x FASTER" same line as "DATABASE", right-flush, color-switched, scale-matched, turning the period into an exclamation via number.
+PAL: ['#ed541e', '#93fbb3', '#642c17', '#94649c', '#c79dd2'] FONTS: ['Work Sans Medium', 'sans-serif', 'Inter Medium']
+RAMP: [('h1', 'Work Sans Medium', 64, 500, 1, '-1.28px'), ('h2', 'Work Sans Medium', 26, 500, 1.2, '-0.52px'), ('h3', 'Work Sans Medium', 18, 500, 1.3, '-0.36px'), ('body', 'sans-serif', 12, 400, 1.4, '0'), ('button', 'Inter Medium', 16, 500, 1.4, '-0.2px')]
+RADII: [0, 40] SPACING: [10, 16, 60]
+VARS: {'--one-if-corner-shape-supported': '1'}
+
+========== qdrant-tech rows 1
+
+-- qdrant-tech dark landing ['minimalism', 'futurist', 'monochrome', 'brutalism', 'dark-mode'] ['technical', 'cold', 'serious'] ['developer-tools', 'ai'] feature-stack
+NS: Deep indigo expanse, stark sans-serif geometry, cool, precise, almost lunar.
+AUTOPSY: FOLD: Top banner: purple lightning bolt + "Join 300+ AI builders in San Francisco on June 11 at Vector Space Day" + "Learn more" link. Nav: logo left, 6 links center (Products, Solutions, Developers, Resources, Company, Pricing), "Log in" + pink "Get Started" pill right. Headline: "High-Performance / Vector Search at Scale" - title case, centered, 2 lines, large. Subhead: centered, 2 lines, smaller. Two CTAs: pink pill "Start Free in Qdrant Cloud" + dark outline pill "See How It Works". Hero: four astronauts facing a red planet between red rock formations, bottom half, full width. Headline sits in upper third; visual dominates lower half. Grid overlay on dark blue sky.
+
+TYPE: Sans display, bold, wide, clean (headline). Sans body, regular, narrower. ~4:1 scale jump. Title case headlines; sentence case body.
+
+COLOR: Background: near-black #0a0a14, shifting to deep blue #193473 grid. Text: white. Accent: #c60e40 pink on primary CTA, logo mark, planet. Secondary: #4a68ac grid lines.
+
+SIGNATURE: Four astronauts in a row, identical white suits, seen from behind, centered at bottom edge, facing oversized red planet rising between symmetric red canyon walls - flat illustration style with soft gradients, not photographic.
+PAL: ['#c60e40', '#193473', '#da94ac', '#4a68ac', '#c2aeb9'] FONTS: ['Mona Sans']
+RAMP: [('h1', 'Mona Sans', 64, 600, 1.1, '-1.5px'), ('h2', 'Mona Sans', 48, 600, 1.1, '-0.5px'), ('h3', 'Mona Sans', 20, 600, 1.5, '-0.2px'), ('body', 'Mona Sans', 16, 350, 1.5, '0'), ('button', 'Mona Sans', 16, 400, 1.5, '0')]
+RADII: [0, 8, 16] SPACING: [4, 8, 16, 24, 64, 80, 120]
+VARS: {'--bs-orange': '#fd7e14', '--bs-link-hover-color-rgb': '220, 36, 76', '--bs-warning-bg-subtle': '#fff3cd', '--bs-success': '#008a53', '--bs-danger-text-emphasis': '#58151c', '--bs-border-style': 'solid', '--bs-warning-rgb': '224, 112, 13', '--bs-info-text-emphasis': '#055160', '--bs-body-font-weight': '400', '--bs-code-color': '#d63384', '--bs-border-radius-2xl': '2rem', '--bs-primary': '#dc244c', '--bs-body-line-height': '1.5', '--bs-light-bg-subtle': '#fcfcfd'}
+
+========== grit-pictures rows 1
+
+-- grit-pictures dark landing ['maximalism', 'monochrome', 'playful', 'brutalism', 'dark-mode'] ['loud', 'raw', 'technical'] ['agency'] bento-grid
+NS: High-contrast, distressed black & white - bold, industrial type amidst chaotic, hand-drawn energy.
+AUTOPSY: FOLD: Centered lockup. Nav: "GRIT" wordmark top-left, "MENU" pill button top-right. Headline: "GRIT PICTURES LTD" stacked, uppercase, centered, ~15% viewport height, lightning bolt replaces the I in GRIT; "[grit pic-tures li-mi-ted]" phonetic subline beneath; tagline "*probably the best video production company you've never heard of" below. No CTA. Hero visual: Scattered collage of torn-edge photos, UFOs, skull, eyeball cloud, film gear, chattering teeth, constellation lines connecting elements; occupies ~70% of viewport, frames around central text. Text floats in negative space; visual density at edges, calm center.
+
+TYPE: Display: bold condensed sans, black weight, tight tracking, custom lightning-bolt I. Body: lighter weight sans, sentence case, ~1:3 scale jump. Tracking loose on phonetic line.
+
+COLOR: #040c09 background, #bcbcc4 text, #3fbf8f absent on screen (palette hint mismatch); actually pure grayscale. Accent: white on black only.
+
+SIGNATURE: Hand-drawn lightning bolt slicing through the I in "GRIT" - custom letterform integration, not separate icon.
+PAL: ['#3fbf8f', '#9bddc4', '#040c09', '#7c8482', '#bcbcc4'] FONTS: ['-apple-system']
+RAMP: [('body', '-apple-system', 16, 400, 1.5, '0'), ('button', '-apple-system', 15, 400, 1, '0')]
+RADII: [0] SPACING: [10, 84]
+VARS: {'--wp--preset--gradient--midnight': 'linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%)', '--wp--preset--font-size--large': '36px', '--wp--preset--color--vivid-cyan-blue': '#0693e3', '--wp--preset--shadow--natural': '6px 6px 9px rgba(0, 0, 0, 0.2)', '--wp--preset--shadow--outlined': '6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1)', '--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan': 'linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%)', '--wp--preset--spacing--30': '0.67rem', '--wp--preset--aspect-ratio--4-3': '4/3', '--wp--preset--gradient--blush-light-purple': 'linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%)', '--wp--preset--spacing--50': '1.5rem', '--wp--preset--color--vivid-purple': '#9b51e0', '--wp--preset--color--pale-cyan-blue': '#8ed1fc', '--wp--preset--aspect-ratio--16-9': '16/9', '--wp--preset--font-size--small': '13px'}
+
+========== gm-meme-com rows 1
+
+-- gm-meme-com light landing ['playful', 'maximalism'] ['playful', 'loud'] ['crypto', 'agency'] bento-grid
+NS: Bold, playful cartoon chaos - vibrant pops against stark white, energetic hand-drawn feel.
+AUTOPSY: FOLD: Top nav: logo left (hand-drawn "GM.Meme"), links center-right (ABOUT US, PORTFOLIO, DEVELOPMENT, PRICE, CONTACT US, TEMPLATES with "SOON" badge), social icons far right. Headline: "Create Your Unique Crypto Meme" - extra bold, centered, ~6 lines at 1280, massive scale, fills 60% viewport width. Supporting copy: centered paragraph below headline, smaller. Two CTAs: "Order a project" (filled black pill) and "View Template" (outlined pill). Hero visual: hand-drawn black line art cityscape with clouds, antennas, sun - occupies bottom 40% of viewport, bleeds to edges. Headline dominates upper center; visual anchors bottom; balanced vertical split.
+
+TYPE: Display: Bowlby One - ultra-heavy sans, extremely wide, tight. Body: Inter Tight - clean sans. Massive jump: display ~120px vs body ~14px. Title case headline. Small "SOON" badge with tracking.
+
+COLOR: Background: #ffffff. Text: #000000. Accent: #ea9a3c on social icon circles (pink/orange gradient hints), "SOON" badge fill. No accent in headline or CTAs - pure black/white.
+
+SIGNATURE: Custom doodle characters (small faces with eyes, tongues) embedded directly inside headline letterforms - one in "y" of Crypto, one above "e" in Meme, one near "U" in Unique - breaking the bold type with hand-drawn interruptions.
+PAL: ['#ea9a3c', '#e9bb8a', '#8c2050', '#589fa1', '#a4c4b4'] FONTS: ['Bowlby One', 'Inter Tight']
+RAMP: [('h1', 'Bowlby One', 93, 400, 1.1, '-3.2006px'), ('h2', 'Bowlby One', 48, 400, 1.08, '-0.16003px'), ('h3', 'Bowlby One', 32, 400, 1.08, '-0.01px'), ('body', 'Inter Tight', 18, 700, 1.2, '0'), ('button', 'Inter Tight', 24, 700, 1.2, '0')]
+RADII: [0, 17, 18, 24, 48, 52] SPACING: [22, 41, 48, 64, 80, 126, 216]
+VARS: {'--text-color--text-primary': '#000', '--font-to-2': '18', '--background-color--background-error<deleted|variable-89aecd3e-2fe8-312c-65a2-e3e7c57d326c>': '#f8e4e4', '--background-color--background-warning<deleted|variable-0aa1a7ce-e851-b6b5-66db-1a1a96e8e04b>': '#fcf8d8', '--background-color--background-tertiary<deleted|variable-6632d948-2d2d-2556-731d-05a71c92f234>': '#ddfc69', '--background-color--background-alternate<deleted|variable-41ecbc38-077c-494f-9138-9468b7354b23>': '#fff', '--text-color--text-error<deleted|variable-4a51c5d2-820c-a0d9-b49e-0e5d273c964f>': '#3b0b0b', '--font-from-2': '16', '--font-to-1': '16', '--font-from-1': '9', '--text-color--text-secondary': '#212121', '--background-color--background-secondary<deleted|variable-2dd539ce-5be2-4493-8245-a883e87dab6d>': '#0b99ff', '--text-color--text-alternate': '#fff', '--background-color--background-success<deleted|variable-879e2a57-3170-38fd-0ae7-d0e890873ab2>': '#cef5ca'}
+
+========== gumroad-com rows 1
+
+-- gumroad-com light landing ['minimalism', 'playful'] ['calm', 'soft'] ['creator', 'ecommerce'] ecosystem-index
+NS: Soft pastel gradients and rounded forms, like a dreamscape of gentle, playful optimism.
+AUTOPSY: FOLD: Nav: top edge, logo left (wordmark + pill badge "9K★"), links center-right, "Log in" text button + black filled "Start selling" pill rightmost. Headline: "Go from 0 to $1", sentence case, centered, ~72px, two lines. Subhead: "Anyone can earn their first dollar online. Just start with what you know, see what sticks, and get paid. It's that easy." centered, 3 lines. CTAs: black filled pill "Start selling" left, white outlined pill with search icon "Search marketplace ..." right. Hero visual: scattered 3D pink coins with black "G" logo, various sizes, floating at edges (TL, TR, BL, BR), occupying ~40% of viewport periphery; center remains open for text. Balance: text cluster centered, coins frame the negative space.
+
+TYPE: Display: geometric sans, medium weight, wide counters (Gumroad wordmark and headline). Body: same family, lighter weight, smaller (~16px). Scale jump ~4.5:1. No tracking quirks; clean, neutral.
+
+COLOR: Background #e4c6c8 (warm off-white). Text near-black (#1c6b63 or darker). Accent #fb93eb (pink) on coins only; no pink on buttons. Buttons black/white. No #24a93 or #a36396 visible in first viewport.
+
+SIGNATURE: 3D coin illustrations with dimensional shading and black "G" logomark, deployed as asymmetric floating frame elements rather than contained hero image, leaving center entirely typographic.
+PAL: ['#24a193', '#1c6b63', '#fb93eb', '#a36396', '#e4c6c8'] FONTS: ['ABC Favorit']
+RAMP: [('h1', 'ABC Favorit', 96, 400, 1, '-0.4px'), ('h2', 'ABC Favorit', 48, 400, 1.25, '-0.4px'), ('h3', 'ABC Favorit', 18, 700, 1.56, '-0.4px'), ('body', 'ABC Favorit', 16, 400, 1.38, '0'), ('caption', 'ABC Favorit', 14, 400, 1.43, '-0.4px'), ('button', 'ABC Favorit', 16, 400, 1.63, '-0.4px')]
+RADII: [0, 4, 6, 16, 24] SPACING: []
+VARS: {'--border': 'solid .0625rem rgb(0 0 0/1)', '--text-2xl': '1.5rem', '--color-indicator': 'rgb(255 144 232)', '--color-orange-200': 'oklch(90.1% .076 70.697)', '--color-purple-200': 'oklch(90.2% .063 306.703)', '--text-7xl': '4.5rem', '--color-red-900': 'oklch(39.6% .141 25.723)', '--border-alpha': '1', '--color-orange-800': 'oklch(47% .157 37.304)', '--text-lg': '1.125rem', '--text-8xl--line-height': '1', '--color-yellow-800': 'oklch(47.6% .114 61.907)', '--border-radius-3': '10rem', '--color-purple-800': 'oklch(43.8% .218 303.724)'}
+
+========== frankchimero-com rows 1
+
+-- frankchimero-com dark landing ['minimalism', 'editorial', 'monochrome', 'dark-mode'] ['serious', 'calm', 'technical'] ['portfolio'] split-studio
+NS: Deep charcoal expanse, crisp sans-serif, and subtly shifting gradients evoke quiet technical precision.
+AUTOPSY: FOLD: Two-column split, ~45/55. Left: name "Frank Chimero" (sentence case, top-left), subhead "Designing & writing" (lighter weight, directly beneath), body paragraph (4 lines, starts "Hi, I'm Frank Chimero..."), two text links "Email me" / "More info" (inline, spaced). Right: portrait photo, soft-focus figure in dark sweater against gradient sky (cyan to magenta edge bleed), fills full right column height, rounded corners. Below fold: newsletter bar (left label, right input+button), then writing list. Balance: text block vertically centered against image; ample black negative space around both.
+
+TYPE: Serif display (high-contrast, likely Canela or similar: sharp thins, ball terminals on 'a', 'e') for name and section heads; sans body (neutral, loose leading). Scale jump: display ~24px to body ~13px. Sentence case throughout; no all-caps.
+
+COLOR: Background #0a0a0a near-black; text #e8e8e8 off-white; accent #c4597c (magenta photo edge bleed, not UI). Photo carries #b0d8ed cyan and #c4597c; no colored buttons.
+
+SIGNATURE: Portrait's deliberate optical blur + hard magenta light leak at right edge, treated as compositional color block rather than defect, bleeding off frame.
+PAL: ['#c4597c', '#094159', '#b0d8ed', '#a66285', '#b0b8d6'] FONTS: ['lyon']
+RAMP: [('h1', 'lyon', 14, 400, 1.5, '0.16px'), ('body', 'lyon', 16, 400, 1.5, '0.16px')]
+RADII: [] SPACING: [24]
+VARS: {'--color-light-bg': '#eeeeee', '--color-light-text': '#464d4a', '--color-dark-text-dim': '#717d78', '--font-base': '16px', '--font-sm': '0.875rem', '--spacing-sm': '0.5rem', '--color-light-text-dim': '#949e9a', '--spacing-col': '36rem', '--color-insignia': '#232927', '--color-light-accent': '#5e786d', '--color-light-border': '#d0d6d4', '--spacing-base': '1rem', '--color-dark-text': '#eeeeee', '--color-dark-bg': '#3d4340'}

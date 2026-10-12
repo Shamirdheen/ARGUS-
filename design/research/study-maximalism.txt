@@ -1,0 +1,208 @@
+SCREENS 48 MODE Counter({'light': 35, 'dark': 13})
+STYLE [('maximalism', 48), ('playful', 43), ('dark-mode', 13), ('editorial', 7), ('vintage', 4), ('monochrome', 3), ('minimalism', 1), ('brutalism', 1)]
+VIBE [('playful', 43), ('warm', 26), ('loud', 21), ('soft', 14), ('raw', 7), ('calm', 3), ('serious', 2), ('technical', 1), ('luxe', 1), ('cold', 1)]
+INDUSTRY [('ecommerce', 11), ('agency', 9), ('developer-tools', 8), ('gaming', 8), ('media', 7), ('crypto', 5), ('portfolio', 4), ('music', 3), ('food-beverage', 3), ('fintech', 2), ('saas', 1), ('type-foundry', 1), ('culture', 1), ('fashion', 1), ('architecture', 1)]
+COMPONENTS [('hero-with-cta', 33), ('hero-fullbleed', 27), ('logo-cloud', 25), ('feature-trio', 20), ('bento-grid', 13), ('sticky-nav', 2), ('blog-grid', 2), ('testimonial-quote', 1), ('testimonial-wall', 1), ('newsletter-signup', 1), ('case-study-card', 1)]
+MACROSTRUCTURE [('portfolio-grid', 11), ('ecosystem-index', 9), ('bento-grid', 7), ('marquee-hero', 7), ('split-studio', 5), ('photographic', 3), ('feature-stack', 2), ('type-specimen', 1), ('manifesto', 1), ('specimen', 1), ('map-diagram', 1)]
+paperBand [('mid', 27), ('light', 15), ('dark', 6)]
+displayClass [('grotesk-sans', 29), ('roman-serif', 11), ('system-native', 4), ('display-heavy', 2), ('mono', 1), ('display-condensed-bold', 1)]
+accentHue [('chromatic-other', 23), ('cool', 16), ('warm', 8), ('neutral', 1)]
+FACES [('Mackinac', 8), ('Lato GOG Latin', 8), ('Raleway', 4), ('Arial', 1), ('Graphik', 1), ('Nitti Grotesk BM', 1), ('Akzidenz-Grotesk Pro Med', 1), ('Georgia', 1), ('hobeaux', 1), ('LeCorbusier', 1), ('SF Pro Rounded Black', 1), ('Helvetica', 1), ('IBM Plex Mono', 1), ('Titan One', 1), ('Funnel Sans', 1), ('League Gothic', 1), ('Right Serif Wide Black', 1), ('Bowlby One', 1), ('-apple-system', 1), ('Denton Condensed Light', 1), ('Gucci Serif', 1), ('ambroise-francois-std', 1), ('MetroSans', 1), ('Libre Franklin', 1), ('Family', 1), ('Ano', 1), ('Times', 1), ('Lateral', 1), ('trueSans', 1), ('Thunder', 1)]
+palette sat mean 0.53  saturated colours per page median 3.0 dist Counter({3: 28, 2: 16, 1: 3, 0: 1})
+HUES(30deg buckets) [(0, 17), (30, 30), (60, 1), (120, 2), (150, 3), (180, 20), (210, 4), (240, 19), (270, 10), (300, 3), (330, 10)]
+DISPLAY px median 56 max 180 n 39
+display/body ratio median 3.5 range (1.0, 11.2)
+display weights [(700, 19), (400, 16), (500, 12), (575, 8), (800, 4), (600, 3), (900, 1)] line-height median 1.1
+radii [(0, 44), (8, 26), (4, 18), (6, 15), (16, 15), (10, 13), (50, 12), (2, 11), (5, 11), (3, 10), (20, 10), (12, 9)]
+
+=== SIGNATURES ===
+
+## amazon-com light
+SIG: Toys breaking the hero's top edge - giraffe antlers and plane intrude into nav breathing room, creating depth against flat mint ground.
+TYPE: Headlines: bold sans, tight, sentence case. Body/links: lighter weight sans, smaller. Scale jump ~3:1. No serifs.
+
+## basecamp-com light
+SIG: Crossed-out app icons with distressed cartoon heads orbiting, speech bubbles voicing project chaos - illustrated anti-competitor hero replacing product screenshot.
+TYPE: Display: bold sans-serif, tight, heavy weight, slightly condensed. Body: clean sans-serif, much smaller. Scale jump ~4x. No visible tracking quirks.
+
+## boldmonday-com light
+SIG: Five saturated horizontal bands, each a single typeface specimen, stacked edge-to-edge as the entire viewport - no hero image, just type-as-image.
+TYPE: Display faces vary per band: geometric sans (PimBopilly), grotesk (Nitti Grotesk), high-contrast serif (Merwede), condensed sans (OSKAR), rounded sans (Bilo). Body face absent. Scale jump: specimen words at ~80-120px equ
+
+## crackmagazine-net light
+SIG: Editorial photography treated as uninterrupted full-bleed canvas with minimal UI intrusion - only small white text anchored lower-left, letting image dominate.
+TYPE: Display: bold condensed sans (CRACK logo, all caps). Body: clean sans, sentence case. Scale jump ~4:1. Tight tracking on logo.
+
+## dragcity-com light
+SIG: Hand-drawn zigzag rule borders framing nav and content cards - irregular, slightly wobbly, giving cut-and-paste zine aesthetic to otherwise structured grid.
+TYPE: Display: hand-drawn outline/bubble sans for logo; bold sans for headers (all-caps, heavy). Body: small neutral sans. Scale jump ~4:1 display to body. Headers often skewed/italic, slight rotation.
+
+## dropout-tv dark
+SIG: Colon-as-face motif - ":D" replaces traditional smiley, scaled large as brand mark, appearing in logo, watermark, and favicon position.
+TYPE: Display: bold condensed sans, all-caps, tight tracking on ":DROPOUT"; Body: clean sans, sentence case, medium weight; scale jump ~4:1. Tagline lighter weight, smaller.
+
+## dropout-tv--about dark
+SIG: Giant ghosted punctuation (question mark + starburst) as asymmetric side-frames, with all text floating in the central negative void between them.
+TYPE: Display: geometric sans, extra bold, wide, all-caps; Body: same sans family, regular weight, sentence case. Scale jump: ~5:1. Tracking: headline slightly loose.
+
+## dropout-tv--plans dark
+SIG: Center card "pops" via yellow fill CTA + green pill tag + paired yellow stars icon above, while flanking cards stay dark/outline - creating a single illuminated choice in an otherwise monochrome row.
+TYPE: Display: bold geometric sans (similar to Futura/Proxima), tight, all weights heavy. Body: same family, lighter, ~16px. Scale jump ~3:1. Sentence-case throughout; prices use bold + asterisk.
+
+## dropout-tv--signup dark
+SIG: Yellow pill button with black text, colon-prefix branding (":D" / ":DROPOUT"), miniature diorama interrupting lower half of portrait photography.
+TYPE: Display: geometric sans, all-caps, heavy weight, colon prefix on logo. Body: lighter sans, sentence case. Scale jump ~3:1. No visible tracking distortion.
+
+## fly-io light
+SIG: Continuous flowing ribbon illustration bisects viewport horizontally, creating organic top/bottom split where headline nests in the calm lower gap.
+TYPE: Display: high-contrast transitional serif, bold, tight leading. Body: clean sans, light weight. ~3:1 scale jump. Sentence case headlines. Italic + underline accent on "fearlessly".
+
+## fly-io--docs light
+SIG: Lavender gradient wash behind illustration only, not full-bleed - gradient starts mid-page, creating soft atmospheric vignette that separates functional docs from playful brand moment.
+TYPE: Sans-serif system face (clean, medium weight, slightly condensed) for UI and headings; monospace for commands. Headline ~2.5x body. Sentence case throughout; no all-caps.
+
+## fly-io--docs-about light
+SIG: Illustration as emotional center - whimsical hand-drawn bird protecting anthropomorphic balloon, purple umbrella echoing brand color, occupying visual heart of an otherwise utilitarian docs page.
+TYPE: Sans-serif throughout (likely Inter or similar), clean geometric. H1 heavy weight (~700), body ~400, 16px. Minimal scale jump, restrained hierarchy. Sentence case everywhere.
+
+## fly-io--docs-js-frameworks light
+SIG: Mirrored cartoon slug duo in pastel underwear as hero illustration for a technical documentation page, creating deliberate playful/technical friction.
+TYPE: Display: rounded sans-serif, medium weight, friendly (headline). Body: same family, lighter weight, smaller (~16px vs ~32px, 2:1 jump). No tracking quirks.
+
+## fly-io--docs-kubernetes-using-gpus light
+SIG: Stacked colored alert banners (yellow warning above blue info) with left-edge icon pills, spanning full content width below headline - immediately establishes docs hierarchy and urgency before any body text.
+TYPE: Sans display (headline: medium weight, slightly condensed, geometric roundness). Body: same sans family, regular weight, ~1:2.5 scale jump. Code: monospace, inline. Sentence case throughout. Tight tracking on headline.
+
+## fly-io--docs-machines-cpu-performance light
+SIG: Deep purple sidebar with white icon+text nav contrasting against stark white content zone, plus that unexpected soft lavender gradient bleeding into the top-right corner like a watercolor wash.
+TYPE: Sans display (headlines, medium weight, tight, slightly geometric). Sans body (smaller, regular, looser). Mono for inline code (`shared`, `performance`, `cpu.cfs_quota_us`). Scale jump: ~3:1 display to body. Sentence cas
+
+## fly-io--docs-machines-runtime-environment light
+SIG: Purple pill-shaped active state in right TOC that vertically tracks scroll position, paired with soft mauve-to-white gradient bleed in top-right corner behind the page.
+TYPE: Sans-serif display (Geist/Inter-like, medium weight, tight) for headings; same family, smaller regular for body. Scale jump ~3:1 (H1 to body). Code in monospace, purple-tinted. Sentence case throughout. No tracking quirk
+
+## fly-io--docs-monitoring-sentry light
+SIG: Left nav item "Sentry Error Tracking" sits in a full-width rounded lavender pill (#5444e4 at low opacity), creating a soft glow highlight unlike standard bordered active states.
+TYPE: Sans-serif display (geometric, medium weight, tight) for H1; same family, smaller/regular for body. Mono for code blocks. Scale jump ~3:1. Sentence case throughout. No tracking quirks.
+
+## gog-com dark
+SIG: Pixel-art stepped border framing the RPG promo card - teal and purple 8-bit staircase edges with corner crosshair ornaments, creating retro gaming frame around modern game covers.
+TYPE: Sans display, bold condensed, all-caps for headlines ("STAR WARS DAY", "ROLE-PLAYING GAMES"). Body sans, lighter weight. ~3:1 scale jump. Tracking tight on badges, loose on "promo ▸".
+
+## gog-com--en-about-gog dark
+SIG: Low-poly crystalline terrain with internal glow gradients, game cards resting on wooden shelf that breaks the abstract/digital boundary.
+TYPE: Sans display (clean, light weight, wide apertures) + sans body; ~3:1 scale jump. Body tight leading. Italic for quote.
+
+## gog-com--en-game-dex light
+SIG: Price/action card overlapping hero bottom-right corner, breaking the full-bleed image boundary.
+TYPE: Sans display for nav/headline (bold, tight, modern); sans body. Large jump: hero dominates, small functional text below. All caps nav. Purple tags with white text.
+
+## gog-com--en-game-pajama-sam-vol-2 light
+SIG: Price card with dual stacked CTAs overlapping hero/content boundary, breaking the full-bleed image without full separation.
+TYPE: Sans-serif display, bold, tight; body sans lighter. Large title-to-body jump (~3:1). All-caps nav. Price slightly larger than body.
+
+## gog-com--en-game-scarlet-hollow light
+SIG: Illustrated title treatment with organic thorny branches weaving through and around the letterforms, centered below the play button.
+TYPE: Display: decorative serif, medium weight, tight tracking, slight arch/distress. Body: clean sans, regular weight. Large jump - display ~3x body. Title in all-caps with small caps rhythm.
+
+## gog-com--en-game-tko light
+SIG: Giant yellow serif "TKO" slammed over macro eye's lower-left, boxing the literal eye - word and image collide in same space.
+TYPE: Display: bold serif, wide, high contrast (TKO). Body: clean sans, small. Extreme scale jump - display ~8x body. All-caps display; sentence case body.
+
+## gog-com--en-game-valfaris light
+SIG: Pixel-art hero with centered play button and spiky neon-outlined logo overlapping the illustration, price card floating detached on right.
+TYPE: Logo: custom spiky display, sharp angles, neon outline. Body: clean sans-serif, medium weight. Price large bold. Scale jump: logo > price > body ~3:2:1.
+
+## gog-com--en-games light
+SIG: Purple hexagonal discount badges with white percentage text overlaid on game card lower-right, price struck through above sale price.
+TYPE: Sans-serif display, bold weight, tight tracking on category labels. Body sans lighter weight. Scale jump ~3:1 display to body. All-caps category labels. Purple accent on badges and GOG GALAXY button.
+
+## kelseydake-com light
+SIG: Dotted rule borders between every tile - hand-drawn black dashes creating faux-stitch frame around each illustration, unifying the masonry into a quilt.
+TYPE: Display: hand-drawn custom serif for logo, bouncy baseline, thick-thin strokes. Body: small caps sans for nav, wide tracking. Scale jump: logo ~3x nav. All caps navigation.
+
+## platonphoto-com light
+SIG: Radial face-halo replacing head: ~40+ disembodied heads and hands orbiting in dense circular spray, maintaining central facial axis.
+TYPE: "PLATON" = condensed sans, all caps, bold, tight tracking. Nav = smaller matching sans, lighter weight, wide tracking. No body type visible.
+
+## rainbow-me light
+SIG: 3D glossy rainbow arc and planet-with-rings floating in sky, paired with matching rainbow-app-icon buttons - toy-like physical objects in a flat UI world.
+TYPE: Display: geometric sans, extra bold, tight tracking. Body: same family, regular weight, ~18px. Scale jump ~4:1. Sentence case body, title case CTAs.
+
+## stinkstudios-com dark
+SIG: Hand-drawn maximalist collage filling entire viewport as sole content - sneakers, abstract patterns, "STINK STUDIES" lettering layered with cut-paper textures, no UI chrome above fold.
+TYPE: No display text in viewport except logo "STINK STUDIOS" in sans caps, bold, tracked tight. Body nav links in same sans, lighter weight, sentence case. Scale jump: single size only in this fold.
+
+## 109ichiki-com light
+SIG: OS-window chrome framing artwork - title bar "meme.webp" with X and resize corner - creating fake desktop interface over illustration.
+TYPE: IBM Plex Mono, Regular weight, narrow width. All caps nav, sentence case filenames. Tight tracking. Small meta text (~12px) vs filename labels (~11px); minimal jump.
+
+## alternativeaesthetics-co-uk light
+SIG: Headline text physically wraps around and interweaves with central illustrated figure - letterforms arch over, under, and through the character's body, making typography and illustration a single inseparable lockup.
+TYPE: Display: bold brush script, custom/hand-drawn, thick strokes, irregular baseline, arched layout. Body: absent. Scale jump: display dominates, no body to measure.
+
+## doodles-app light
+SIG: Hand-drawn bubble wordmark paired with crisp UI, plus full-bleed whimsical illustration with dark left fade for text legibility.
+TYPE: Display: rounded geometric sans, bold, slightly bubbly (logo custom). Body: clean sans, regular weight. Scale jump ~3:1 display-to-body. Sentence case headlines, all caps CTAs.
+
+## francouvertes-com light
+SIG: Horizontal color bands (yellow/green/pink/yellow) sliced by full-width date numerals and interrupted by floating disembodied open mouths at random depths, creating faux-3D collage effect.
+TYPE: Display: high-contrast transitional serif, extra-bold condensed, tight leading; "30ES" superscript. Body: grotesque sans, medium weight. Extreme scale jump: body ~14px, date numerals ~200px. All-caps body, wide tracking 
+
+## generalcondition-com dark
+SIG: Doodle creatures in thick black outlines with flat fills, clustered in decorative border bleeding off all edges, framing the rigid grid with chaotic hand-drawn organic shapes.
+TYPE: Display: ultra-condensed serif, extreme weight, wide (Right Serif Wide Black); Body: lighter serif italic + small caps sans; massive jump, display ~15× body; all-caps display, sentence-case body.
+
+## gm-meme-com light
+SIG: Custom doodle characters (small faces with eyes, tongues) embedded directly inside headline letterforms - one in "y" of Crypto, one above "e" in Meme, one near "U" in Unique - breaking the bold type with hand-drawn interruptions.
+TYPE: Display: Bowlby One - ultra-heavy sans, extremely wide, tight. Body: Inter Tight - clean sans. Massive jump: display ~120px vs body ~14px. Title case headline. Small "SOON" badge with tracking.
+
+## grit-pictures dark
+SIG: Hand-drawn lightning bolt slicing through the I in "GRIT" - custom letterform integration, not separate icon.
+TYPE: Display: bold condensed sans, black weight, tight tracking, custom lightning-bolt I. Body: lighter weight sans, sentence case, ~1:3 scale jump. Tracking loose on phonetic line.
+
+## idyllic-co-nz light
+SIG: Vertical two-tone stripe background with oversized cropped serif letterforms bleeding behind centered modal card.
+TYPE: Display: Denton Condensed Light, ultra-condensed high-contrast serif, all-caps, tight. Body: Aktiv Grotesk Regular, sans, sentence case. Scale jump ~3:1. Warning in red, heavier weight than body.
+
+## lafamigliamysteryunfolds-gucci-com dark
+SIG: Monumental serif word centered over photographic depth, with miniature sans prefix "LA" creating scale hierarchy through size inversion, not placement.
+TYPE: Display: high-contrast transitional serif, extremely wide, light weight, all-caps. Body: clean sans, all-caps, tracked out. Scale jump: ~8:1 serif to sans.
+
+## laugh-mind-co-jp dark
+SIG: 3D illustrations physically interrupt and overlap the serif headline, with objects positioned between letterforms and across line breaks, creating forced parallax depth on flat dark ground.
+TYPE: Display: high-contrast serif (Ambroise), extra-compressed width, light weight, very tight tracking. Body: none visible. Scale jump: single size only, massive. Signature treatment: words broken across lines, letters parti
+
+## madebyanalogue-co-uk light
+SIG: Outlined rounded-rectangle badges embedding single words inside flowing body copy, creating read-as-sentence / read-as-labels double rhythm.
+TYPE: Custom display (logotype: hybrid serif/sans, bulbous rounds, sharp triangles, pixel steps). Body: sans, medium weight, tight tracking. Massive scale jump: logotype ~15× body. Signature: outlined pill badges around key wo
+
+## ponpon-mania-com light
+SIG: Full-bleed illustrated hero with no headline block - only centered logo and floating pill CTA over busy cartoon scene.
+TYPE: Sans display (logo: bold, tight, geometric). Body sans tiny (nav, cookie bar). Massive scale jump: logo ~24px, nav ~12px, CTA ~16px. Lowercase throughout.
+
+## family-co light
+SIG: Mascot characters as oversized floating UI chrome - functional buttons (Send, Submitted) appear as die-cut cards at bottom, partially visible, implying the interface itself is made of illustrated toys.
+TYPE: Display: rounded geometric sans, bold, wide, soft terminals (matches "Family" custom). Body: Inter, regular. ~4:1 scale jump. Sentence case throughout; no tracking tightness.
+
+## drinkolipop-com light
+SIG: Concentric hand-drawn rounded rectangles in alternating red/peach/cream creating a tunnel/vortex framing the soda can, with scattered imperfect dots and one small star.
+TYPE: Display: WindsorEF, bold italic serif, soft rounded serifs, bouncy baseline. Body: Ano, geometric sans, medium weight. Scale jump: ~3:1. Sentence case throughout; no all-caps.
+
+## omsom-com light
+SIG: Jagged starburst sticker with red-on-yellow reverse contrast, placed to overlap both product and negative space, creating faux-sticker-on-photo depth.
+TYPE: Display: condensed serif, extra-bold, tight tracking, all-caps (Times stretched/compressed). Body: same family, lighter weight, smaller, sentence-case. Scale jump ~3:1.
+
+## slush-app light
+SIG: Massive, wide-kerning "SLUSH" typography layered behind and in front of a 3D blue textured organic shape.
+TYPE: Display: Lateral (heavy weight, ultra-wide, geometric sans); Body: Aeonik Pro (clean sans). Extreme scale jump between "SLUSH" and supporting copy. All-caps nav.
+
+## zudo-amsterdam light
+SIG: A high-density isometric "Where's Waldo" style illustration that serves as the entire landing page interface, replacing traditional sections with a navigable map.
+TYPE: Sans-serif (trueSans). Logo is all-caps, wide tracking, medium weight. Body/UI text is small, clean, geometric sans. Minimal scale jump as there is no body copy.
+
+## beardmeatsfood-co-uk--youtube dark
+SIG: Black-and-white checkered racing stripe spanning the full width of the screen, separating the nav from the hero section.
+
+## brethrendesignco-com--work dark
+SIG: Massive, tight-leading, all-caps headline that wraps and anchors the left side, contrasted by a floating, high-contrast pink line-art illustration on the right.

@@ -1,0 +1,125 @@
+
+========== family-co rows 1
+
+-- family-co light landing ['playful', 'maximalism'] ['playful', 'warm', 'soft'] ['crypto', 'fintech'] bento-grid
+NS: Joyful, soft pastel blooms dance across a bright, airy canvas with friendly, rounded type.
+AUTOPSY: FOLD: Nav top-left: logo + "Family", "Developers" dropdown, "Resources" dropdown, "X (Twitter)". Top-right: "Log in" text link, "Get Started" black pill. Centered headline: "Your favorite crypto wallet." - sentence case, 3 lines, bold sans, ~72px. Below: 2-line body copy, then two CTAs side by side - black pill "Download on iOS" with Apple logo, white pill "Watch the Video" with play triangle. Hero: scattered cartoon characters (blue square flower mascot left, green blob, red cloud, yellow triangle, orange cat right), ~45% viewport width each side, headline centered between them. Visuals bleed to edges; headline sits in negative space.
+
+TYPE: Display: rounded geometric sans, bold, wide, soft terminals (matches "Family" custom). Body: Inter, regular. ~4:1 scale jump. Sentence case throughout; no tracking tightness.
+
+COLOR: Background #ffffff; text #111111; accents #05b2fb (blue flower), #62c3fb (lighter blue), #cfc7bd (warm beige shapes). Accent lands on characters, not UI.
+
+SIGNATURE: Mascot characters as oversized floating UI chrome - functional buttons (Send, Submitted) appear as die-cut cards at bottom, partially visible, implying the interface itself is made of illustrated toys.
+PAL: ['#05b2fb', '#62c3fb', '#0c548c', '#9b8457', '#cfc7bd'] FONTS: ['Family', 'Inter']
+RAMP: [('h1', 'Family', 68, 500, 1.1, '-1.36px'), ('body', 'Inter', 16, 400, 1.4, '0'), ('button', 'Inter', 15, 500, 1.4, '-0.09px')]
+RADII: [0, 8, 12, 32] SPACING: [28, 58, 68, 72, 74, 76, 78, 80, 89, 90, 92, 96, 100, 102, 104, 108, 112, 116, 120, 124, 132, 136]
+VARS: {'--background-invalid': '#fff0f0', '--color-text': '#343433', '--color-invalid': '#FF4E4E', '--color-border': '#E8E8E8', '--color-primary': '#343433', '--color-warning': '#F6C30F', '--color-valid': '#00C454', '--background-warning': '#fefae6', '--color-anchor': '#6187FE', '--background-valid': 'rgba(0,196,84,0.1)', '--yellow': 'color(display-p3 1 0.7450980392156863 0.2980392156862745)', '--gold': 'color(display-p3 0.792156862745098 0.5725490196078431 0.18823529411764706)', '--green': 'color(display-p3 0.26666666666666666 0.7764705882352941 0.4980392156862745)', '--beige': 'color(display-p3 0.984313725490196 0.9803921568627451 0.9764705882352941)'}
+
+========== reflect-app rows 1
+
+-- reflect-app dark landing ['minimalism', 'monochrome', 'dark-mode'] ['calm', 'technical', 'soft'] ['saas'] narrative-workflow
+NS: Deep violet gradients flow over crisp, clean sans serif, a serene digital horizon.
+AUTOPSY: FOLD: Nav top-left logo+wordmark, center links (Product, Pricing, Company, Blog, Changelog), right Login + purple pill CTA "Start free trial". Headline "Think better with Reflect" sentence-case, centered, ~8% viewport height, 1 line. Subhead "Never miss a note, idea or connection." centered below. Small pill badge above headline: "✦ Take notes using AI". Hero: dark UI screenshot of note-taking app with calendar sidebar, glowing purple portal/black hole visual behind/through it, occupies lower ~55% of viewport, centered. Headline floats in upper third; visual dominates below. Balance: text light, visual heavy.
+
+TYPE: Display: geometric sans, medium weight, wide, slight inktrap feel on 'R'. Body: same family, lighter weight, smaller (~1:3 jump). All sentence case. Clean, no tracking quirks.
+
+COLOR: Background #0a0614 near-black. Text #e8e0f0 pale lavender. Accent #7038ed purple: CTA fill, portal glow, calendar highlight, badge border. Secondary glow #c378fa at portal core.
+
+SIGNATURE: Glowing purple accretion-disk portal visually burns through the center of the dark UI screenshot, creating depth - app interface frames the cosmic object rather than containing it.
+PAL: ['#7038ed', '#331b6c', '#c378fa', '#7962a6', '#a98cc0'] FONTS: ['AeonikPro', 'Inter V']
+RAMP: [('h1', 'AeonikPro', 72, 500, 1.11, '0'), ('h2', 'AeonikPro', 56, 500, 1.14, '0'), ('h3', 'AeonikPro', 32, 500, 1.25, '0'), ('body', 'Inter V', 16, 400, 1.4, '0'), ('button', 'Inter V', 14, 500, 1.43, '0')]
+RADII: [0, 4, 6, 8, 16, 50] SPACING: [6, 12, 24, 26, 38, 48, 64, 72, 96, 108, 110, 116, 128, 145, 148, 172, 173, 222, 236]
+VARS: {'--swiper-theme-color': '#007aff'}
+
+========== laugh-mind-co-jp rows 1
+
+-- laugh-mind-co-jp dark landing ['playful', 'maximalism', 'dark-mode'] ['playful', 'loud'] ['agency'] marquee-hero
+NS: Electric violet and teal whimsy floats on a boundless, playful, dark canvas.
+AUTOPSY: FOLD: Centered headline "LAUGH MIND ALTERED MY BRAIN CHEMISTRY" in stacked 3-line arrangement, all caps, split by 3D space objects (rocket, planet, UFO, astronaut) that interrupt and weave through the text. No nav visible. No CTA. Hero visual: floating 3D illustrations occupy ~60% of viewport center, overlapping text at midline. Text and visuals interlock at exact center; dark void surrounds.
+
+TYPE: Display: high-contrast serif (Ambroise), extra-compressed width, light weight, very tight tracking. Body: none visible. Scale jump: single size only, massive. Signature treatment: words broken across lines, letters partially obscured by 3D objects.
+
+COLOR: Background #0a0a0a near-black. Text #f5f5f5 off-white. Accents: purple #7f4fcc (rocket, planet rings), magenta #e4aadb (planet), teal UFO dome. Accent lands on 3D objects only; no UI elements.
+
+SIGNATURE: 3D illustrations physically interrupt and overlap the serif headline, with objects positioned between letterforms and across line breaks, creating forced parallax depth on flat dark ground.
+PAL: ['#7f4fcc', '#e4aadb', '#6d1678', '#5d6a9e', '#d9dfc3'] FONTS: ['ambroise-francois-std']
+RAMP: [('body', 'ambroise-francois-std', 16, 400, 1.5, '0'), ('button', 'ambroise-francois-std', 16, 400, 1.5, '0')]
+RADII: [0, 24] SPACING: []
+VARS: {'--color-purple-200': 'oklch(.902 .063 306.703)', '--color-purple-300': 'oklch(.827 .119 306.383)', '--font-hiragino': '"hiragino-mincho-pron",sans-serif', '--color-zinc-100': 'oklch(.967 .001 286.375)', '--shadow-xs': '0 1px 2px 0 #0000000d', '--color-zinc-200': 'oklch(.92 .004 286.32)', '--color-rose-200': 'oklch(.892 .058 10.001)', '--color-slate-200': 'oklch(.929 .013 255.508)', '--color-sky-500': 'oklch(.685 .169 237.323)', '--color-pink-500': 'oklch(.656 .241 354.308)', '--color-orange-600': 'oklch(.646 .222 41.116)', '--color-violet-600': 'oklch(.541 .281 293.009)', '--color-red-900': 'oklch(.396 .141 25.723)', '--color-orange-800': 'oklch(.47 .157 37.304)'}
+
+========== doodles-app rows 1
+
+-- doodles-app light landing ['playful', 'maximalism'] ['playful', 'soft', 'warm'] ['crypto', 'media'] marquee-hero
+NS: Dreamy pastel clouds drift over a boundless, whimsical landscape of rounded forms.
+AUTOPSY: FOLD: Nav top-left logo "Doodles" (handwritten bubble), center links About/Create/Collect/Shop, right social icons + wallet pill. Headline "Create with us." sentence case, left-aligned, ~48px, 1 line. Body 3 lines: "Everyone is an artist...seconds." Left-aligned under headline. CTA: rounded pill button, pink-yellow gradient, label "START CREATING" all caps. Hero: full-bleed illustrated fantasy scene (floating islands, castle, vehicles, sunset sky), occupies 100% viewport. Text overlays left third; visual dominates right two-thirds. Balance: ~30/70 text-to-image.
+
+TYPE: Display: rounded geometric sans, bold, slightly bubbly (logo custom). Body: clean sans, regular weight. Scale jump ~3:1 display-to-body. Sentence case headlines, all caps CTAs.
+
+COLOR: Background #0a0a0a (left gradient to transparent), sky pinks/purples #eea6c7 #9d5d93, accent gradient #eea6c7→#d6bcad on CTA, cyan #249dc3 in illustration. Accent lands on button only.
+
+SIGNATURE: Hand-drawn bubble wordmark paired with crisp UI, plus full-bleed whimsical illustration with dark left fade for text legibility.
+PAL: ['#249dc3', '#eea6c7', '#25618c', '#9d5d93', '#d6bcad'] FONTS: ['Funnel Sans', 'Inter']
+RAMP: [('h1', 'Funnel Sans', 48, 700, 1, '-2.4px'), ('h2', 'Funnel Sans', 96, 700, 0.9, '0'), ('h3', 'Funnel Sans', 24, 600, 1, '-1.6px'), ('body', 'Funnel Sans', 16, 400, 1.5, '0'), ('button', 'Inter', 18, 800, 1.14, '0')]
+RADII: [8, 10, 12, 16, 20] SPACING: [32, 64]
+VARS: {'--header-border-mobile': '3px', '--tw-ring-offset-shadow': '0 0 #0000', '--tw-ring-shadow': '0 0 #0000', '--header-height-mobile-open': 'calc(82px + 3px)', '--tw-skew-x': '0', '--tw-shadow': '0 0 #0000', '--tw-translate-x': '0', '--tw-ring-offset-width': '0px', '--tw-scroll-snap-strictness': 'proximity', '--tw-scale-x': '1', '--tw-border-spacing-x': '0', '--tw-shadow-colored': '0 0 #0000', '--header-height-mobile': '82px', '--tw-border-spacing-y': '0'}
+
+========== bymonolog-com rows 1
+
+-- bymonolog-com dark landing ['minimalism', 'monochrome', 'editorial', 'dark-mode'] ['serious', 'luxe', 'cold'] ['agency'] marquee-hero
+NS: Cold graphite brutalism, oversized geometric sans over a grainy charcoal void
+AUTOPSY: FOLD: Top nav: logo left, links center (About, Work, Services, Process), "Start a project" button right. Center-aligned stack: small icon, 3-line headline ("We design change-making..."), 3-line supporting copy. No traditional CTA button in center. Hero visual: Massive "MONOLOG" text filling bottom 40% of viewport, cropped at edges. Balance: Central text block floats in negative space above the oversized baseline typography.
+TYPE: Khteka; heavy, wide, geometric sans. Massive scale jump from body (small, tight tracking) to hero text (gigantic, architectural). All-caps for logo and hero text.
+COLOR: Background #434440 (dark charcoal gradient); text #bdbeba (pale grey). Accent #bdbeba used for nav links and "Start a project" button border.
+SIGNATURE: Oversized, cropped baseline typography acting as a structural footer for the first viewport.
+PAL: ['#81837b', '#bdbeba', '#434440', '#868582', '#aeafaa'] FONTS: ['Khteka']
+RAMP: [('h1', 'Khteka', 18, 500, 1.1, '-0.1775px'), ('h2', 'Khteka', 24, 700, 1.1, '-0.35625px'), ('h3', 'Khteka', 24, 500, 1.1, '-0.35625px'), ('body', 'Khteka', 18, 500, 1.3, '-0.1775px'), ('button', 'Khteka', 18, 500, 1.3, '0')]
+RADII: [0] SPACING: [16, 24, 26, 32, 106, 151, 210]
+VARS: {'--radius--main': '1rem', '--radius--round': '100vw', '--radius--small': '.15rem', '--border-width--main': '.094rem', '--radius--medium': '.35rem', '--animation-expo-out': 'cubic-bezier(0.2, 1, 0.36, 1)', '--_theme---border': '#bfbfb1', '--_theme---button-primary--border': '#bfbfb1', '--_typography---line-height--1-5': '1.5', '--column-margin--12': 'calc(calc(calc((100% - ((12 - 1) * 1rem)) / 12) * 12 + (1rem * 11)) + 1rem)', '--column-width--10': 'calc(calc((100% - ((12 - 1) * 1rem)) / 12) * 10 + (1rem * 9))', '--_theme---button-primary--text-hover': '#d1d1c7', '--_text-style---font-weight': '500', '--_theme---text-link--text': '#080807'}
+
+========== slush-app rows 1
+
+-- slush-app light landing ['playful', 'maximalism'] ['loud', 'playful'] ['crypto'] marquee-hero
+NS: Electric blue maximalism, chunky black sans-serifs floating over tactile neon textures
+AUTOPSY: FOLD: Top marquee (white text on #0b83ef). Nav: Centered pill-shaped container; 6 text links ("GET STARTED", "CARD", etc.) + "+" icon + black pill button "LAUNCH APP". Headline: Massive, black, uppercase "SLUSH", center-aligned, 1 line, overlaps hero visual. Supporting copy: "Your money. Unstuck." centered below headline. CTAs: Two white pills side-by-side ("LAUNCH WEB APP", "DOWNLOAD FOR CHROME"). Hero visual: Large, 3D blue textured "S" curve occupying ~80% of viewport, wrapping around headline. Headline and visual are centered-stacked.
+
+TYPE: Display: Lateral (heavy weight, ultra-wide, geometric sans); Body: Aeonik Pro (clean sans). Extreme scale jump between "SLUSH" and supporting copy. All-caps nav.
+
+COLOR: BG: White. Text: Black. Accent: #0b83ef (marquee bg). Buttons: White with thin grey borders.
+
+SIGNATURE: Massive, wide-kerning "SLUSH" typography layered behind and in front of a 3D blue textured organic shape.
+PAL: ['#0b83ef', '#6bc3f1', '#0454ac', '#757066', '#bca4cc'] FONTS: ['Lateral', 'Aeonik Pro']
+RAMP: [('h2', 'Aeonik Pro', 64, 500, 1, '-0.64px'), ('h3', 'Aeonik Pro', 64, 500, 1, '-0.64px'), ('body', 'Aeonik Pro', 16, 500, 1.25, '0'), ('button', 'Aeonik Pro', 16, 500, 1.25, '0')]
+RADII: [0, 30] SPACING: [6, 100, 166, 180, 192]
+VARS: {'--color--orange-800': '#fb4903', '--color-ease': 'cubic-bezier(.216, .62, .356, 1)', '--gap-ml': '1.5em', '--gap-xl': '3em', '--radius-container': '2.5em', '--color--yellow-700': '#ffd731', '--color--green-700': '#55db9c', '--gap-xxl': '4em', '--size-unit': '16', '--gap-sm': '1em', '--color--blue-100': '#dceeff', '--gap-s': '.75em', '--color--violet-100': '#f8f0ff', '--color--green-100': '#99e9c4'}
+
+========== digitalocean-com rows 1
+
+-- digitalocean-com dark landing ['minimalism', 'monochrome', 'brutalism', 'dark-mode'] ['technical', 'cold', 'serious'] ['developer-tools'] stat-led
+NS: Deep charcoal expanse, crisp sans-serif geometry, cool digital precision.
+AUTOPSY: FOLD: Top nav with logo left, Products/Solutions/Developers/Partners/Pricing center, Log in + pill Sign up right. Centered headline "AI-Native Cloud" (title case, 2 lines, large). Subhead below: "One platform, fully integrated from silicon to agent, with economics that improve as you scale." Two CTAs: pill "Get Started" (filled) and pill "Explore products" (outline). Dark background with wireframe mountain terrain fills bottom ~40% as hero visual; headline sits in upper ~60% negative space. Logo bar (6 logos) between text and terrain. Three stat cards (67%, 2x, 40%) overlay terrain bottom edge.
+
+TYPE: Sans-serif display, medium weight, wide, clean (likely custom/grotesk). Body sans, much smaller (~1:4 jump). All caps in nav; sentence case in body.
+
+COLOR: Background #144c54 deep teal. Text #b4d4dc pale cyan. Accent #31bacd bright cyan - fills primary CTA, dots in terrain, highlighted word "AI" in headline.
+
+SIGNATURE: Wireframe mesh terrain as live hero element, with floating cyan data points and vertical scale markers (0-700) along right edge, creating technical depth gauge.
+PAL: ['#31bacd', '#144c54', '#b4d4dc', '#648c90', '#a3b5b5'] FONTS: ['Plus Jakarta Sans', 'Inter']
+RAMP: [('h1', 'Plus Jakarta Sans', 48, 800, 1.17, '-1.5px'), ('h2', 'Plus Jakarta Sans', 36, 700, 1.33, '-1px'), ('h3', 'Inter', 18, 700, 1.44, '0'), ('body', 'Inter', 16, 400, 1.4, '0'), ('button', 'Inter', 16, 400, 1.4, '0')]
+RADII: [0, 64] SPACING: [16, 32]
+VARS: {'--text-placeholder': 'light-dark(#13302e, #6f908c)', '--background-promo-bold': '#1433d6', '--primary-teal-100': '#006375', '--text-always-gray': 'light-dark(#586667, #9ba3a4)', '--spacing-12': '12px', '--background-card': 'light-dark(#c9d6d4, #000f0f)', '--background-teal-background-teal-light': '#b1e4f1', '--size-36': '36px', '--background-teal-background-teal-dark': '#006375', '--primary-blue-50': '#000c79', '--color-primary-gray-6': '#a9b3ca', '--background-expanded-jordy-bold': 'light-dark(#112430, #477fa5)', '--primary-neutral-400': '#d9dbeb', '--background-gradient-blue-100-200': '#1e7adb'}
+
+========== contralabs-com rows 1
+
+-- contralabs-com light landing ['minimalism', 'editorial', 'vintage', 'monochrome'] ['calm', 'soft', 'technical'] ['ai', 'creator'] specimen
+NS: Soft, muted sepia tones frame elegant, subtly distressed serif text in a spacious, airy composition.
+AUTOPSY: FOLD: No nav. Headline left-aligned, large serif, 4 lines: "A frontier human data and evaluation lab making AI better for creativity." Two CTAs below: dark pill "Request partnership" + light outlined pill "Research". Hero: Renaissance-style woman in white gown typing on black laptop with white dot pattern and star cursor; occupies right ~55% of viewport, bleeds bottom. Headline fills left ~40%, balanced against figure. Subtle dotted gradient halftone behind laptop, fading left.
+
+TYPE: Source Serif 4 Variable, light weight, wide, high contrast transitional serifs with ball terminals. Body same family, ~14-16px. Massive jump: headline ~48-56px. Sentence case, no tracking manipulation.
+
+COLOR: Background #d2cbb3 warm stone. Text #652c21 deep burgundy-brown. Accent #bc6c4c terracotta on bookmark flag top-left; #98845f olive-tan on "Research" border. No accent in headline.
+
+SIGNATURE: Classical oil-painted figure anachronistically using a laptop rendered as black field with white polka-dot halftone and four-pointed star cursor - juxtaposing Renaissance portraiture with early-computer bitmap aesthetic.
+PAL: ['#bc6c4c', '#dcc49c', '#652c21', '#98845f', '#d2cbb3'] FONTS: ['Source Serif 4 Variable', 'sans-serif']
+RAMP: [('h1', 'Source Serif 4 Variable', 50, 400, 1, '-2px'), ('h2', 'Source Serif 4 Variable', 48, 400, 1, '-1.92px'), ('h3', 'Source Serif 4 Variable', 32, 400, 1, '-1.6px'), ('body', 'sans-serif', 12, 400, 1.4, '0')]
+RADII: [] SPACING: []
+VARS: {'--one-if-corner-shape-supported': '1'}

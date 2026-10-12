@@ -1,0 +1,37 @@
+SCREENS 2320 SITES 832 MODE Counter({'light': 1769, 'dark': 551})
+PAGETYPE [('other', 920), ('landing', 843), ('about', 155), ('blog', 101), ('pricing', 89), ('docs', 80), ('features', 72), ('changelog', 38), ('auth', 22)]
+STYLE [('minimalism', 2186), ('swiss', 1175), ('editorial', 1174), ('monochrome', 769), ('brutalism', 672), ('dark-mode', 551), ('futurist', 266), ('playful', 237), ('vintage', 102), ('glassmorphism', 49), ('maximalism', 48)]
+VIBE [('technical', 1421), ('calm', 1420), ('serious', 1261), ('cold', 953), ('soft', 713), ('warm', 322), ('luxe', 229), ('playful', 121), ('raw', 103), ('loud', 55)]
+INDUSTRY [('developer-tools', 514), ('saas', 437), ('ecommerce', 301), ('media', 258), ('ai', 233), ('agency', 177), ('fashion', 172), ('portfolio', 150), ('culture', 143), ('fintech', 99), ('education', 99), ('type-foundry', 83), ('architecture', 77), ('music', 69), ('furniture', 66), ('food-beverage', 59), ('consumer-tech', 55), ('creator', 54), ('health', 52), ('crypto', 42)]
+COMPONENTS [('logo-cloud', 1785), ('hero-with-cta', 1546), ('hero-fullbleed', 1101), ('feature-trio', 1052), ('sticky-nav', 995), ('bento-grid', 191), ('blog-grid', 143), ('newsletter-signup', 88), ('feature-alternating', 87), ('stat-strip', 35), ('testimonial-quote', 34), ('case-study-card', 31), ('marquee-logos', 28), ('testimonial-wall', 14), ('footer-compact', 13), ('pricing-3-col', 11), ('faq-accordion', 1)]
+MACROSTRUCTURE [('feature-stack', 403), ('marquee-hero', 387), ('split-studio', 358), ('specimen', 258), ('ecosystem-index', 255), ('portfolio-grid', 213), ('photographic', 134), ('bento-grid', 106), ('type-specimen', 62), ('long-document', 37), ('component-playground', 27), ('conversational-faq', 15), ('letter', 13), ('catalogue', 12), ('manifesto', 11), ('stat-led', 10), ('index-first', 9), ('map-diagram', 6), ('narrative-workflow', 4)]
+paperBand [('light', 1283), ('mid', 733), ('dark', 304)]
+displayClass [('grotesk-sans', 1619), ('geometric-sans', 238), ('system-native', 227), ('roman-serif', 133), ('display-condensed-bold', 51), ('display-heavy', 22), ('mono', 21), ('italic-serif', 6), ('slab-serif', 3)]
+accentHue [('chromatic-other', 896), ('warm', 709), ('cool', 624), ('neutral', 91)]
+FACES [('Inter', 109), (None, 75), ('Helvetica Neue', 28), ('Geist', 25), ('system-ui', 23), ('Times', 23), ('-apple-system', 21), ('futura-pt', 18), ('Aeonik', 18), ('Space Grotesk', 17), ('inter', 16), ('Source Sans Pro', 16), ('InterVariable', 16), ('Bose Headline', 14), ('Roboto', 14), ('Poppins', 13), ('ui-sans-serif', 13), ('Obibok', 12), ('GTUltra', 12), ('Montserrat', 12), ('everett', 12), ('Apercu', 12), ('nyt-franklin', 12), ('Geist Variable', 12), ('Inter Variable', 12), ('Neue Montreal', 11), ('Century Old Style', 11), ('Google Sans', 11), ('Arial', 10), ('BBC Reith Serif', 10)]
+QUALITY n 2320 median 85.0 quantiles [75.0, 85.0, 85.0, 85.0, 85.0, 92.0, 92.0, 92.0, 92.0]
+
+=== STYLE FINGERPRINTS ===
+ALL                    n=2320 disp=55.0 ratio=3.41 lh=1.1 w=500.0 nsat=2.0 rad0=0.89 dark=0.24
+minimalism             n=2186 disp=55.0 ratio=3.38 lh=1.1 w=500.0 nsat=2.0 rad0=0.89 dark=0.23
+editorial              n=1174 disp=44 ratio=2.68 lh=1.11 w=500 nsat=2.0 rad0=0.89 dark=0.20
+brutalism              n= 672 disp=57.5 ratio=3.75 lh=1.1 w=500.0 nsat=3.0 rad0=0.94 dark=0.25
+glassmorphism          n=  49 disp=49.0 ratio=3.06 lh=1.12 w=480.0 nsat=3 rad0=0.86 dark=0.14
+swiss                  n=1175 disp=52 ratio=3.25 lh=1.1 w=500 nsat=3 rad0=0.89 dark=0.14
+maximalism             n=  48 disp=56 ratio=3.5 lh=1.1 w=500 nsat=3.0 rad0=0.92 dark=0.27
+playful                n= 237 disp=58 ratio=3.58 lh=1.1 w=500 nsat=3 rad0=0.92 dark=0.22
+dark-mode              n= 551 disp=60.0 ratio=3.78 lh=1.1 w=500.0 nsat=2 rad0=0.90 dark=1.00
+monochrome             n= 769 disp=56.0 ratio=3.5 lh=1.1 w=500.0 nsat=2 rad0=0.91 dark=0.34
+vintage                n= 102 disp=32 ratio=2.0 lh=1.2 w=400 nsat=1.0 rad0=0.92 dark=0.29
+futurist               n= 266 disp=62.0 ratio=4.0 lh=1.1 w=500.0 nsat=3.0 rad0=0.91 dark=0.43
+
+=== INDUSTRY ===
+fintech                n=  99 disp=72.0 ratio=4.71 lh=1.1 w=492.5 nsat=2 rad0=0.89 dark=0.30
+crypto                 n=  42 disp=55.0 ratio=4.0 lh=1.1 w=575.0 nsat=3.0 rad0=0.81 dark=0.21
+developer-tools        n= 514 disp=64 ratio=4.0 lh=1.1 w=500 nsat=3.0 rad0=0.91 dark=0.29
+ai                     n= 233 disp=61 ratio=3.75 lh=1 w=500 nsat=3 rad0=0.93 dark=0.24
+saas                   n= 437 disp=64 ratio=4.0 lh=1.05 w=500 nsat=3 rad0=0.89 dark=0.27
+TOP10% quality         n= 952 disp=60 ratio=3.75 lh=1.1 w=500 nsat=2.0 rad0=0.90 dark=0.30
+BOTTOM10% quality      n= 285 disp=40.0 ratio=2.5 lh=1.14 w=500.0 nsat=3 rad0=0.86 dark=0.21
+
+SIGNATURE DEVICES (n with signature=2320) [('overlap/breaks boundary', 575), ('photo full-bleed', 407), ('grid/rules', 367), ('badge/pill/sticker', 363), ('oversized type', 338), ('product UI as hero', 269), ('3D/object', 225), ('gradient/glow', 204), ('single accent', 171), ('illustration/hand-drawn', 164), ('marquee/ticker', 34)]

@@ -1,0 +1,77 @@
+
+========== lusion-co rows 1
+
+-- lusion-co light landing ['minimalism', 'monochrome', 'futurist', 'brutalism'] ['technical', 'cold', 'serious'] ['agency', 'portfolio'] photographic
+NS: Deep charcoal expanse punctuated by stark, cool white geometry, feeling precisely engineered.
+AUTOPSY: FOLD: Logo "LUSION" top-left, sans caps. No nav visible. No headline, supporting copy, or CTA present. Hero visual: 3D abstract interlocking cylindrical nodes in blue, black, and white, filling ~75% of viewport as centered rounded-rectangle image on light background. Image dominates; text minimal.
+
+TYPE: Logo: geometric sans, bold weight, wide, uniform stroke. No body text visible. Scale jump: logo small against massive image.
+
+COLOR: Background #bababd or lighter cool gray. Image accent #1328c7 (blue nodes), #0a108a (darker blue), black and white nodes. No accent applied to UI elements - color lives only in 3D render.
+
+SIGNATURE: Extreme text/image asymmetry: near-empty header with tiny wordmark ceding almost entire viewport to a single rounded-corner 3D render of mechanical node clusters.
+PAL: ['#1328c7', '#0a108a', '#9da6e4', '#76767b', '#bababd'] FONTS: ['Aeonik']
+RAMP: [('h1', 'Aeonik', 36, 400, 1.1, '0'), ('h2', 'Aeonik', 22, 400, 1.4, '0'), ('h3', 'Aeonik', 38, 400, 1.15, '0'), ('body', 'Aeonik', 16, 400, 1.15, '0'), ('button', 'Aeonik', 14, 500, 1.15, '0')]
+RADII: [0, 10, 18] SPACING: [29, 50]
+VARS: {'--color-grey-blue': '#2b2e3a', '--color-white': '#fff', '--color-project-details-logo-color': '#f0f', '--color-error': '#e90000', '--color-off-white': '#f0f1fa', '--color-red': '#ff4c41', '--color-black': '#000000', '--color-green': '#c1ff00', '--color-blue': '#1a2ffb', '--color-dark-white': '#e4e6ef', '--color-purple': '#8832f7', '--color-dark-blue': '#071bdf', '--color-off-white-semi': 'rgba(240, 241, 250, .7)', '--vh': '9px'}
+
+========== nuageboi-fr rows 1
+
+-- nuageboi-fr light landing ['minimalism', 'brutalism', 'editorial'] ['cold', 'serious', 'technical'] ['portfolio'] specimen
+NS: Electric lime and stark black, bold geometric type floats in a vast, cool digital space.
+AUTOPSY: FOLD: Nav anchored top-left: INFO, REEL, WORKS, CONTACT in small caps. Center-top: live clock "12:11" in pill. Dominant headline "ARON HUGO" (cropped, ~2 lines, ultra-compressed sans) spans full width, centered vertically. Below: "SCROLL DOWN" pill button. Bottom-left: "3D ARTIST & DIRECTION / AVAILABLE APR 2025" in tiny caps. Bottom-right: white card overlay "SHOWREEL / 2025" with timestamp. No hero visual - pure typographic field. Headline consumes ~60% viewport height; negative space balances weight.
+
+TYPE: Display: ultra-compressed black sans, near-slab, weight 900, width condensed to extreme; body: small geometric sans, light weight. Scale jump: ~15:1. All caps, tight tracking on display; loose on micro labels.
+
+COLOR: Background #0cc42c (vivid green). Text black. Accent: white card, white pill button. No colored accents - binary green/black/white.
+
+SIGNATURE: Single word "ARON HUGO" blown to viewport-breaking scale, deliberately cropped at edges, creating architectural banding across screen.
+PAL: ['#0cc42c', '#84dc94', '#0c9124', '#848484', '#a3b7a7'] FONTS: ['nm']
+RAMP: [('h2', 'nm', 12, 400, 1.1, '0'), ('body', 'nm', 12, 400, 1.1, '0'), ('button', 'nm', 12, 400, 1.1, '0')]
+RADII: [0, 2, 6] SPACING: [26, 71, 120]
+VARS: {'--bg-color': '#fff', '--text-color': '#000', '--columns': '12', '--vh': '900px', '--gutter': '1.6rem', '--column': 'calc((100vw - 22.8rem)/12)', '--margin': '2.6rem'}
+
+========== dnco-com rows 1
+
+-- dnco-com light landing ['swiss', 'playful'] ['loud', 'playful'] ['agency'] marquee-hero
+NS: Bold Swiss brutalism, neon drops floating against a deep void of black
+AUTOPSY: FOLD: Top-right nav (Work, Place branding, Wayfinding, About, Thinking, News). Center-aligned massive headline "DNCO" (Uppercase, sans-serif, 3-4 lines height, white). No supporting copy or CTAs. Hero visuals: four oversized, blurred, organic teardrop shapes in lime (#dbfb0c), lavender (#bba5f4), olive (#455c06), and red. Shapes overlap and float around the text; one sits inside the 'N', others flank the bottom. Text and shapes create a centered, high-contrast cluster against a black void.
+
+TYPE: Display: Neue Haas Unica Pro, Heavy weight, wide aperture, tight tracking. Body: Same face, Regular weight. Extreme scale jump (approx 20:1) between headline and nav.
+
+COLOR: Background: Black. Text: White. Accents: #dbfb0c, #bba5f4, #455c06, and red; applied exclusively to the floating organic shapes.
+
+SIGNATURE: Massive white typography partially masked/overlapped by blurred, colorful, teardrop-shaped blobs.
+PAL: ['#dbfb0c', '#bba5f4', '#455c06', '#846cac', '#c4d4a4'] FONTS: ['Neue Haas Unica Pro']
+RAMP: [('h1', 'Neue Haas Unica Pro', 16, 400, 1.5, '0'), ('h3', 'Neue Haas Unica Pro', 22, 400, 1, '0'), ('body', 'Neue Haas Unica Pro', 16, 400, 1.5, '0'), ('button', 'Neue Haas Unica Pro', 16, 400, 1.5, '0')]
+RADII: [0] SPACING: [24, 64, 68]
+VARS: {'--tw-ring-offset-shadow': '0 0 #0000', '--tw-ring-shadow': '0 0 #0000', '--tw-skew-x': '0', '--tw-shadow': '0 0 #0000', '--tw-translate-x': '0', '--tw-ring-offset-width': '0px', '--tw-scroll-snap-strictness': 'proximity', '--tw-border-spacing-x': '0', '--tw-scale-x': '1', '--tw-shadow-colored': '0 0 #0000', '--tw-border-spacing-y': '0', '--tw-scale-y': '1', '--tw-skew-y': '0', '--tw-ring-color': 'rgb(59 130 246 / 0.5)'}
+
+========== aave-com rows 1
+
+-- aave-com light landing ['minimalism'] ['calm', 'soft', 'technical'] ['crypto', 'fintech'] marquee-hero
+NS: Luminous lilac haze, clean geometric sans, airy floating layers of soft glass
+AUTOPSY: FOLD: Top nav (left: logo; right: 5 text links, 1 pill button "Use Aave"). Center-aligned stack: Headline (Sentence case, large scale, 1 line, "The World's Savings App"), supporting copy (1 line), CTAs (1 purple pill "Download on iOS", 1 text link "Learn More"). Hero: 3 overlapping iPhone mockups showing app UI, occupying bottom 40% of viewport. Headline/copy centered in top 60%, visuals anchored bottom center.
+TYPE: Sans-serif (Aave Repro), medium weight, geometric. High scale jump from headline to body. Standard tracking.
+COLOR: Background: white to soft purple radial gradient. Text: #606da4. Accent: #9d96f9 (primary CTA button).
+SIGNATURE: Three overlapping mobile device frames centered at the bottom edge, creating a layered depth effect against a soft, centered radial glow.
+PAL: ['#26d478', '#9d96f9', '#14703f', '#606da4', '#aca2d2'] FONTS: ['Aave Repro']
+RAMP: [('h1', 'Aave Repro', 72, 550, 1.1, '-3.6px'), ('h2', 'Aave Repro', 24, 450, 1.35, '-0.72px'), ('h3', 'Aave Repro', 20, 450, 1.35, '-0.2px'), ('body', 'Aave Repro', 16, 400, 1.4, '0'), ('button', 'Aave Repro', 14, 450, 1.4, '0')]
+RADII: [0, 20, 24, 32, 36, 50] SPACING: [12, 16, 24, 32, 48, 56, 72, 108, 120, 184]
+VARS: {'--border-p-1': 'color(display-p3 0.1490196078 0.1333333333 0.1568627451/0.1)', '--fg-3': 'color(display-p3 0.5607843137 0.5568627451 0.5568627451/1)', '--border-p-3': 'color(display-p3 0.1490196078 0.1333333333 0.1568627451/0.03)', '--fg-2': 'color(display-p3 0.3882352941 0.3803921569 0.3803921569/1)', '--font-mono': '"Aave Repro Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace', '--border-1': 'color(display-p3 0.9450980392 0.9450980392 0.9411764706/1)', '--border-2': 'color(display-p3 0.8823529412 0.8823529412 0.8784313725/1)', '--font-app': '"Inter Variable", "Inter", sans-serif', '--bg-1': 'color(display-p3 1 1 1/1)', '--primary-text': '#fff', '--bg-panel': 'color(display-p3 0.9843137255 0.9843137255 0.9843137255/1)', '--fg-1': 'color(display-p3 0.1294117647 0.1137254902 0.1137254902/1)', '--bg-4': 'color(display-p3 0.968627451 0.9647058824 0.9647058824/1)', '--font-serif': '"Aave Aguzzo", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif'}
+
+========== e2b-dev rows 1
+
+-- e2b-dev light landing ['minimalism', 'monochrome', 'brutalism', 'futurist', 'editorial'] ['technical', 'cold', 'serious'] ['developer-tools', 'ai'] component-playground
+NS: Crisp, stark grayscale geometry - modular grids whisper of advanced computation.
+AUTOPSY: FOLD: Top nav split: left links (PRODUCT, PRICING, RESOURCES, ENTERPRISE, BOOK A CALL), center gear icon logo, right links (CAREERS, social icons, star, SIGN UP black pill, SIGN IN). Below: orange "NEW" badge + "JOIN STARTUPS PROGRAM" microcopy. Headline "AI SANDBOXES FOR DEEP RESEARCH AGENTS" in two lines, black highlight bar behind second line, centered. Subhead: "Open-source, secure environment with real-world tools for enterprise-grade agents." Two CTAs: black filled "START FOR FREE" and white outlined "VIEW DOCS". Trusted-by logo row. Hero: three wireframe browser windows showing sandbox UI, stacked depth, bottom-cropped, occupying lower ~40%. Headline dominates upper half; visuals anchor lower half.
+
+TYPE: Display: bold condensed sans, all-caps, tight tracking. Body: clean sans, ~16px. Scale jump ~3:1. No lowercase in headline.
+
+COLOR: Background #ffffff. Text #000000. Accent #fc9720 on NEW badge only. Secondary grays #7c7c7c, #bcbcbc for subhead/borders. Black buttons.
+
+SIGNATURE: Second headline line with full-width black inverse bar (white text on black rectangle), creating stamped/highlighted typographic block.
+PAL: ['#fc9720', '#824701', '#fcca9c', '#7c7c7c', '#bcbcbc'] FONTS: ['Ibm Plex Mono 700', 'Arial']
+RAMP: [('h1', 'Ibm Plex Mono 700', 64, 700, 1, '-0.32px'), ('h2', 'Ibm Plex Mono 700', 60, 700, 0.93, '-0.8px'), ('h3', 'IBM Plex Sans', 16, 700, 1.25, '0'), ('body', 'Arial', 14, 400, 1.43, '0'), ('button', 'Arial', 40, 400, 0.5, '0')]
+RADII: [0, 50] SPACING: [4, 6, 8, 12, 16, 20, 24, 100]
+VARS: {'--color--stroke-on-black': '#222', '--color--accent-openai': 'orangered', '--color--content-quad': '#999', '--color--content-on-black': 'white', '--color--brand-python-text': 'white', '--color--accent-gemini': '#8e75b2', '--color--content-primary': '#000', '--color--content-negative': '#eb361c', '--font-family-sans': '"IBM Plex Sans",sans-serif', '--color--black': 'black', '--color--stroke-primary-hover': '#b8b8b8', '--color--brand-jsts-bg': '#f7df1e', '--color--accent-mistral': '#ffa300', '--color--content-secondary': '#333'}

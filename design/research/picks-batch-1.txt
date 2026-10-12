@@ -1,0 +1,77 @@
+
+========== cofounder-co rows 1
+
+-- cofounder-co light landing ['playful', 'minimalism'] ['calm', 'warm', 'soft'] ['ai', 'saas'] bento-grid
+NS: Pixelated meadow serenity: soft teal gradients, gentle sans-serif playfulness, open space.
+AUTOPSY: FOLD: Nav pinned top, logo "Cofounder" left, links center (How to, Start, Build, Sell, Scale, Resources, Pricing, Log in), "Run a company" right. Headline left-aligned, sentence case, 3 lines: "Cofounder lets you run an entire company with agents". Subhead below: "Run engineering, sales, marketing, design, finance, and ops." Two CTAs: white pill "Run a company" + ghost pill "Check out the launch". Hero: pixel-art landscape, laptop center-right with floating task cards above it ("Task Completed: New webpage", "Task running: bug fix", "Task Completed: SEO Optimization"). Visual occupies ~65% right/bottom; text anchors upper-left quadrant.
+
+TYPE: Display: geometric sans, medium weight, wide, soft rounds; Body: same family, lighter, ~60% display size. All sentence case, no tracking quirks.
+
+COLOR: Background #1c91ec sky gradient; text white; accent #5cccfc (ghost button border), #1c6cb4 (task card fills). Green #629959 grass, #026996 shadows.
+
+SIGNATURE: Pixel-art hero with "Task Completed" cards erupting from laptop screen, merging pastoral scene with SaaS productivity tropes.
+PAL: ['#1c91ec', '#5cccfc', '#1c6cb4', '#629959', '#026996'] FONTS: ['neoris']
+RAMP: [('h1', 'neoris', 46, 400, 1.08, '0'), ('h2', 'neoris', 40, 400, 1.15, '0'), ('h3', 'neoris', 20, 440, 1.1, '-0.4px'), ('body', 'neoris', 16, 400, 1.5, '0'), ('button', 'neoris', 16, 400, 1.5, '0')]
+RADII: [0, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 17, 20] SPACING: [4, 12, 14, 32, 48]
+VARS: {'--color-border-pill': '#e3e3e0', '--color-ink': '#262323cc', '--color-ink-ui-solid': '#202020', '--radius-3xl': '1.5rem', '--font-neoris': '"neoris", "neoris Fallback"', '--spacing': '.25rem', '--background': '#f5f5f2', '--color-border-card': '#dee2de', '--color-ink-strongest': '#262323e6', '--font-mono': '"IBM Plex Mono", "IBM Plex Mono Fallback"', '--color-feature-success': '#34a853', '--font-weight-semibold': '600', '--text-sm': '.875rem', '--color-accent-brown': '#a76451'}
+
+========== firsty-app rows 1
+
+-- firsty-app light landing ['minimalism', 'swiss'] ['loud', 'playful'] ['travel', 'consumer-tech'] marquee-hero
+NS: Electric lime punch, heavy Swiss blocks floating on stark optic white
+AUTOPSY: FOLD: Top center marquee "International calls are back...". Center-aligned stack: Headline (All-caps, bold, ~80px, 2 lines: "THE FIRST FREE MOBILE NETWORK"). Supporting copy (Sentence case, ~24px: "Stay Online Anywhere..."). CTA: QR code in #d9f837 rounded square with "Download App" label below. Bottom nav (Centered: Personal, Business, Use Cases, About + #d9f837 pill button "Download"). Visuals occupy center 40% of 1280x800; text and QR code balance vertically.
+TYPE: Display: Heavy, wide sans-serif (Avantt), tight tracking; Body: Geometric sans (Inter Tight). High scale contrast (~3:1).
+COLOR: BG: #FFFFFF; Text: #331a2b (dark plum); Accent: #d9f837. Accent lands on QR container and bottom "Download" button.
+SIGNATURE: Massive, ultra-bold all-caps headline centered above a high-contrast neon-yellow QR code module.
+PAL: ['#d9f837', '#e0f478', '#6c8004', '#9da353', '#bebdc1'] FONTS: ['avantt', 'ppRightSlab', 'Inter Tight']
+RAMP: [('h1', 'avantt', 120, 900, 0.85, '-2.4px'), ('h2', 'ppRightSlab', 40, 400, 1, '-0.32px'), ('h3', 'avantt', 48, 900, 0.95, '-0.48px'), ('body', 'Inter Tight', 18, 500, 1.5, '0.198px'), ('caption', 'Inter Tight', 14, 500, 1.5, '0.14px'), ('button', 'Inter Tight', 16, 500, 1, '0.16px')]
+RADII: [0, 8, 12, 16, 20, 24, 32, 40, 45] SPACING: [6, 32, 128, 200]
+VARS: {'--font-pp-right-slab': '"ppRightSlab","ppRightSlab Fallback"', '--font-inter-tight': '"interTight","interTight Fallback"', '--font-avantt': '"avantt","avantt Fallback"', '--tw-ring-offset-shadow': '0 0 #0000', '--tw-ring-shadow': '0 0 #0000', '--tw-skew-x': '0', '--swiper-navigation-size': '44px', '--tw-shadow': '0 0 #0000', '--tw-translate-x': '0', '--tw-ring-offset-width': '0px', '--tw-scroll-snap-strictness': 'proximity', '--tw-scale-x': '1', '--tw-border-spacing-x': '0', '--tw-shadow-colored': '0 0 #0000'}
+
+========== llamaindex-ai rows 1
+
+-- llamaindex-ai light landing ['minimalism', 'brutalism', 'swiss'] ['technical', 'cold', 'calm'] ['ai', 'developer-tools'] feature-stack
+NS: Cool, geometric grid - icy blues and muted oranges, crisp sans-serif precision.
+AUTOPSY: FOLD: Top nav with logo left, links center, social icons + "BOOK A DEMO" pill + "TRY FOR FREE" black rectangle right. Headline "Document OCR for / the agentic stack" sentence-case, left-aligned, ~48px, 2 lines. Body: 3 lines, ~16px. Two CTAs: black filled "GET STARTED" rectangle + white outlined "BOOK A DEMO" rectangle. Hero: isometric 3D stack - white square platform with llama icon floating above gradient stepped columns (orange-pink-blue) and document layers below. Visual occupies right 60%, bleeds bottom; text left 40%. Balanced asymmetry.
+
+TYPE: Sans-serif, tight, geometric (Inter or similar). Display: bold, tight leading. Body: regular, slightly looser. Scale jump ~3:1. All caps in buttons and promo bar.
+
+COLOR: White background. Near-black text (#394668). Accent #fc8409 in promo bar; gradient columns shift orange→pink→blue (#85abfb). Black buttons, white button text.
+
+SIGNATURE: Stepped gradient columns as dimensional pedestal - flat geometric bars in hard orange-pink-blue gradient creating isometric depth beneath floating white platform.
+PAL: ['#fc8409', '#8a4935', '#85abfb', '#394668', '#949cc4'] FONTS: ['OverusedGrotesk']
+RAMP: [('h1', 'OverusedGrotesk', 55, 500, 1.1, '-1.64246px'), ('h2', 'OverusedGrotesk', 55, 500, 1.1, '-1.64246px'), ('h3', 'OverusedGrotesk', 24, 400, 1.4, '0'), ('body', 'OverusedGrotesk', 16, 400, 1.4, '0'), ('button', 'OverusedGrotesk', 14, 400, 1.4, '0')]
+RADII: [0, 6] SPACING: [8, 12, 16, 20, 32, 48, 80, 100, 128]
+VARS: {'--font-mono': '"IBMPlexMono", ui-monospace', '--font-primary': '"OverusedGrotesk", system-ui, sans-serif', '--hsf-default-button__background-image': 'none', '--hsf-default-navigationrow-buttons__justify-content': 'space-between', '--hsf-default-progressbar-trackLine__background-color': 'rgba(217, 217, 217, 1)', '--hsf-default-field-textarea__font-family': 'Helvetica', '--hsf-default-field-label__font-family': 'Helvetica', '--hsf-default-field-input__border-style': 'solid', '--hsf-default-button__border-radius': '3px', '--hsf-default-field-footer__color': 'rgba(81, 99, 131, .87)', '--hsf-default-field-textarea__color': 'rgb(33, 45, 58)', '--hsf-default-button__font-size': '1em', '--hsf-default-button__font-weight': '700', '--hsf-default-progressbar-progressLine__background-color': 'rgba(1, 129, 132, 1)'}
+
+========== modal-com rows 1
+
+-- modal-com dark landing ['minimalism', 'monochrome', 'futurist', 'dark-mode'] ['technical', 'cold', 'calm'] ['developer-tools', 'ai'] specimen
+NS: Electric lime glow on deep obsidian, clean geometric type, vast digital stillness.
+AUTOPSY: FOLD: Nav top-left (logo + "Modal" wordmark), links centered (Product, Solutions, Resources, Customers, Pricing, Docs), auth right (Log in, green "Sign Up" pill). Headline centered, 2 lines: "AI infrastructure that" in gradient lime-to-white, "developers love" in white. Supporting copy centered below, 2 lines. Two CTAs: green filled pill "Get Started", dark outline pill "Contact Us". Hero: glowing green translucent cube with yellow core, centered, occupies ~45% viewport width, sits below CTAs. Headline above, visual anchors center; balanced vertical thirds. Logo strip bottom edge.
+
+TYPE: Sans display, geometric, medium weight, wide; body sans, lighter, smaller (~1:3 jump). Title case headline. No tracking quirks.
+
+COLOR: #000000 background; #ffffff text; #d4fc64 accent (buttons, logo mark, gradient start, cube glow). Gradient headline: #f9fb04 to white.
+
+SIGNATURE: Glowing green glass cube with internal yellow orb, rendered as translucent 3D form with caustic light bleed, centered as solitary hero object against absolute black void.
+PAL: ['#f9fb04', '#848404', '#d4fc64', '#768775', '#aecaae'] FONTS: ['Goga', 'Inter Variable']
+RAMP: [('h1', 'Goga', 64, 500, 1, '0'), ('h2', 'Goga', 54, 400, 1.1, '0'), ('h3', 'Goga', 30, 400, 1.2, '-0.36px'), ('body', 'Inter Variable', 16, 500, 1.5, '-0.36px'), ('caption', 'Inter Variable', 14, 500, 1.43, '-0.36px'), ('button', 'Inter Variable', 16, 500, 1.5, '-0.36px')]
+RADII: [0, 4, 8, 11, 12, 25] SPACING: [10, 12, 24, 32, 48, 64, 96, 112, 120, 160]
+VARS: {'--color-raw-green-65': '#6ac355', '--color-raw-yellow-20': '#5d5733', '--color-c-green-90': '#75d95c', '--color-c-green-60': '#569846', '--color-c-pale-green-60': '#8cab87', '--color-zinc-100': 'oklch(96.7% .001 286.375)', '--color-dark-green': '#07b976', '--color-red-900': 'oklch(39.6% .141 25.723)', '--color-raw-gray-30': '#464646', '--spacing-marketing-sm': '1rem', '--color-surface-danger': '#231c1c', '--color-surface-accent-active': '#273823', '--color-c-pale-green-90': '#bbe6ac', '--color-foreground-secondary': '#a3a3a3'}
+
+========== x-ai rows 1
+
+-- x-ai dark landing ['minimalism', 'futurist', 'dark-mode'] ['cold', 'technical', 'serious'] ['ai'] specimen
+NS: Deep indigo expanse, crisp sans-serif clarity, vast and subtly luminous.
+AUTOPSY: FOLD: Top nav: xAI logo left, links (GROK API COMPANY COLOSSUS CAREERS NEWS SHOP SPACEX X) center, "TRY GROK" pill right. Center: giant "Grok" wordmark dominates 60% viewport width, centered, ~8 lines tall if body-sized. Below: search bar "What do you want to know?" with arrow button. Bottom left: down arrow. Bottom right: "Introducing Custom Voices and the Voice Library: Clone your voice and use it instantly across Grok APIs." + "READ ANNOUNCEMENT" pill. Hero visual: radial light burst from right edge, blue-white gradient, "Grok" catches light on right half. Dark ground. Headline and visual merge: text is the focal point, light provides depth.
+
+TYPE: Display: geometric sans, ultra-bold, wide, sharp terminals (G with flat top, angled crossbar). Body: same family, light weight. Massive jump: display ~15× body. All caps nav, sentence case below.
+
+COLOR: Background near-black #242c4c; text white; accent #647db7/#96b4e0 in light glow; #a8b2d3 subtle. Accent lands on light effect, not UI elements.
+
+SIGNATURE: Single search bar as sole interactive element, centered below monumental wordmark, making the entire hero function as a search interface disguised as brand statement.
+PAL: ['#647db7', '#242c4c', '#96b4e0', '#5a6b9c', '#a8b2d3'] FONTS: ['universalSansDisplay', 'universalSans']
+RAMP: [('h1', 'universalSansDisplay', 60, 500, 1, '-1.5px'), ('h2', 'universalSansDisplay', 48, 400, 1, '-1.2px'), ('h3', 'universalSans', 14, 500, 1.38, '-0.35px'), ('body', 'universalSans', 16, 400, 1.5, '0'), ('caption', 'universalSans', 14, 500, 1.43, '0'), ('button', 'universalSans', 16, 400, 1.5, '0')]
+RADII: [0, 6, 8, 12, 16] SPACING: [16]
+VARS: {'--border': '222 19% 86%', '--accent': '22 100% 51.6%', '--color-ink': '213 11% 16%', '--secondary-hover': '213 12% 70%', '--color-breeze': '214 48.9% 73.9%', '--color-nimbus': '228 21.74% 95.49%', '--color-steel': '216 4% 22%', '--foreground-hover': '221 12% 14%', '--color-ivory': '40 18% 97%', '--color-codeblock': '0 0% 7%', '--background': '0 0% 100%', '--color-twilight': '255 92% 76%', '--color-sunset': '22 100% 51.6%', '--color-evenfall': '214 16.1% 28%'}
