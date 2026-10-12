@@ -75,6 +75,7 @@ export async function POST(request: Request) {
           for (const block of msg.content) {
             if (block.type !== "tool_use") continue;
             const input = block.input as Record<string, unknown>;
+            console.info(`[ask] round ${round} tool ${block.name}`, JSON.stringify(input));
             if (block.name === "simulate_price_move") {
               const move = Number(input.move_pct) / 100;
               const ids = Array.isArray(input.position_ids) ? (input.position_ids as string[]) : null;
