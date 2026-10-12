@@ -7,7 +7,8 @@ Owner: Shamir. Repo: `Shamirdheen/ARGUS-`, deployed on Vercel from `main`.
 1. `AGENTS.md`: this is **Next.js 16.4**. Check `node_modules/next/dist/docs/` before using any Next API you're unsure of.
 2. `docs/DESIGN.md`: the design system (colour, risk tiers, type, components, voice, motion, accessibility).
 3. `docs/ARCHITECTURE.md`: how data flows today, known gaps and the upgrade phases.
-4. `design/README.md`: pictures of every screen, and which ones are built.
+4. `docs/COMPONENTS.md` (+ the live `/kit` page) and `docs/LANDING.md`: every component, landing section, image and animation.
+5. `design/README.md`: pictures of every screen (mock-ups in `screens/`, the real thing in `built/`).
 
 ## Hard rules
 - **Read-only.** Never request a wallet signature, never build anything that moves funds (auto-protect is Phase 3, behind a security review).

@@ -5,7 +5,8 @@ Everything designed for Argus v2, exported from the Claude Design canvas on 12 O
 
 | Folder | What's in it |
 | --- | --- |
-| `screens/` | Product screens and the landing mock-up, as PNG |
+| `built/` | **What's actually built** (captured from the running app): full pages on desktop and phone, every landing section, interactive states (drawer, Ask Argus, wallet), the `/kit` component sheet, and landing motion videos. When `built/` and `screens/` disagree, `built/` wins |
+| `screens/` | The original product screen and landing mock-ups, as PNG |
 | `system/` | Brand, type, components, risk colours, living favicon spec, voice and copy |
 | `explorations/` | Logo rounds 1–3 (history only; the final logo is in `brand/logo/`) |
 | `research/` | Inspiration research: the sites you picked from the Inspo catalogue (4 batches, with palettes, fonts and signature moves) and the catalogue studies (full, maximalism, brutalism) |

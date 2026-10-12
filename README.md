@@ -7,6 +7,8 @@ A hundred eyes on your collateral. Argus watches Solana lending positions (Kamin
 - [`CLAUDE.md`](CLAUDE.md): rules for anyone (human or AI) working in this repo
 - [`docs/DESIGN.md`](docs/DESIGN.md): design system: colour, risk tiers, type, components, voice, motion
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md): data flow, known gaps, upgrade phases
+- [`docs/COMPONENTS.md`](docs/COMPONENTS.md) and the live `/kit` page: every component
+- [`docs/LANDING.md`](docs/LANDING.md): every landing section, image and animation
 - [`design/`](design/README.md): every screen as PNG, logo kit, canvas sources
 
 ## Run
@@ -23,6 +25,7 @@ npm run dev
 | --- | --- |
 | `/` | Landing. Paste a wallet or launch the app. |
 | `/app` | Overview: closest-to-liquidation, totals, SOL shock cards, positions. |
+| `/kit` | Live component catalogue (not linked, not indexed). |
 | `/app/positions` | Full table, position drawer with price rehearsal and fix amounts. |
 | `/api/positions?wallet=` | Normalised `Position[]`. Live Kamino when reachable, otherwise the labelled demo book. |
 | `/api/chat` | Ask Argus on Claude. Streams NDJSON (`text`, `action`, `error`, `done`). Tools: `simulate_price_move`, `suggest_action`. |
