@@ -6,12 +6,12 @@ Everything designed for Argus v2, exported from the Claude Design canvas on 12 O
 | Folder | What's in it |
 | --- | --- |
 | `built/` | **What's actually built** (captured from the running app): full pages on desktop and phone, every landing section, interactive states (drawer, Ask Argus, wallet), the `/kit` component sheet, landing motion videos and the app motion video (`video/app-motion-desktop.mp4`). When `built/` and `screens/` disagree, `built/` wins |
-| `wireframe/argus-wireframe.html` | **Clickable lo-fi wireframe** of the whole product: flow map, every built and planned screen, working drawer slider, Ask Argus, wallet connect, desktop/phone toggle and design notes. One file; open it in any browser |
+| `prototype/argus-prototype.html` | **Clickable prototype made from these canvas designs**: Landing → Wallet → Overview → Positions → Terminal, Radar, Alerts, Activity, Ask Argus (⌘K bar + panel). Every nav item and the main buttons are wired; segmented controls switch; Esc / ← go back; "Show clickable" outlines hotspots. One offline file. Rebuild after canvas changes: `python3 design/tools/build_prototype.py` |
 | `screens/` | The original product screen and landing mock-ups, as PNG |
 | `system/` | Brand, type, components, risk colours, living favicon spec, voice and copy |
 | `explorations/` | Logo rounds 1–3 (history only; the final logo is in `brand/logo/`) |
 | `research/` | Inspiration research: the sites you picked from the Inspo catalogue (4 batches, with palettes, fonts and signature moves) and the catalogue studies (full, maximalism, brutalism) |
-| `tools/` | Generators: `final_logo.py` (Hundred logo, Vogel spiral) and `boards/*.py` (how the canvas boards were built). Reference only; paths point at the old workspace |
+| `tools/` | `build_prototype.py` + `prototype.js` (builds the clickable prototype from `source/`), `final_logo.py` (Hundred logo), `boards/*.py` (how the canvas boards were built; reference only) |
 | `brand/argus-logo-hundred.zip` | The logo kit as one download |
 | `brand/logo/` | Final "Hundred" logo kit: lockups, marks (L/M/S × terracotta/dark/mono), app icon, PNGs |
 | `brand/argus-tokens.css` | The original colour/type token file. The live version is `app/globals.css` |
