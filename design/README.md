@@ -7,11 +7,12 @@ Everything designed for Argus v2, exported from the Claude Design canvas on 12 O
 | --- | --- |
 | `built/` | **What's actually built** (captured from the running app): full pages on desktop and phone, every landing section, interactive states (drawer, Ask Argus, wallet), the `/kit` component sheet, landing motion videos and the app motion video (`video/app-motion-desktop.mp4`). When `built/` and `screens/` disagree, `built/` wins |
 | `prototype/argus-prototype.html` | **Clickable prototype**: the **landing as built** (Hermes chapters, tutorial with working sliders, frieze, new illustrations, motion; embedded from the real page) → the canvas designs for Wallet → Overview → Positions → Terminal, Radar, Alerts, Activity, Ask Argus (⌘K bar + panel). Every nav item and the main buttons are wired; segmented controls switch; Esc / ← go back; "Show clickable" outlines hotspots. Motion matches the app: screens settle in section by section, risk eyes wake, panels slide, Terminal candles grow and liquidation lines draw, Radar rings expand and stars twinkle, critical rows breathe (all off under reduced motion; video: `built/video/prototype-motion-desktop.mp4`). One offline file. Rebuild after canvas or landing changes: `npm run build && python3 design/tools/build_prototype.py` |
-| `screens/` | The original product screen and landing mock-ups, as PNG |
+| `screens/` | Product screen mock-ups as PNG. `Landing.png` is now **the landing as built** (refreshed 12 Oct); the first canvas mock-up is kept as `Landing-early-mockup.png` |
 | `system/` | Brand, type, components, risk colours, living favicon spec, voice and copy |
 | `explorations/` | Logo rounds 1–3 (history only; the final logo is in `brand/logo/`) |
 | `research/` | Inspiration research: the sites you picked from the Inspo catalogue (4 batches, with palettes, fonts and signature moves) and the catalogue studies (full, maximalism, brutalism) |
 | `tools/` | `build_prototype.py` + `prototype.js` (builds the clickable prototype from `source/`), `final_logo.py` (Hundred logo), `boards/*.py` (how the canvas boards were built; reference only) |
+| `brand/illustrations/` | **Master copies of all 7 illustrations** (lossless PNG): hero, frieze, tutorial eye and wheel, Argus watch, Hermes, Argus rehearsing. The site uses compressed JPGs of these from `public/brand/`. README lists where each is used and its Canva id |
 | `brand/argus-logo-hundred.zip` | The logo kit as one download |
 | `brand/logo/` | Final "Hundred" logo kit: lockups, marks (L/M/S × terracotta/dark/mono), app icon, PNGs |
 | `brand/argus-tokens.css` | The original colour/type token file. The live version is `app/globals.css` |
@@ -21,7 +22,7 @@ Everything designed for Argus v2, exported from the Claude Design canvas on 12 O
 
 | Screen | File | In the app? |
 | --- | --- | --- |
-| Landing | `screens/Landing.png` | Built and extended (tutorial, illustrated myth chapters, motion). The code is now ahead of this mock-up |
+| Landing | `screens/Landing.png` (as built) | Built: tutorial, illustrated myth chapters, night-watch band, motion. Early mock-up: `screens/Landing-early-mockup.png` |
 | Overview | `screens/Overview.png` | Built (`/app`) |
 | Positions + drawer | `screens/Positions.png` | Built (`/app/positions`) |
 | Wallet connect | `screens/Wallet.png` | Built (wallet modal, restyled) |
