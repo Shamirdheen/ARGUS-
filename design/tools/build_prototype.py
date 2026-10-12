@@ -15,7 +15,7 @@ OUT = ROOT / "design" / "prototype" / "argus-prototype.html"
 
 # Screen id -> (board file, label). Order = order in the screen picker.
 SCREENS = [
-    ("landing", "Landing", "Landing · public"),
+    ("landing", "Landing", "Landing (as built)"),
     ("wallet", "Wallet", "Connect wallet"),
     ("overview", "Overview", "Overview"),
     ("positions", "Positions", "Positions + drawer"),
@@ -42,6 +42,41 @@ def board(name: str) -> tuple[str, str]:
     return css, body
 
 
+def built_landing(b64img) -> str:
+    """The real landing page (Next.js prerender of `/`), made standalone for an iframe:
+    CSS inlined, images and latin fonts embedded, React scripts removed, landing-live.js added."""
+    nxt = ROOT / ".next"
+    page = (nxt / "server" / "app" / "index.html").read_text()
+    css = ""
+    for href in dict.fromkeys(re.findall(r'<link rel="stylesheet" href="(/_next/static/[^"]+\.css)"', page)):
+        css += (nxt / href.removeprefix("/_next/")).read_text() + "\n"
+
+    def font(m):
+        name = m.group(1).rsplit("/", 1)[-1]
+        if "-latin-" in name and name.endswith(".woff2"):
+            return f"url(data:font/woff2;base64,{b64(nxt / 'static' / 'media' / name)})"
+        return "url(data:,)"  # other scripts/subsets aren't needed for an English demo
+
+    css = re.sub(r"url\(([^)]*\.woff2?)\)", font, css)
+    page = re.sub(r"<link[^>]*>", "", page)
+    page = re.sub(r"<script\b[^>]*>.*?</script>", "", page, flags=re.S)
+
+    def img(m):
+        tag = m.group(0)
+        src = re.search(r'src="([^"]+)"', tag).group(1)
+        file = re.search(r"url=%2Fbrand%2F([^&\"]+)", src)
+        path = ROOT / "public" / "brand" / (file.group(1) if file else src.rsplit("/", 1)[-1])
+        mime = "image/svg+xml" if path.suffix == ".svg" else "image/jpeg"
+        tag = re.sub(r'\s(srcSet|sizes)="[^"]*"', "", tag)
+        tag = re.sub(r'loading="lazy"', 'loading="eager"', tag)
+        return re.sub(r'src="[^"]+"', f'src="data:{mime};base64,{b64img(path)}"', tag)
+
+    page = re.sub(r"<img\b[^>]*>", img, page)
+    live = (pathlib.Path(__file__).parent / "landing-live.js").read_text()
+    page = page.replace("</head>", f"<style>{css}</style></head>").replace("</body>", f"<script>{live}</script></body>")
+    return page
+
+
 def main() -> None:
     fonts = ROOT / "node_modules" / "@fontsource"
     hero = "data:image/jpeg;base64," + b64(ROOT / "public" / "brand" / "hero.jpg")
@@ -52,6 +87,15 @@ def main() -> None:
     )
     styles, sections, options = [], [], []
     for sid, file, label in SCREENS:
+        if sid == "landing":
+            # The landing that shipped (Hermes chapters, tutorial, frieze, motion), not the early mock-up.
+            doc = built_landing(lambda pth: b64(pth))
+            sections.append(
+                f'<section class="pt-screen" data-s="landing" data-label="{html.escape(label)}" hidden>'
+                f'<iframe class="pt-frame" title="Argus landing page" srcdoc="{html.escape(doc, quote=True)}"></iframe></section>'
+            )
+            options.append(f'<option value="{sid}">{html.escape(label)}</option>')
+            continue
         css, body = board(file)
         body = re.sub(r'src="/_blob/[0-9a-f]+"', f'src="{hero}"', body)
         styles.append(css)
@@ -77,6 +121,7 @@ TEMPLATE = """<!doctype html>
 /*BOARDS*/
 body{margin:0;background:#16110C}
 .pt-screen[hidden]{display:none!important}
+.pt-frame{display:block;width:100%;height:100vh;border:0;background:#16110C}
 /* hotspots: everything that goes somewhere */
 [data-hot]{cursor:pointer}
 body.pt-show [data-hot]{outline:2px dashed #C0551E;outline-offset:2px}

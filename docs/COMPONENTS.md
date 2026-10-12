@@ -34,7 +34,7 @@ The live catalogue is the **`/kit`** page (`app/kit/page.tsx`): it renders the r
 | `PositionDrawer` | `features/positions/PositionDrawer.tsx` | Full figures, price-rehearsal slider, add/repay amounts back to 1.50x, "Ask Argus about this" |
 | `PositionsPage` | `features/positions/PositionsPage.tsx` | `/app/positions` |
 | `AskPanel` | `features/ask/AskPanel.tsx` | Streaming chat, starter questions, action cards from `suggest_action`, Stop button |
-| `WalletProviders` / `WalletButton` | `features/wallet/` | Wallet Standard (no bundled adapters), read-only connect/disconnect |
+| `WalletProviders` / `WalletButton` | `features/wallet/` | Wallet Standard (no bundled adapters), read-only connect/disconnect. Styles: `wallet-adapter.css` is the library's CSS **minus its Google Fonts import**; loaded only on `/app` routes |
 | `ScanForm` | `features/landing/ScanForm.tsx` | Landing address box → `/app?wallet=…` (base58 check) |
 | `Tutorial` | `features/landing/Tutorial.tsx` | Three illustrated steps with live demos |
 | `BeforeAfter` | `features/landing/BeforeAfter.tsx` | 1.18x → 1.31x count-up |

@@ -93,8 +93,7 @@
 
   /* ---------- motion ---------- */
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const MOTION = ["pt-rise", "pt-reveal", "pt-seen", "pt-settle", "pt-wake", "pt-glow", "pt-crit", "pt-slide", "pt-drop", "pt-grow", "pt-draw", "pt-ring", "pt-pop", "pt-twinkle"];
-  let io;
+  const MOTION = ["pt-rise", "pt-wake", "pt-glow", "pt-crit", "pt-slide", "pt-drop", "pt-grow", "pt-draw", "pt-ring", "pt-pop", "pt-twinkle"];
 
   // Leave the current screen with a short fade, then show the next one.
   function go(id, push = true) {
@@ -126,7 +125,6 @@
   }
 
   function animate(s) {
-    io?.disconnect();
     // Reset anything from the previous visit so revisits animate again.
     s.querySelectorAll("." + MOTION.join(",.")).forEach((el) => el.classList.remove(...MOTION));
     if (reduced) return;
@@ -139,7 +137,7 @@
     if (main) {
       blocks(main).forEach((el, i) => add(el, "pt-rise", 60 + i * 55));
     } else if (s.dataset.s === "landing") {
-      landing(s);
+      // The built landing animates itself inside its frame.
     } else {
       // Wallet: the three dialogs side by side.
       s.querySelectorAll('[role="dialog"]').forEach((el, i) => add(el, "pt-rise", 80 + i * 140));
@@ -190,25 +188,6 @@
       if (l.getAttribute("stroke-dasharray")) return;
       l.setAttribute("pathLength", "1");
       add(l, "pt-draw", 900 + i * 40);
-    });
-  }
-
-  // Landing: hero settles, everything below reveals on scroll.
-  function landing(s) {
-    const hero = s.querySelector("section");
-    hero?.querySelector("img")?.classList.add("pt-settle");
-    hero?.querySelectorAll("h1, h1 ~ div").forEach((el, i) => add(el, "pt-rise", 150 + i * 200));
-    const later = [...s.querySelectorAll("section, footer")].slice(1).flatMap((sec) => {
-      const kids = [...sec.firstElementChild?.children || []];
-      return kids.length > 1 && kids.length <= 8 ? kids : [sec];
-    });
-    io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && (e.target.classList.add("pt-seen"), io.unobserve(e.target))),
-      { rootMargin: "0px 0px -10% 0px" },
-    );
-    later.forEach((el, i) => {
-      add(el, "pt-reveal", (i % 4) * 90);
-      io.observe(el);
     });
   }
 
@@ -275,6 +254,12 @@
     }
     if (e.key === "Escape" && current !== "landing") back();
     if (e.key === "Enter" && current === "askbar" && document.activeElement?.id === "ask") go("askpanel");
+  });
+
+  // The landing lives in an iframe (the real built page); it asks us to navigate.
+  window.addEventListener("message", (e) => {
+    const id = e.data && e.data.argusGo;
+    if (typeof id === "string" && screens.some((x) => x.dataset.s === id)) go(id);
   });
 
   jump.addEventListener("change", () => go(jump.value));

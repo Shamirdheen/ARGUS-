@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import "@fontsource/michroma/400.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
-import "@solana/wallet-adapter-react-ui/styles.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
