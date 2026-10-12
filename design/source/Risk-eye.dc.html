@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Argus risk eye</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#16110C}
+.lid{transform-box:fill-box;transform-origin:center;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.iris{transform-box:fill-box;transform-origin:center;transition:transform .6s cubic-bezier(.2,.8,.2,1),fill .6s ease,stroke .6s ease}
+.glow{transition:opacity .6s ease}
+.pulse{animation:argusPulse 1.6s ease-in-out infinite}
+@keyframes argusPulse{0%,100%{opacity:.35}50%{opacity:.9}}
+.row{transition:background-color .6s ease,color .6s ease}
+input[type=range]{width:100%;accent-color:#C0551E;height:28px}
+@media (prefers-reduced-motion: reduce){.lid,.iris,.glow,.row{transition:none}.pulse{animation:none}}
+</style>
+</helmet>
+<div style="width:1440px;box-sizing:border-box;background:#16110C;color:#EFC796;padding:64px;display:flex;flex-direction:column;gap:36px;font-family:'IBM Plex Mono',ui-monospace,monospace">
+<div style="display:flex;flex-direction:column;gap:8px">
+<span style="font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#D06F3C">Risk eye · Mono-2 · terracotta means danger</span>
+<h1 style="margin:0;font:400 34px/1.1 Michroma,sans-serif;color:#F6DDB8">The eye opens as risk rises.</h1>
+<p style="margin:0;font:400 14px/1.6 'IBM Plex Mono',monospace;color:#DEB281;max-width:880px">One continuous control: health factor in, eye out. The lid opens, the iris grows, and terracotta goes from dim ash to bright clay. Below 1.2x it glows and pulses. No other colour is used.</p>
+</div>
+
+<section style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:center;border:1px solid #33271D;padding:40px;background:#1E1711">
+<div style="display:flex;align-items:center;justify-content:center;min-height:320px">
+<svg viewBox="0 0 400 240" width="480" height="288" role="img" aria-label="{{ aria }}">
+<ellipse class="glow {{ pulse_cls }}" cx="200" cy="120" rx="170" ry="96" fill="#C0551E" opacity="{{ glow_op }}" style="filter:blur(28px)"></ellipse>
+<g class="lid" style="transform:scaleY({{ open }})">
+<path d="M20 120 Q200 -10 380 120 Q200 250 20 120Z" fill="#16110C" stroke="{{ lid_col }}" stroke-width="10" vector-effect="non-scaling-stroke"></path>
+</g>
+<circle class="iris" cx="200" cy="120" r="64" fill="{{ iris_fill }}" stroke="{{ iris_col }}" stroke-width="10" vector-effect="non-scaling-stroke" style="transform:scale({{ iris_s }})"></circle>
+<circle class="iris" cx="200" cy="120" r="24" fill="#16110C" style="transform:scale({{ pupil_s }})"></circle>
+</svg>
+</div>
+<div style="display:flex;flex-direction:column;gap:22px">
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#A8865F">Health factor</span>
+<span style="font:400 56px/1 Michroma,sans-serif;color:{{ hf_col }};transition:color .6s ease">{{ hf_txt }}</span>
+<span style="font:500 15px 'IBM Plex Mono',monospace;color:{{ hf_col }};transition:color .6s ease">{{ state_label }}</span>
+</div>
+<label for="hf" style="font:400 13px 'IBM Plex Mono',monospace;color:#DEB281">Drag to change the position's health</label>
+<input id="hf" type="range" min="100" max="260" step="1" value="{{ hf_val }}" onChange="{{ onSlide }}" aria-label="Health factor">
+<div style="display:flex;justify-content:space-between;font:400 12px 'IBM Plex Mono',monospace;color:#7E654A"><span>1.00x liquidation</span><span>2.60x</span></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+<button type="button" onClick="{{ onPlay }}" style="min-height:44px;padding:0 18px;background:#EFC796;color:#16110C;border:0;font:500 14px 'IBM Plex Mono',monospace;cursor:pointer">{{ play_label }}</button>
+<button type="button" onClick="{{ toSafe }}" style="min-height:44px;padding:0 14px;background:transparent;color:#EFC796;border:1px solid #7E654A;font:500 13px 'IBM Plex Mono',monospace;cursor:pointer">Safe</button>
+<button type="button" onClick="{{ toWatch }}" style="min-height:44px;padding:0 14px;background:transparent;color:#EFC796;border:1px solid #7E654A;font:500 13px 'IBM Plex Mono',monospace;cursor:pointer">Watch</button>
+<button type="button" onClick="{{ toWarn }}" style="min-height:44px;padding:0 14px;background:transparent;color:#EFC796;border:1px solid #7E654A;font:500 13px 'IBM Plex Mono',monospace;cursor:pointer">Warning</button>
+<button type="button" onClick="{{ toCrit }}" style="min-height:44px;padding:0 14px;background:transparent;color:#EFC796;border:1px solid #7E654A;font:500 13px 'IBM Plex Mono',monospace;cursor:pointer">Critical</button>
+</div>
+</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:12px">
+<h2 style="margin:0;font:400 18px Michroma,sans-serif;letter-spacing:.06em;color:#F6DDB8">IN A ROW</h2>
+<div class="row" style="display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1.1fr) minmax(0,.9fr) minmax(0,.7fr) minmax(0,1.3fr);gap:12px;align-items:center;padding:14px 16px;background:{{ row_bg }};border-top:1px solid #33271D;border-bottom:1px solid #33271D">
+<span class="row" style="font:500 14px 'IBM Plex Mono',monospace;color:{{ row_ink }}">SOL-PERP Cross Margin</span>
+<span class="row" style="font:400 14px 'IBM Plex Mono',monospace;color:{{ row_sub }}">Drift Protocol</span>
+<span class="row" style="font:400 14px 'IBM Plex Mono',monospace;color:{{ row_sub }};text-align:right">$185,000</span>
+<span class="row" style="font:500 14px 'IBM Plex Mono',monospace;color:{{ row_hf }};text-align:right">{{ hf_txt }}</span>
+<span style="justify-self:end;display:flex;gap:10px;align-items:center">
+<svg viewBox="0 0 400 240" width="34" height="20" aria-hidden="true">
+<g class="lid" style="transform:scaleY({{ open }})"><path d="M20 120 Q200 -10 380 120 Q200 250 20 120Z" fill="none" stroke="{{ mini_lid }}" stroke-width="2.4" vector-effect="non-scaling-stroke"></path></g>
+<circle class="iris" cx="200" cy="120" r="64" fill="{{ mini_iris }}" stroke="{{ mini_lid }}" stroke-width="2" vector-effect="non-scaling-stroke" style="transform:scale({{ iris_s }})"></circle>
+</svg>
+<sc-if value="{{ is_crit }}" hint-placeholder-val="{{ false }}"><span style="font:500 12px/1 'IBM Plex Mono',monospace;padding:6px 9px;color:#D06F3C;background:#16110C">Act now</span></sc-if>
+<sc-if value="{{ not_crit }}" hint-placeholder-val="{{ true }}"><span class="row" style="font:500 13px 'IBM Plex Mono',monospace;color:{{ row_hf }}">{{ row_word }}</span></sc-if>
+</span>
+</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:14px">
+<h2 style="margin:0;font:400 18px Michroma,sans-serif;letter-spacing:.06em;color:#F6DDB8">THE FOUR STOPS</h2>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px">
+<sc-for list="{{ stops }}" as="s" hint-placeholder-count="4">
+<div style="display:flex;flex-direction:column;gap:10px;border:1px solid #33271D;padding:18px">
+<svg viewBox="0 0 400 240" width="150" height="90" aria-hidden="true">
+<ellipse cx="200" cy="120" rx="170" ry="96" fill="#C0551E" opacity="{{ s.glow }}" style="filter:blur(22px)"></ellipse>
+<g style="transform-box:fill-box;transform-origin:center;transform:scaleY({{ s.open }})"><path d="M20 120 Q200 -10 380 120 Q200 250 20 120Z" fill="#16110C" stroke="{{ s.lid }}" stroke-width="5" vector-effect="non-scaling-stroke"></path></g>
+<circle cx="200" cy="120" r="64" fill="{{ s.fill }}" stroke="{{ s.iris }}" stroke-width="5" vector-effect="non-scaling-stroke" style="transform-box:fill-box;transform-origin:center;transform:scale({{ s.is }})"></circle>
+<circle cx="200" cy="120" r="24" fill="#16110C" style="transform-box:fill-box;transform-origin:center;transform:scale({{ s.ps }})"></circle>
+</svg>
+<span style="font:500 13px 'IBM Plex Mono',monospace;color:{{ s.text }}">{{ s.name }} · {{ s.range }}</span>
+<span style="font:400 12px/1.5 'IBM Plex Mono',monospace;color:#A8865F">{{ s.desc }}</span>
+</div>
+</sc-for>
+</div>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1480}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { hf: 158, playing: false, dir: -1 }; }
+  componentWillUnmount() { clearInterval(this.timer); }
+  togglePlay() {
+    if (this.state.playing) { clearInterval(this.timer); this.setState({ playing: false }); return; }
+    this.setState({ playing: true });
+    this.timer = setInterval(() => {
+      let { hf, dir } = this.state;
+      hf += dir * 3;
+      if (hf <= 100) { hf = 100; dir = 1; }
+      if (hf >= 260) { hf = 260; dir = -1; }
+      this.setState({ hf, dir });
+    }, 60);
+  }
+  // Colour ramp: dim ash -> clay -> terracotta -> bright clay, all from the illustration.
+  ramp(t) {
+    const stops = [[0, [126, 101, 74]], [0.4, [133, 63, 25]], [0.7, [192, 85, 30]], [1, [224, 148, 106]]];
+    for (let i = 1; i < stops.length; i++) {
+      if (t <= stops[i][0]) {
+        const [t0, a] = stops[i - 1], [t1, b] = stops[i], k = (t - t0) / (t1 - t0);
+        return 'rgb(' + a.map((v, j) => Math.round(v + (b[j] - v) * k)).join(',') + ')';
+      }
+    }
+    return 'rgb(224,148,106)';
+  }
+  look(hf) {
+    const x = hf / 100;
+    const t = Math.max(0, Math.min(1, (2.2 - x) / 1.2)); // 0 at 2.2x+, 1 at 1.0x
+    const state = x >= 2.0 ? 'safe' : x >= 1.5 ? 'watch' : x >= 1.2 ? 'warning' : 'critical';
+    return { x, t, state, open: 0.32 + 0.68 * t, iris: 0.55 + 0.5 * t, pupil: 1.15 - 0.55 * t, col: this.ramp(t) };
+  }
+  renderVals() {
+    const L = this.look(this.state.hf);
+    const crit = L.state === 'critical';
+    const labels = { safe: 'Safe · Argus is watching', watch: 'Watch', warning: 'Warning', critical: 'Critical · act now' };
+    const set = (v) => () => { clearInterval(this.timer); this.setState({ hf: v, playing: false }); };
+    const stopDefs = [
+      ['Safe', '≥ 2.0x', 230, 'Lid low, iris ash. Calm, never closed.'],
+      ['Watch', '1.5–2.0x', 175, 'Lid half open, iris hollow clay.'],
+      ['Warning', '1.2–1.5x', 135, 'Lid wide, iris solid terracotta.'],
+      ['Critical', '< 1.2x', 104, 'Fully open, bright clay, glowing pulse.']
+    ];
+    return {
+      open: L.open.toFixed(3), iris_s: L.iris.toFixed(3), pupil_s: L.pupil.toFixed(3),
+      iris_col: L.state === 'safe' ? '#7E654A' : L.col,
+      iris_fill: L.state === 'watch' || L.state === 'safe' ? '#16110C' : L.col,
+      lid_col: L.state === 'safe' ? '#7E654A' : L.state === 'watch' ? '#EFC796' : L.col,
+      glow_op: crit ? '1' : (L.t > 0.6 ? ((L.t - 0.6) * 0.8).toFixed(2) : '0'),
+      pulse_cls: crit ? 'pulse' : '',
+      hf_txt: L.x.toFixed(2) + 'x', hf_val: this.state.hf,
+      hf_col: L.state === 'safe' ? '#A8865F' : L.state === 'watch' ? '#EFC796' : L.state === 'warning' ? '#E0946A' : '#E0946A',
+      state_label: labels[L.state],
+      aria: 'Risk eye: ' + labels[L.state],
+      onSlide: (e) => { clearInterval(this.timer); this.setState({ hf: Number(e.target.value), playing: false }); },
+      onPlay: () => this.togglePlay(), play_label: this.state.playing ? 'Pause' : 'Play the sweep',
+      toSafe: set(230), toWatch: set(175), toWarn: set(135), toCrit: set(104),
+      row_bg: crit ? '#D06F3C' : 'transparent',
+      row_ink: crit ? '#16110C' : '#F6DDB8', row_sub: crit ? '#16110C' : '#A8865F',
+      row_hf: crit ? '#16110C' : L.state === 'warning' ? '#E0946A' : L.state === 'watch' ? '#EFC796' : '#A8865F',
+      mini_lid: crit ? '#16110C' : L.state === 'safe' ? '#7E654A' : L.state === 'watch' ? '#EFC796' : '#E0946A',
+      mini_iris: crit ? '#16110C' : (L.state === 'warning' ? '#C0551E' : 'none'),
+      row_word: { safe: '', watch: 'Watch', warning: 'Warning', critical: '' }[L.state],
+      is_crit: crit, not_crit: !crit,
+      stops: stopDefs.map(([name, range, hf, desc]) => {
+        const s = this.look(hf); const c = s.state === 'critical';
+        return { name, range, desc, open: s.open.toFixed(3), is: s.iris.toFixed(3), ps: s.pupil.toFixed(3),
+          lid: s.state === 'safe' ? '#7E654A' : s.state === 'watch' ? '#EFC796' : s.col,
+          iris: s.state === 'safe' ? '#7E654A' : s.col,
+          fill: s.state === 'safe' || s.state === 'watch' ? '#16110C' : s.col,
+          glow: c ? '0.8' : '0', text: s.state === 'safe' ? '#A8865F' : s.state === 'watch' ? '#EFC796' : '#E0946A' };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

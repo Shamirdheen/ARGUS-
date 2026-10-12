@@ -1,0 +1,98 @@
+/* Argus colour system v1 — every value sampled from the hero illustration.
+ * Paste into src/index.css, replacing the old @theme block and the :root / .dark variables.
+ *
+ * Two surfaces, three colours:
+ *   Terracotta = "the vase"          → landing page, brand, primary actions
+ *   Ink        = "inside the figure" → the product (dark by default)
+ *   Sand       = "the incised line"  → text and borders
+ */
+
+@theme {
+  /* Terracotta — brand */
+  --color-terra-700: #853f19;
+  --color-terra-600: #a04a1b;
+  --color-terra-500: #c0551e; /* base: the illustration's ground */
+  --color-terra-400: #d06f3c; /* use for links/small text on ink (5.38:1) */
+  --color-terra-300: #e0946a;
+
+  /* Ink — product surfaces, darkest to lightest */
+  --color-ink-950: #16110c; /* base: page ground */
+  --color-ink-900: #1e1711; /* cards */
+  --color-ink-850: #271e16; /* raised: drawers, popovers */
+  --color-ink-800: #33271d; /* hover, hairline borders */
+  --color-ink-700: #482a16; /* strong borders, pressed */
+
+  /* Sand — text and lines */
+  --color-sand-100: #f6ddb8; /* headings, emphasis */
+  --color-sand-200: #efc796; /* base: body text (11.86:1 on ink-950) */
+  --color-sand-300: #deb281;
+  --color-sand-500: #a8865f; /* secondary text (5.57:1) */
+  --color-sand-600: #7e654a; /* borders only, never text */
+
+  /* Risk — MONO-2: no extra hues. In the product, terracotta means danger and nothing else.
+   * Severity is carried by lightness, weight and the risk eye (lid opens, iris goes ash → bright clay).
+   * Fully colour-blind safe because nothing depends on hue. */
+  --color-risk-safe: #a8865f;      /* sand-500, dimmed — 5.57:1; no eye label, fades back */
+  --color-risk-watch: #efc796;     /* sand-200 — 11.86:1; hollow half-open eye + "Watch" */
+  --color-risk-warning: #e0946a;   /* terra-300 — 7.69:1; heavier + underlined number, wide eye */
+  --color-risk-critical: #d06f3c;  /* terra-400 — whole row fill, ink text on top 5.38:1 */
+  --color-risk-critical-ink: #16110c;
+  /* Risk-eye iris ramp (interpolate by health factor 2.2x → 1.0x) */
+  --eye-0: #7e654a;  /* ash   — safe   */
+  --eye-1: #853f19;  /* clay  — watch  */
+  --eye-2: #c0551e;  /* terracotta — warning */
+  --eye-3: #e0946a;  /* bright clay + glow pulse — critical */
+}
+
+/* Semantic roles — components should use these, not the raw ramps,
+ * so a future theme change only touches this block. */
+:root {
+  --bg-canvas: var(--color-ink-950);
+  --surface-card: var(--color-ink-900);
+  --surface-elevated: var(--color-ink-850);
+  --surface-hover: var(--color-ink-800);
+  --border-subtle: var(--color-ink-800);
+  --border-strong: var(--color-sand-600);
+  --text-main: var(--color-sand-200);
+  --text-strong: var(--color-sand-100);
+  --text-sub: var(--color-sand-500);
+  --accent: var(--color-sand-200);           /* MONO-2: primary buttons are sand, ink text (11.86:1) */
+  --accent-hover: var(--color-sand-100);
+  --brand: var(--color-terra-500);           /* logo, large fills, landing ground */
+  --color-safe: var(--color-risk-safe);
+  --color-watch: var(--color-risk-watch);
+  --color-warning: var(--color-risk-warning);
+  --color-critical: var(--color-risk-critical);
+}
+
+/* Landing / marketing sections: "the vase". Wrap them in .surface-vase. */
+.surface-vase {
+  --bg-canvas: var(--color-terra-500);
+  --text-main: var(--color-ink-950); /* 4.07:1 — headlines and 18px+ bold only */
+  --accent: var(--color-ink-950);    /* primary button: ink fill, sand text */
+}
+
+/* Type — two faces.
+ * Michroma: logo, one page title per screen, section headings, landing headlines,
+ *           and the single hero number per view. 18px+. Never in body/buttons/tables.
+ * IBM Plex Mono: everything else. 400/500 only; body 14–16px, line-height 1.5–1.6.
+ * Load: https://fonts.googleapis.com/css2?family=Michroma&family=IBM+Plex+Mono:wght@400;500&display=swap
+ */
+@theme {
+  --font-display: "Michroma", "Arial Black", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: var(--font-mono); /* body defaults to Plex Mono */
+}
+body { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+h1, h2, .font-display { font-family: var(--font-display); font-weight: 400; }
+
+/* Risk eye motion — lid and iris ease over 600ms; critical pulses its glow every 1.6s.
+ * Always respect reduced-motion. */
+.risk-eye-lid, .risk-eye-iris { transform-box: fill-box; transform-origin: center;
+  transition: transform .6s cubic-bezier(.2,.8,.2,1), fill .6s ease, stroke .6s ease; }
+@keyframes argus-pulse { 0%,100% { opacity: .35 } 50% { opacity: .9 } }
+.risk-eye-glow--critical { animation: argus-pulse 1.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .risk-eye-lid, .risk-eye-iris { transition: none; }
+  .risk-eye-glow--critical { animation: none; }
+}

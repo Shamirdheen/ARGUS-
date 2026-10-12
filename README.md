@@ -2,6 +2,13 @@
 
 A hundred eyes on your collateral. Argus watches Solana lending positions (Kamino, Jupiter Lend) and tells you which one breaks first and what to do before the liquidators do.
 
+## Docs and design
+
+- [`CLAUDE.md`](CLAUDE.md): rules for anyone (human or AI) working in this repo
+- [`docs/DESIGN.md`](docs/DESIGN.md): design system: colour, risk tiers, type, components, voice, motion
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md): data flow, known gaps, upgrade phases
+- [`design/`](design/README.md): every screen as PNG, logo kit, canvas sources
+
 ## Run
 
 ```bash
