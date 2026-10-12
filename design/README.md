@@ -6,6 +6,7 @@ Everything designed for Argus v2, exported from the Claude Design canvas on 12 O
 | Folder | What's in it |
 | --- | --- |
 | `built/` | **What's actually built** (captured from the running app): full pages on desktop and phone, every landing section, interactive states (drawer, Ask Argus, wallet), the `/kit` component sheet, landing motion videos and the app motion video (`video/app-motion-desktop.mp4`). When `built/` and `screens/` disagree, `built/` wins |
+| `wireframe/argus-wireframe.html` | **Clickable lo-fi wireframe** of the whole product: flow map, every built and planned screen, working drawer slider, Ask Argus, wallet connect, desktop/phone toggle and design notes. One file; open it in any browser |
 | `screens/` | The original product screen and landing mock-ups, as PNG |
 | `system/` | Brand, type, components, risk colours, living favicon spec, voice and copy |
 | `explorations/` | Logo rounds 1–3 (history only; the final logo is in `brand/logo/`) |

@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Argus wireframe</title>
+<style>
+/* Lo-fi wireframe: greyscale on purpose, so structure and flow are judged, not colour.
+   One blue is used only for annotations (numbered notes) and "planned" screens are hatched. */
+:root{
+  --paper:#f3f2ee; --card:#fff; --line:#1f1f1f; --mid:#8a8a86; --soft:#d7d6d1; --fill:#e9e8e3;
+  --note:#2b59c3; --note-bg:#e8eefc;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html,body{margin:0;background:#d9d8d3;color:var(--line);font:14px/1.5 var(--mono)}
+button,input,select{font:inherit;color:inherit}
+a{color:inherit}
+
+/* ---------- tool bar ---------- */
+.tool{position:sticky;top:0;z-index:100;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 16px;background:#1f1f1f;color:#f3f2ee}
+.tool b{font-weight:600;margin-right:6px}
+.tool select,.tool button{background:#2e2e2e;border:1px solid #555;color:#f3f2ee;padding:6px 10px;cursor:pointer;min-height:34px}
+.tool button[aria-pressed=true]{background:#f3f2ee;color:#1f1f1f}
+.tool .sp{flex:1}
+.tool .hint{color:#a9a8a3;font-size:12px}
+
+/* ---------- device frame ---------- */
+.stage{padding:24px 16px 64px;display:flex;justify-content:center}
+.device{width:1280px;max-width:100%;background:var(--paper);border:2px solid var(--line);position:relative;overflow:hidden;min-height:760px;transition:width .3s}
+body.phone .device{width:390px}
+.screen{display:none}
+.screen.on{display:block}
+
+/* ---------- wire primitives ---------- */
+.pad{padding:24px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.col{display:flex;flex-direction:column;gap:10px}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.split{grid-template-columns:1.3fr 1fr}
+body.phone .g2,body.phone .g3,body.phone .g4,body.phone .split{grid-template-columns:1fr}
+.box{background:var(--card);border:1.5px solid var(--line);padding:14px;min-width:0}
+.box.soft{border-color:var(--mid)}
+.box.dash{border-style:dashed}
+.h1{font-size:30px;line-height:1.1;font-weight:700;letter-spacing:-.01em}
+.h2{font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+body.phone .h1{font-size:24px}
+.lbl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid)}
+.sub{color:var(--mid);font-size:12px}
+.big{font-size:34px;font-weight:700}
+.line{height:10px;background:var(--soft);border-radius:2px}
+.line.w60{width:60%}.line.w80{width:80%}.line.w40{width:40%}
+.img{position:relative;background:var(--fill);border:1.5px solid var(--line);min-height:120px;display:grid;place-items:center;color:var(--mid);font-size:12px;text-align:center;padding:8px}
+.img::before,.img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - .75px),var(--soft) 50%,transparent calc(50% + .75px))}
+.img::after{background:linear-gradient(to bottom right,transparent calc(50% - .75px),var(--soft) 50%,transparent calc(50% + .75px))}
+.img span{position:relative;z-index:1;background:var(--fill);padding:2px 6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:0 14px;border:1.5px solid var(--line);background:var(--card);cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn.pri{background:var(--line);color:var(--paper)}
+.btn.sim{border-style:dashed}
+.btn.ghost{border-color:transparent;background:transparent;text-decoration:underline}
+.btn.sm{min-height:32px;padding:0 10px;font-size:12px}
+.btn:hover{outline:2px solid var(--note);outline-offset:1px}
+.input{min-height:40px;border:1.5px solid var(--line);background:var(--card);padding:0 10px;display:flex;align-items:center;color:var(--mid);flex:1;min-width:0}
+input.input{color:var(--line)}
+.chip{display:inline-block;border:1.5px solid var(--line);padding:2px 8px;font-size:11px}
+.chip.inv{background:var(--line);color:var(--paper)}
+.eye{display:inline-block;width:28px;height:14px;border:1.5px solid var(--line);border-radius:50%;position:relative;vertical-align:middle}
+.eye::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--line)}
+.eye.lg{width:84px;height:42px}.eye.lg::after{width:24px;height:24px;margin:-12px}
+.eye.s0{transform:scaleY(.4)}.eye.s1{transform:scaleY(.6)}.eye.s2{transform:scaleY(.85)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);padding:8px;border-bottom:1.5px solid var(--line)}
+td{padding:10px 8px;border-bottom:1px solid var(--soft)}
+tr.click{cursor:pointer}tr.click:hover td{background:var(--note-bg)}
+tr.crit td{background:var(--line);color:var(--paper)}
+tr.crit:hover td{background:#333}
+.r{text-align:right}
+.scrollx{overflow-x:auto}
+.hatch{background:repeating-linear-gradient(45deg,transparent 0 10px,rgba(0,0,0,.04) 10px 20px)}
+details{border-top:1.5px solid var(--line)}details:last-child{border-bottom:1.5px solid var(--line)}
+summary{cursor:pointer;padding:12px 0;list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"+"}details[open] summary::after{content:"−"}
+
+/* ---------- app chrome ---------- */
+.appbar{display:flex;align-items:center;gap:14px;padding:12px 24px;border-bottom:1.5px solid var(--line);background:var(--card);flex-wrap:wrap}
+.logo{font-weight:800;letter-spacing:.12em}
+.nav{display:flex;gap:2px;flex-wrap:wrap}
+.nav a{padding:8px 10px;text-decoration:none;font-size:13px;color:var(--mid);border-bottom:2px solid transparent}
+.nav a.cur{color:var(--line);border-bottom-color:var(--line)}
+.nav a.plan{font-style:italic}
+.nav a.plan::after{content:" ·p";font-size:10px}
+body.phone .nav{order:3;width:100%;overflow-x:auto;flex-wrap:nowrap}
+
+/* ---------- overlays ---------- */
+.overlay{position:absolute;inset:0;background:rgba(31,31,31,.45);display:none;z-index:20}
+.overlay.on{display:block}
+.panel{position:absolute;top:0;right:0;bottom:0;width:440px;max-width:100%;background:var(--card);border-left:2px solid var(--line);display:flex;flex-direction:column}
+.panel .hd{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1.5px solid var(--line)}
+.panel .bd{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:14px}
+.panel .ft{padding:14px 18px;border-top:1.5px solid var(--line);display:flex;gap:8px;flex-wrap:wrap}
+.modal{position:absolute;left:50%;top:120px;transform:translateX(-50%);width:380px;max-width:calc(100% - 32px);background:var(--card);border:2px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:10px}
+.kv{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid var(--soft);font-size:13px}
+.msg-u{align-self:flex-end;max-width:85%;border:1.5px solid var(--line);background:var(--fill);padding:8px 10px}
+.msg-a{display:flex;gap:10px}
+.msg-a .av{width:24px;height:24px;border:1.5px solid var(--line);border-radius:50%;flex:none}
+
+/* ---------- planned banner + notes ---------- */
+.planned{border:2px dashed var(--line);padding:8px 12px;font-size:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.planned b{background:var(--line);color:var(--paper);padding:1px 6px}
+.n{display:none;position:relative;width:20px;height:20px;border-radius:50%;background:var(--note);color:#fff;font-size:11px;font-weight:700;align-items:center;justify-content:center;flex:none;cursor:help;vertical-align:middle}
+body.notes .n{display:inline-flex}
+.n:hover::after,.n:focus::after{content:attr(data-t);position:absolute;z-index:50;left:24px;top:-4px;width:260px;background:var(--note-bg);color:#14306e;border:1.5px solid var(--note);padding:8px 10px;font-weight:400;font-size:12px;line-height:1.45;text-transform:none;letter-spacing:0;white-space:normal}
+.notes-list{display:none;margin:0 auto;max-width:1280px;padding:0 16px 40px}
+body.notes .notes-list{display:block}
+.notes-list ol{background:var(--note-bg);border:1.5px solid var(--note);padding:14px 14px 14px 36px;margin:0;color:#14306e;font-size:13px}
+
+/* ---------- flow map ---------- */
+.map{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+body.phone .map{grid-template-columns:1fr}
+.node{border:1.5px solid var(--line);background:var(--card);padding:12px;cursor:pointer;display:flex;flex-direction:column;gap:6px;text-decoration:none}
+.node:hover{outline:2px solid var(--note)}
+.node.plan{border-style:dashed}
+.node .to{font-size:11px;color:var(--mid)}
+.tag{font-size:10px;border:1px solid var(--line);padding:0 5px;align-self:flex-start}
+.tag.b{background:var(--line);color:var(--paper)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--mid)}
+</style>
+</head>
+<body class="notes">
+
+<div class="tool" role="toolbar" aria-label="Wireframe controls">
+  <b>ARGUS · wireframe</b>
+  <label class="hint" for="jump">Screen</label>
+  <select id="jump" aria-label="Jump to screen"></select>
+  <button type="button" id="bDesk" aria-pressed="true">Desktop</button>
+  <button type="button" id="bPhone" aria-pressed="false">Phone</button>
+  <button type="button" id="bNotes" aria-pressed="true">Notes</button>
+  <span class="sp"></span>
+  <span class="hint">Click anything that looks clickable · Esc closes panels · ← back</span>
+</div>
+
+<div class="stage"><div class="device" id="device">
+
+<!-- ======================= FLOW MAP ======================= -->
+<section class="screen pad" data-s="map" data-title="0 · Flow map">
+  <div class="col" style="gap:16px">
+    <div class="col" style="gap:4px"><span class="lbl">Argus v2 · clickable wireframe</span><div class="h1">Flow map</div>
+      <span class="sub">Every screen and where it leads. Solid = built in the app. Dashed = planned (designed, not built). Click a box to open it.</span></div>
+    <div class="legend"><span><span class="tag b">built</span> live in the app</span><span><span class="tag">planned</span> mock-up only</span><span><span class="n" style="display:inline-flex">1</span> design note (hover)</span></div>
+    <div class="h2" style="margin-top:6px">Public</div>
+    <div class="map">
+      <a class="node" href="#landing"><span class="tag b">built</span><b>1 · Landing</b><span class="to">→ Overview (scan wallet / launch app)</span></a>
+      <a class="node" href="#notfound"><span class="tag b">built</span><b>11 · 404</b><span class="to">→ Overview, Landing</span></a>
+    </div>
+    <div class="h2" style="margin-top:6px">App</div>
+    <div class="map">
+      <a class="node" href="#overview"><span class="tag b">built</span><b>2 · Overview</b><span class="to">→ Drawer, Ask, Wallet, Positions</span></a>
+      <a class="node" href="#positions"><span class="tag b">built</span><b>3 · Positions</b><span class="to">→ Drawer</span></a>
+      <a class="node" href="#overview" data-open="drawer"><span class="tag b">built</span><b>4 · Position drawer</b><span class="to">overlay → Ask Argus</span></a>
+      <a class="node" href="#overview" data-open="ask"><span class="tag b">built</span><b>5 · Ask Argus</b><span class="to">overlay (⌘K) → Drawer</span></a>
+      <a class="node" href="#overview" data-open="wallet"><span class="tag b">built</span><b>6 · Connect wallet</b><span class="to">overlay → Overview (your wallet)</span></a>
+      <a class="node" href="#states"><span class="tag b">built</span><b>12 · States</b><span class="to">loading · empty · error</span></a>
+      <a class="node plan" href="#terminal"><span class="tag">planned</span><b>7 · Terminal</b><span class="to">price + leverage rehearsal + risk stream</span></a>
+      <a class="node plan" href="#radar"><span class="tag">planned</span><b>8 · Risk Radar</b><span class="to">constellation + drawdown scenarios</span></a>
+      <a class="node plan" href="#alerts"><span class="tag">planned</span><b>9 · Alerts</b><span class="to">watchdogs + channels (needs Phase 2)</span></a>
+      <a class="node plan" href="#activity"><span class="tag">planned</span><b>10 · Activity</b><span class="to">timeline (needs stored history)</span></a>
+    </div>
+    <div class="box soft dash"><span class="lbl">Main path</span><div>Landing → paste wallet or Launch app → Overview → closest-to-liquidation → Open position (drawer) → rehearse a price move → see the fix → Ask Argus about this → action card → back to the drawer.</div></div>
+  </div>
+</section>
+
+<!-- ======================= 1 LANDING ======================= -->
+<section class="screen" data-s="landing" data-title="1 · Landing">
+  <div class="appbar"><span class="logo">ΛRGUS</span><span class="sp" style="flex:1"></span>
+    <nav class="nav" aria-label="Landing"><a href="#landing" data-scroll="how">How it works</a><a href="#landing" data-scroll="myth">Why Argus</a><a href="#landing" data-scroll="faq">FAQ</a></nav>
+    <a class="btn pri sm" href="#overview">Launch app</a></div>
+  <div class="pad grid split" style="align-items:center;min-height:380px">
+    <div class="col" style="gap:16px">
+      <div class="h1" style="font-size:40px">A hundred eyes on your collateral.<span class="n" data-t="Headline rises line by line on load. Michroma in the real design; display weight here.">1</span></div>
+      <div class="box col">
+        <div class="line w80"></div><div class="line w60"></div>
+        <div class="row"><input class="input" id="scanIn" placeholder="Wallet address" aria-label="Wallet address"><button class="btn pri" id="scanBtn">Scan wallet →</button></div>
+        <span class="sub" id="scanMsg">Read-only. No signature, no keys. Leave it empty to see the demo.</span>
+      </div>
+    </div>
+    <div class="img" style="min-height:300px"><span>Hero illustration: Argus covered in eyes, at a laptop</span></div>
+  </div>
+  <div class="pad grid g3" style="padding-top:0"><div class="box"><div class="big">2</div><span class="sub">protocols at launch¹</span></div><div class="box"><div class="big">30s</div><span class="sub">between looks²</span></div><div class="box"><div class="big">0</div><span class="sub">signatures needed³</span></div></div>
+  <div class="pad col" id="how"><span class="lbl">How it works</span><div class="h1">See it first. Fix it early.</div>
+    <div class="grid g3"><div class="col"><div class="big">01</div><b>Connect</b><div class="line"></div></div><div class="col"><div class="big">02</div><b>Watch</b><div class="line"></div></div><div class="col"><div class="big">03</div><b>Act early</b><div class="line"></div></div></div></div>
+  <div class="img" style="min-height:200px;border-left:0;border-right:0"><span>Night-watch band (frieze): "Every block. Every position. All night." <span class="n" data-t="Sky drifts slowly (60 s). Full-bleed.">2</span></span></div>
+  <div class="pad col"><span class="lbl">A short tutorial</span><div class="h1">Three things Argus teaches you.</div>
+    <div class="grid g3">
+      <div class="box col"><div class="img"><span>Argus + three eyes</span></div><b>Read the eye</b><div class="row"><span class="eye" id="tEye"></span><span id="tHf">2.20x</span></div><input type="range" min="95" max="240" value="220" id="tRange" aria-label="Health factor demo"><span class="sub">Drag health down; the eye opens. <span class="n" data-t="Self-demos once (2.20x → 1.05x) when scrolled into view, until touched.">3</span></span></div>
+      <div class="box col"><div class="img"><span>Argus turning a wheel</span></div><b>Rehearse the crash</b><div class="line"></div><div class="line w60"></div><span class="sub">SOL slider → health + add/repay amounts</span></div>
+      <div class="box col"><div class="img"><span>Argus at his laptop</span></div><b>Ask in plain words</b><div class="msg-u" style="font-size:12px">Which breaks first if SOL drops 25%?</div><a href="#overview" data-open="ask">Try it in the app →</a></div>
+    </div></div>
+  <div class="pad"><div class="box row" style="gap:24px"><div class="col"><span class="lbl">Before</span><div class="big">1.18x</div><span class="eye s2"></span></div><span>→</span><div class="col"><span class="lbl">After a $9,000 buffer</span><div class="big">1.31x</div><span class="eye s1"></span></div><span class="sub" style="flex:1;min-width:200px">Example only. Number counts up when scrolled in.</span></div></div>
+  <div class="pad grid g2" style="align-items:center"><div class="col"><span class="lbl">The real interface</span><div class="h1" style="font-size:24px">Calm when you're fine. Loud only when you're not.</div><div class="line w80"></div></div>
+    <div class="box scrollx"><table><tr class="crit"><td>SOL / USDC</td><td>Kamino</td><td class="r">1.07x</td><td class="r">Act now</td></tr><tr><td>JitoSOL / SOL</td><td>Kamino</td><td class="r"><u>1.40x</u></td><td class="r">Warning</td></tr><tr><td>JLP / USDC</td><td>Jupiter Lend</td><td class="r">1.64x</td><td class="r">Watch</td></tr></table></div></div>
+  <div class="pad col" id="myth"><span class="lbl">Why the name</span><div class="h1">Named after the watchman who never slept.</div>
+    <div class="grid split"><div class="img" style="min-height:160px"><span>I · Argus keeping watch</span></div><div class="col"><b>Argus</b><div class="line"></div><div class="line w60"></div></div></div>
+    <div class="grid split"><div class="col"><b>Hermes</b><div class="line"></div><div class="line w60"></div></div><div class="img" style="min-height:160px"><span>II · Hermes lulls the eyes</span></div></div>
+    <div class="grid split"><div class="img" style="min-height:160px"><span>III · Argus rehearses the crash</span></div><div class="col"><b>Premeditatio malorum</b><div class="line"></div><div class="line w60"></div></div></div>
+    <span class="sub">Illustrations wipe open left→right on scroll. <span class="n" data-t="Images alternate sides; on phone they stack above the text.">4</span></span></div>
+  <div class="pad grid split" id="faq"><div class="h2">Questions</div><div>
+    <details><summary>Does Argus need my keys or a signature?</summary><p class="sub">No. Watching a wallet needs only its address.</p></details>
+    <details><summary>Which protocols does it read?</summary><p class="sub">Kamino and Jupiter Lend at launch.</p></details>
+    <details><summary>What is Ask Argus?</summary><p class="sub">A chat that answers in numbers and ends with the next step.</p></details>
+    <details><summary>Is this financial advice?</summary><p class="sub">No.</p></details></div></div>
+  <div class="pad hatch col" style="border-top:1.5px solid var(--line)"><div class="h1">Argus never sleeps. Now neither does your collateral.</div><div><a class="btn pri" href="#overview">Scan a wallet →</a></div><div style="font-size:64px;font-weight:800;letter-spacing:.05em">ΛRGUS</div></div>
+</section>
+
+<!-- ======================= APP CHROME (shared) ======================= -->
+<template id="appbar">
+  <div class="appbar"><a class="logo" href="#landing" style="text-decoration:none">ΛRGUS</a>
+    <nav class="nav" aria-label="App">
+      <a href="#overview" data-nav="overview">Overview</a><a href="#positions" data-nav="positions">Positions</a>
+      <a href="#terminal" data-nav="terminal" class="plan">Terminal</a><a href="#radar" data-nav="radar" class="plan">Radar</a>
+      <a href="#alerts" data-nav="alerts" class="plan">Alerts</a><a href="#activity" data-nav="activity" class="plan">Activity</a></nav>
+    <span style="flex:1"></span>
+    <span class="chip" data-source>● Demo data</span>
+    <button class="btn sm" data-open="ask">⌕ Ask Argus ⌘K</button>
+    <button class="btn pri sm" data-wallet>Connect wallet</button>
+  </div>
+</template>
+
+<!-- ======================= 2 OVERVIEW ======================= -->
+<section class="screen" data-s="overview" data-title="2 · Overview">
+  <div data-chrome="overview"></div>
+  <div class="pad col" style="gap:20px">
+    <div class="row" style="justify-content:space-between"><div class="col" style="gap:4px"><span class="lbl" data-who>Demo book · 5 positions · updated 08:12</span><div class="h1">Portfolio risk</div></div><button class="btn sm" data-ask="Am I safe?">Am I safe?</button></div>
+    <div class="grid split">
+      <div class="box col"><span class="lbl">Closest to liquidation<span class="n" data-t="The eye opens from shut on load (Argus wakes). Number glows once when a refresh changes it.">1</span></span>
+        <div class="row"><span class="eye lg s2"></span><div class="col" style="gap:2px"><b>SOL / USDC · Kamino</b><div class="big">1.07x</div><span class="sub">Act now · liquidated after a −6.8% move</span></div></div>
+        <div class="row"><button class="btn pri sm" data-open="drawer">Open position</button><button class="btn sim sm" data-ask="How do I get SOL / USDC back above 1.5x?">How do I fix it?</button></div></div>
+      <div class="box grid g2"><div class="col"><span class="lbl">Collateral</span><b>$240,330</b></div><div class="col"><span class="lbl">Debt</span><b>$137,400</b></div><div class="col"><span class="lbl">Net</span><b>$102,930</b></div><div class="col"><span class="lbl">Needs you</span><b>3 of 5</b><span class="sub">1 act now · 2 warning</span></div></div>
+    </div>
+    <div class="col"><div class="row" style="justify-content:space-between"><span class="h2">If SOL falls</span><span class="sub">all SOL-linked collateral moves together</span></div>
+      <div class="grid g3"><button class="box col" style="text-align:left;cursor:pointer" data-ask="What if SOL drops 10%?"><div class="big">−10%</div><span>1 liquidated</span><span class="sub">Lowest health 0.97x</span></button>
+      <button class="box col" style="text-align:left;cursor:pointer" data-ask="What if SOL drops 25%?"><div class="big">−25%</div><span>1 liquidated</span><span class="sub">Lowest health 0.81x</span></button>
+      <button class="box col" style="text-align:left;cursor:pointer" data-ask="What if SOL drops 40%?"><div class="big">−40%</div><span>4 liquidated</span><span class="sub">Lowest health 0.64x</span></button></div>
+      <span class="sub">Each card opens Ask Argus with that question. <span class="n" data-t="Cards lift on hover. Numbers come from risk.ts, never typed by hand.">2</span></span></div>
+    <div class="col"><div class="row" style="justify-content:space-between"><span class="h2">Positions</span><a href="#positions">All details →</a></div>
+      <div class="box scrollx" style="padding:0" data-table="compact"></div></div>
+  </div>
+</section>
+
+<!-- ======================= 3 POSITIONS ======================= -->
+<section class="screen" data-s="positions" data-title="3 · Positions">
+  <div data-chrome="positions"></div>
+  <div class="pad col"><span class="lbl">Kamino · Jupiter Lend · sorted by risk</span><div class="h1">Positions</div>
+    <div class="box scrollx" style="padding:0" data-table="full"></div>
+    <span class="sub">Health = liquidation-weighted collateral ÷ debt. Tiers: Safe ≥ 2.00 · Watch ≥ 1.50 · Warning ≥ 1.20 · Act now below. <span class="n" data-t="Critical row is the only row that changes background. Risk is never colour alone: number + eye + word.">1</span></span></div>
+</section>
+
+<!-- ======================= 7 TERMINAL (planned) ======================= -->
+<section class="screen" data-s="terminal" data-title="7 · Terminal (planned)">
+  <div data-chrome="terminal"></div>
+  <div class="pad col"><div class="planned"><b>PLANNED</b> Designed in design/screens/Terminal.png, not built. Needs live prices (Pyth) from Phase 1.</div>
+    <div class="row" style="justify-content:space-between"><div class="col" style="gap:2px"><span class="lbl">SOL / USD · Pyth index</span><div class="big">$148.82</div></div><div class="row"><span class="chip">24h −3.21%</span><span class="chip">Funding</span><span class="chip">Liqs 24h</span></div></div>
+    <div class="grid split"><div class="img" style="min-height:300px"><span>Price chart · your liquidation prices drawn as lines</span></div>
+      <div class="box col"><span class="h2">Leverage rehearsal</span><div class="input">Position size $50,000</div><div class="row"><span class="chip">1x</span><span class="chip">2x</span><span class="chip inv">3x</span><span class="chip">5x</span></div><div class="kv"><span>Liquidation price</span><b>$104.17</b></div><div class="kv"><span>Survives</span><b>−30% wick</b></div><button class="btn sim">Rehearse −35% crash</button></div></div>
+    <div class="box"><span class="h2">Risk stream</span><table><tr><td>22:41</td><td>SOL / USDC</td><td>Health 1.09 → 1.07</td></tr><tr><td>22:40</td><td>Pyth SOL/USD</td><td>Confidence widened</td></tr><tr><td>22:39</td><td>Market</td><td>$2.1M longs liquidated</td></tr></table></div></div>
+</section>
+
+<!-- ======================= 8 RADAR (planned) ======================= -->
+<section class="screen" data-s="radar" data-title="8 · Risk Radar (planned)">
+  <div data-chrome="radar"></div>
+  <div class="pad col"><div class="planned"><b>PLANNED</b> Designed in design/screens/Radar.png, not built.</div>
+    <span class="lbl">Premeditatio malorum</span><div class="h1">Risk Radar</div><span class="sub">Every position is a star. The closer it falls to the centre, the closer it is to liquidation.</span>
+    <div class="grid split"><div class="img" style="min-height:360px;border-radius:0"><span>Constellation: concentric rings = health; dots = positions; lines join positions that move together</span></div>
+      <div class="box col"><span class="h2">Rehearse a SOL drawdown</span><div class="row" id="radarSeg"><button class="btn sm">0%</button><button class="btn sm">−10%</button><button class="btn pri sm">−20%</button><button class="btn sm">−35%</button><button class="btn sm">−50%</button></div>
+        <div class="kv"><span>Liquidated</span><b id="radarLiq">1 of 5</b></div><div class="kv"><span>Capital at risk</span><b>$42,180</b></div><button class="btn sim">Plan buffers for this drop</button></div></div></div>
+</section>
+
+<!-- ======================= 9 ALERTS (planned) ======================= -->
+<section class="screen" data-s="alerts" data-title="9 · Alerts (planned)">
+  <div data-chrome="alerts"></div>
+  <div class="pad col"><div class="planned"><b>PLANNED</b> Needs the Phase 2 background watcher (docs/ARCHITECTURE.md). Without it, alerts would only fire while the tab is open.</div>
+    <div class="row" style="justify-content:space-between"><div class="h1">Alerts</div><button class="btn pri" id="newWatch">+ Arm a watchdog</button></div>
+    <div class="grid split"><div class="box col"><span class="h2">Watchdogs</span>
+      <div class="kv"><span>SOL / USDC below 1.20x</span><span class="chip inv">armed</span></div>
+      <div class="kv"><span>Any position below 1.50x</span><span class="chip inv">armed</span></div>
+      <div class="kv"><span>JLP / USDC below 1.30x</span><span class="chip">paused</span></div>
+      <div class="box dash col" id="watchForm" hidden><span class="lbl">New watchdog</span><div class="input">Position: any</div><div class="input">Alert below: 1.25x</div><div class="row"><span class="chip inv">Telegram</span><span class="chip">Email</span><span class="chip">Browser</span></div><button class="btn pri sm" id="armIt">Arm</button></div></div>
+      <div class="box col"><span class="h2">Recent</span><div class="kv"><span>22:41 SOL / USDC fell to 1.07x</span><span>sent</span></div><div class="kv"><span>19:30 JitoSOL / SOL crossed 1.50x</span><span>sent</span></div><span class="sub">Channel: [CHANNEL] · Telegram first</span></div></div></div>
+</section>
+
+<!-- ======================= 10 ACTIVITY (planned) ======================= -->
+<section class="screen" data-s="activity" data-title="10 · Activity (planned)">
+  <div data-chrome="activity"></div>
+  <div class="pad col"><div class="planned"><b>PLANNED</b> Needs stored health history (Phase 2: health_snapshots, alert_events).</div>
+    <div class="row" style="justify-content:space-between"><div class="h1">Activity</div><div class="row" id="actTabs"><button class="btn pri sm">All</button><button class="btn sm">Argus</button><button class="btn sm">You</button><button class="btn sm">Market</button></div></div>
+    <div class="box"><span class="lbl">Today</span>
+      <div class="kv" data-k="Argus"><span>22:41 · Argus</span><span style="flex:1;padding-left:12px">SOL / USDC fell to 1.07x. Alert sent.</span></div>
+      <div class="kv" data-k="You"><span>22:12 · You</span><span style="flex:1;padding-left:12px">Rehearsed −20%. 1 of 5 breaks.</span></div>
+      <div class="kv" data-k="Market"><span>21:58 · Market</span><span style="flex:1;padding-left:12px">$2.1M SOL longs liquidated in 60s.</span></div>
+      <div class="kv" data-k="You"><span>19:30 · You</span><span style="flex:1;padding-left:12px">Added $9,000 to SOL / USDC. 1.18x → 1.31x ↗</span></div></div></div>
+</section>
+
+<!-- ======================= 11 404 ======================= -->
+<section class="screen" data-s="notfound" data-title="11 · 404">
+  <div class="pad" style="min-height:700px;display:grid;place-items:center;text-align:center"><div class="col" style="align-items:center;gap:16px;max-width:520px">
+    <span class="eye lg"></span><span class="lbl">404 · Not found</span><div class="h1">A hundred eyes, and none of them can see this page.</div><span class="sub">The eye opens, searches left and right, and blinks.</span>
+    <div class="row"><a class="btn pri" href="#overview">Open Argus</a><a class="btn" href="#landing">Home</a></div></div></div>
+</section>
+
+<!-- ======================= 12 STATES ======================= -->
+<section class="screen" data-s="states" data-title="12 · Loading / empty / error">
+  <div data-chrome="overview"></div>
+  <div class="pad grid g3">
+    <div class="box col" style="min-height:200px"><span class="lbl">Loading</span><div class="row"><span class="eye s0"></span><span>Argus is opening his eyes…</span></div></div>
+    <div class="box col"><span class="lbl">Empty</span><b>Nothing to watch yet.</b><span class="sub">No open borrows on Kamino or Jupiter Lend for this wallet.</span><div class="row"><button class="btn sm">Try another wallet</button><a class="btn sm" href="#overview">Load the demo</a></div></div>
+    <div class="box col"><span class="lbl">Error</span><b>Argus lost sight for a moment.</b><span class="sub">Showing the last known numbers.</span><button class="btn sm">Retry now</button></div>
+  </div>
+</section>
+
+<!-- ======================= OVERLAYS ======================= -->
+<div class="overlay" id="ov-drawer" role="dialog" aria-label="Position details">
+  <div class="panel">
+    <div class="hd"><div class="col" style="gap:0"><span class="lbl" id="dMeta">Kamino · Main Market</span><b id="dName">SOL / USDC</b></div><button class="btn sm" data-close aria-label="Close">×</button></div>
+    <div class="bd">
+      <div class="row"><span class="eye lg" id="dEye"></span><div class="col" style="gap:2px"><span class="lbl">Health factor</span><div class="big" id="dHf">1.07x</div><span class="chip inv" id="dTier">Act now</span></div></div>
+      <div><div class="kv"><span>Collateral</span><b id="dCol">$42,180 in SOL</b></div><div class="kv"><span>Debt</span><b id="dDebt">$33,400 in USDC</b></div><div class="kv"><span>Liquidation price</span><b>$138.64</b></div><div class="kv"><span>Distance to liquidation</span><b id="dDist">−6.8%</b></div></div>
+      <div class="box dash col"><div class="row" style="justify-content:space-between"><span class="lbl">Rehearse a price move</span><b id="dMove">SOL 0%</b></div>
+        <input type="range" min="-50" max="20" value="0" id="dRange" aria-label="Price move"><div class="row" style="justify-content:space-between"><span class="sub">Health becomes</span><b id="dSim">1.07x</b></div><span id="dLiq" class="chip inv" hidden>Liquidated at this price.</span>
+        <span class="n" data-t="The working slider uses the same maths as the app: HF × (1 + move).">1</span></div>
+      <div class="col" id="dFix"><span class="lbl">Two ways back to 1.50x</span><div class="grid g2"><div class="box col"><span class="sub">Add collateral</span><b id="dAdd">$16,760</b></div><div class="box col"><span class="sub">Or repay</span><b id="dRepay">$9,500</b></div></div><span class="sub">Do it on the protocol. Argus is read-only.</span></div>
+    </div>
+    <div class="ft"><button class="btn pri" id="dAsk">Ask Argus about this</button><button class="btn" data-close>Close</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="ov-ask" role="dialog" aria-label="Ask Argus">
+  <div class="panel">
+    <div class="hd"><div class="col" style="gap:0"><b>Ask Argus</b><span class="sub">Reads your 5 positions · read-only · not financial advice</span></div><button class="btn sm" data-close aria-label="Close">×</button></div>
+    <div class="bd" id="chat"><span class="sub">I'm watching every position. Ask what's at risk, what a price move would do, or how to get back to safe.</span></div>
+    <div class="ft" style="flex-direction:column;align-items:stretch">
+      <div class="row" id="starters"><button class="btn sm" data-q="Am I safe?">Am I safe?</button><button class="btn sm" data-q="Which breaks first if SOL drops 25%?">Which breaks first if SOL −25%?</button><button class="btn sm" data-q="Explain health factor">Explain health factor</button></div>
+      <form class="row" id="askForm"><input class="input" id="askIn" placeholder="Ask about your positions…" aria-label="Question"><button class="btn pri" type="submit" aria-label="Ask">↑</button></form>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="ov-wallet" role="dialog" aria-label="Connect wallet">
+  <div class="modal"><div class="row" style="justify-content:space-between"><b>Connect a wallet</b><button class="btn sm" data-close aria-label="Close">×</button></div>
+    <span class="sub">Argus only reads your public address. It never asks for a signature.</span>
+    <button class="btn" data-connect style="justify-content:space-between">Phantom <span class="sub">detected</span></button>
+    <button class="btn" data-connect style="justify-content:space-between">Solflare <span class="sub">detected</span></button>
+    <button class="btn" data-connect style="justify-content:space-between">Backpack</button>
+    <span class="n" data-t="Real app: Wallet Standard modal, restyled; wallets rise in one after another.">1</span></div>
+</div>
+
+</div></div>
+
+<div class="notes-list" aria-label="Design notes">
+  <ol>
+    <li>Notes (blue numbers) explain behaviour you can't see in a wireframe: motion, data rules, edge cases. Hover them.</li>
+    <li>Greyscale is deliberate. Real colours: terracotta / ink / sand. Risk is never shown by colour alone (number + eye + word).</li>
+    <li>Planned screens (dashed, hatched banner) exist only as mock-ups in <code>design/screens/</code>.</li>
+    <li>All demo figures match the app's demo book; never use them as real user data.</li>
+  </ol>
+</div>
+
+<script>
+/* Tiny router + interactions. One job each; no framework. */
+const POSITIONS = [
+  { id: "sol", name: "SOL / USDC", proto: "Kamino", market: "Main Market", col: 42180, debt: 33400, ltv: 0.85, ca: "SOL", da: "USDC" },
+  { id: "jito", name: "JitoSOL / SOL", proto: "Kamino", market: "JitoSOL Multiply", col: 96550, debt: 61900, ltv: 0.9, ca: "JitoSOL", da: "SOL" },
+  { id: "jup", name: "JupSOL / SOL", proto: "Jupiter Lend", market: "JupSOL Vault", col: 18900, debt: 11800, ltv: 0.92, ca: "JupSOL", da: "SOL" },
+  { id: "jlp", name: "JLP / USDC", proto: "Jupiter Lend", market: "JLP Vault", col: 28400, debt: 14200, ltv: 0.82, ca: "JLP", da: "USDC" },
+  { id: "msol", name: "mSOL / USDT", proto: "Kamino", market: "Main Market", col: 54300, debt: 16100, ltv: 0.8, ca: "mSOL", da: "USDT" },
+].map(p => ({ ...p, hf: (p.col * p.ltv) / p.debt })).sort((a, b) => a.hf - b.hf);
+
+const tier = hf => hf >= 2 ? ["Safe", "s0"] : hf >= 1.5 ? ["Watch", "s1"] : hf >= 1.2 ? ["Warning", "s2"] : ["Act now", ""];
+const usd = n => "$" + Math.round(n).toLocaleString("en-US");
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+let wallet = null, current = POSITIONS[0];
+
+/* Shared app bar + tables */
+function renderChrome() {
+  const tpl = $("#appbar").content;
+  $$("[data-chrome]").forEach(slot => {
+    slot.replaceChildren(tpl.cloneNode(true));
+    $$("[data-nav]", slot).forEach(a => a.classList.toggle("cur", a.dataset.nav === slot.dataset.chrome));
+    $("[data-wallet]", slot).textContent = wallet ? wallet + " ⏏" : "Connect wallet";
+    $("[data-wallet]", slot).classList.toggle("pri", !wallet);
+    $("[data-source]", slot).textContent = wallet ? "● Watching" : "● Demo data";
+  });
+  $$("[data-who]").forEach(e => e.textContent = (wallet ? "Your wallet" : "Demo book") + " · 5 positions · updated 08:12");
+}
+function renderTables() {
+  $$("[data-table]").forEach(box => {
+    const full = box.dataset.table === "full";
+    box.innerHTML = `<table><tr><th>Position</th><th>Protocol</th>${full ? "<th class=r>Collateral</th><th class=r>Debt</th>" : ""}<th class=r>To liquidation</th><th class=r>Health</th><th class=r>Status</th></tr>` +
+      POSITIONS.map(p => {
+        const [t, s] = tier(p.hf);
+        return `<tr class="click ${t === "Act now" ? "crit" : ""}" data-pos="${p.id}"><td><b>${p.name}</b><div class=sub>${p.market}</div></td><td>${p.proto}</td>${full ? `<td class=r>${usd(p.col)}</td><td class=r>${usd(p.debt)}</td>` : ""}<td class=r>−${((1 - 1 / p.hf) * 100).toFixed(1)}%</td><td class=r>${t === "Warning" ? "<u>" : ""}${p.hf.toFixed(2)}x${t === "Warning" ? "</u>" : ""}</td><td class=r><span class="eye ${s}"></span> ${t === "Safe" ? "" : t}</td></tr>`;
+      }).join("") + "</table>";
+  });
+}
+
+/* Router: #screen, with an optional overlay to open on arrival */
+const screens = $$(".screen");
+function show(id) {
+  const s = screens.find(x => x.dataset.s === id) || screens.find(x => x.dataset.s === "notfound");
+  screens.forEach(x => x.classList.toggle("on", x === s));
+  $("#jump").value = s.dataset.s;
+  closeAll();
+  $("#device").scrollIntoView({ block: "start" });
+  window.scrollTo(0, 0);
+}
+screens.forEach(s => $("#jump").add(new Option(s.dataset.title, s.dataset.s)));
+$("#jump").onchange = e => location.hash = e.target.value;
+window.addEventListener("hashchange", () => show(location.hash.slice(1) || "map"));
+
+/* Overlays */
+function open(name) { closeAll(); $("#ov-" + name).classList.add("on"); if (name === "drawer") paintDrawer(0); }
+function closeAll() { $$(".overlay").forEach(o => o.classList.remove("on")); }
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeAll();
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); if (!["overview", "positions"].includes(location.hash.slice(1))) location.hash = "overview"; open("ask"); }
+});
+
+/* Drawer: same maths as lib/positions/risk.ts */
+function paintDrawer(move) {
+  const p = current, sim = p.hf * (1 + move / 100), [t, s] = tier(p.hf), [, ss] = tier(sim);
+  $("#dName").textContent = p.name; $("#dMeta").textContent = p.proto + " · " + p.market;
+  $("#dHf").textContent = p.hf.toFixed(2) + "x"; $("#dTier").textContent = t;
+  $("#dEye").className = "eye lg " + s;
+  $("#dCol").textContent = usd(p.col) + " in " + p.ca; $("#dDebt").textContent = usd(p.debt) + " in " + p.da;
+  $("#dDist").textContent = "−" + ((1 - 1 / p.hf) * 100).toFixed(1) + "%";
+  $("#dRange").value = move; $("#dMove").textContent = "SOL " + (move > 0 ? "+" : "") + move + "%";
+  $("#dSim").textContent = sim.toFixed(2) + "x"; $("#dLiq").hidden = sim >= 1;
+  $("#dFix").hidden = p.hf >= 1.5;
+  $("#dAdd").textContent = usd(Math.max(0, (1.5 * p.debt) / p.ltv - p.col));
+  $("#dRepay").textContent = usd(Math.max(0, p.debt - (p.col * p.ltv) / 1.5));
+}
+$("#dRange").oninput = e => paintDrawer(+e.target.value);
+$("#dAsk").onclick = () => { open("ask"); ask(`Walk me through ${current.name}. Health is ${current.hf.toFixed(2)}x. What should I do?`); };
+
+/* Ask Argus: scripted answers stand in for the streamed Claude reply */
+function ask(q) {
+  const chat = $("#chat");
+  chat.insertAdjacentHTML("beforeend", `<div class="msg-u">${q}</div>`);
+  const w = POSITIONS[0], after = (w.hf * 0.75).toFixed(2), add = usd((1.5 * w.debt) / w.ltv - w.col);
+  const a = /health factor/i.test(q)
+    ? "Health factor = how many times your borrowing is covered. Below 1.00x the protocol can sell your collateral."
+    : `<b>${w.name}</b> on ${w.proto} needs you first: ${w.hf.toFixed(2)}x. A −25% SOL day takes it to ${after}x. Add ${add} to return to 1.50x.`;
+  setTimeout(() => {
+    chat.insertAdjacentHTML("beforeend", `<div class="msg-a"><span class="av"></span><div class="col"><div>${a}</div>` +
+      (/health factor/i.test(q) ? "" : `<div class="box dash col"><b>Add ${add} to ${w.name}</b><span class="sub">Gets you back to 1.50x.</span><button class="btn sm" data-pos="${w.id}">Open on ${w.proto}</button></div>`) +
+      `</div></div>`);
+    chat.scrollTop = chat.scrollHeight;
+  }, 450);
+  $("#starters").hidden = true;
+}
+$("#askForm").onsubmit = e => { e.preventDefault(); const v = $("#askIn").value.trim(); if (v) { ask(v); $("#askIn").value = ""; } };
+
+/* One delegated click handler for everything clickable */
+document.addEventListener("click", e => {
+  const el = e.target.closest("[data-open],[data-ask],[data-q],[data-pos],[data-close],[data-wallet],[data-connect],[data-scroll]");
+  if (!el) return;
+  if (el.matches(".overlay")) return;
+  if (el.dataset.close !== undefined) return closeAll();
+  if (el.dataset.pos) { current = POSITIONS.find(p => p.id === el.dataset.pos); if (!location.hash.match(/overview|positions/)) location.hash = "overview"; return open("drawer"); }
+  if (el.dataset.ask) { open("ask"); return ask(el.dataset.ask); }
+  if (el.dataset.q) return ask(el.dataset.q);
+  if (el.dataset.wallet !== undefined) { if (wallet) { wallet = null; renderChrome(); return; } return open("wallet"); }
+  if (el.dataset.connect !== undefined) { wallet = "7xKX…3tKG"; closeAll(); return renderChrome(); }
+  if (el.dataset.scroll) { e.preventDefault(); return document.getElementById(el.dataset.scroll).scrollIntoView({ behavior: "smooth" }); }
+  if (el.dataset.open) { if (el.tagName === "A") { e.preventDefault(); location.hash = el.getAttribute("href").slice(1); setTimeout(() => open(el.dataset.open), 60); return; } current = POSITIONS[0]; open(el.dataset.open); }
+});
+$$(".overlay").forEach(o => o.addEventListener("click", e => { if (e.target === o) closeAll(); }));
+
+/* Landing: scan box + tutorial eye */
+$("#scanBtn").onclick = () => {
+  const v = $("#scanIn").value.trim();
+  if (v && !/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(v)) { $("#scanMsg").textContent = "That doesn't look like a Solana address."; return; }
+  wallet = v ? v.slice(0, 4) + "…" + v.slice(-4) : null; renderChrome(); location.hash = "overview";
+};
+$("#tRange").oninput = e => { const hf = e.target.value / 100, [, s] = tier(hf); $("#tHf").textContent = hf.toFixed(2) + "x"; $("#tEye").className = "eye " + s; };
+
+/* Planned screens: segmented controls + watchdog form + activity filter */
+$$("#radarSeg .btn").forEach((b, i) => b.onclick = () => { $$("#radarSeg .btn").forEach(x => x.classList.toggle("pri", x === b)); $("#radarLiq").textContent = ["0", "1", "1", "2", "4"][i] + " of 5"; });
+$("#newWatch").onclick = () => { $("#watchForm").hidden = !$("#watchForm").hidden; };
+$("#armIt").onclick = () => { $("#watchForm").insertAdjacentHTML("beforebegin", `<div class="kv"><span>Any position below 1.25x</span><span class="chip inv">armed</span></div>`); $("#watchForm").hidden = true; };
+$$("#actTabs .btn").forEach(b => b.onclick = () => { $$("#actTabs .btn").forEach(x => x.classList.toggle("pri", x === b)); $$("[data-k]").forEach(r => r.hidden = b.textContent !== "All" && r.dataset.k !== b.textContent); });
+
+/* Tool bar */
+const setDevice = phone => { document.body.classList.toggle("phone", phone); $("#bPhone").setAttribute("aria-pressed", phone); $("#bDesk").setAttribute("aria-pressed", !phone); };
+$("#bDesk").onclick = () => setDevice(false); $("#bPhone").onclick = () => setDevice(true);
+$("#bNotes").onclick = () => { const on = document.body.classList.toggle("notes"); $("#bNotes").setAttribute("aria-pressed", on); };
+
+renderChrome(); renderTables(); paintDrawer(0); show(location.hash.slice(1) || "map");
+</script>
+</body>
+</html>
